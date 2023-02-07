@@ -1,5 +1,28 @@
 <script>
-export default {};
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/appStore";
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapActions(useAppStore, ["doLogin", "isLoginToggle"]),
+    // =======================
+    handleLogin() {
+      this.doLogin({
+        email: this.email,
+        password: this.password,
+      });
+    },
+    isLoginToggleHandle() {
+      this.isLoginToggle(false);
+    },
+  },
+  created() {},
+};
 </script>
 
 <template>
@@ -16,7 +39,7 @@ export default {};
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-2 p-lg-1 text-black">
-                  <form id="login-form" @submit.prevent="loginHandler">
+                  <form id="login-form" @submit.prevent="handleLogin">
                     <div class="d-flex align-items-center">
                       <img src="../assets/kakek.png" alt="" style="width: 200px; height: 200px" />
                     </div>
@@ -24,12 +47,12 @@ export default {};
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">Sign into your account</h5>
 
                     <div class="form-outline mb-1">
-                      <input v-model="loginEmail" id="login-email" type="email" class="form-control form-control-lg" />
+                      <input v-model="email" id="login-email" type="email" class="form-control form-control-lg" />
                       <label class="form-label">Email address</label>
                     </div>
 
                     <div class="form-outline mb-1">
-                      <input v-model="loginPassword" id="login-password" type="password" class="form-control form-control-lg" />
+                      <input v-model="password" id="login-password" type="password" class="form-control form-control-lg" />
                       <label class="form-label">Password</label>
                     </div>
 
