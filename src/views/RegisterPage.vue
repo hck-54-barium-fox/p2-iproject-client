@@ -1,5 +1,27 @@
 <script>
+import axios from 'axios'
+import { mapActions, mapState } from 'pinia'
+import { useBookingStore } from '../stores/counter'
+export default {
+ data() {
+  return {
+   userForm: {
+    email: '',
+    name: '',
+    password: ''
+   }
+  }
+ },
+ methods: {
+  doRegister() {
+   console.log(this.userForm, 'sebelum')
+   this.handleRegister(this.userForm)
+   console.log(this.userForm, 'sesudah')
 
+  },
+  ...mapActions(useBookingStore, ['handleRegister'])
+ }
+}
 </script>
 
 <template>
@@ -26,20 +48,20 @@
      Register
     </h2>
     <div class="mt-12 relative">
-     <form @submit.prevent="login">
+     <form @submit.prevent="doRegister">
       <div>
        <div class="text-sm font-bold text-gray-700 tracking-wide">
         Email Address
        </div>
        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500" type="email"
-        placeholder="name@gmail.com" name="email" />
+        placeholder="name@gmail.com" name="email" v-model="userForm.email" />
       </div>
       <div class="mt-8">
        <div class="text-sm font-bold text-gray-700 tracking-wide">
         name
        </div>
-       <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500" type="email"
-        placeholder="eg. bambang" name="email" />
+       <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500" type="text"
+        placeholder="eg. bambang" name="email" v-model="userForm.name" />
       </div>
       <div class="mt-8">
        <div class="flex justify-between items-center">
@@ -49,9 +71,15 @@
 
        </div>
        <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500"
-        type="password" name="password" placeholder="Enter your password" />
+        type="password" name="password" placeholder="Enter your password" v-model="userForm.password" />
       </div>
-      <div class="mt-10">
+      <div class="mt-10 flex gap-1">
+
+       <button
+        class="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600 shadow-lg"
+        type="submit" @click="$router.push('/')">
+        Cancel
+       </button>
        <button
         class="bg-sky-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-sky-600 shadow-lg"
         type="submit">
@@ -61,7 +89,7 @@
      </form>
      <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
       Already have an account ?
-      <a @click.prevent="$router.push('/register')" class="cursor-pointer text-sky-600 hover:text-sky-800">Sign
+      <a @click.prevent="$router.push('/login')" class="cursor-pointer text-sky-600 hover:text-sky-800">Sign
       </a>
      </div>
     </div>

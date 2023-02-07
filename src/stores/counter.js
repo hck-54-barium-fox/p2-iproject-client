@@ -1,12 +1,18 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
-
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
-
-  return { count, doubleCount, increment }
-})
+import { defineStore } from 'pinia';
+import axios from 'axios';
+const baseUrl = 'http://localhost:9000';
+export const useBookingStore = defineStore('booking', {
+  state: () => ({}),
+  getters: {},
+  actions: {
+    async handleRegister(form) {
+      try {
+        const { data } = await axios.post(baseUrl + '/register', form);
+        console.log(data, 'ini data');
+        this.router.push('/');
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+});

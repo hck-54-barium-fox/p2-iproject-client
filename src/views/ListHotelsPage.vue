@@ -1,7 +1,5 @@
 <script>
-
 </script>
-
 <template>
  <!-- Navbar -->
  <nav class="bg-sky-500 flex justify-center items-center shadow-xl">
