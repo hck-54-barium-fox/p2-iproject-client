@@ -4,8 +4,15 @@ import { RouterLink } from "vue-router";
 import { useCounterStore } from "../stores/counter";
 
 export default {
-
-    
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  computed: {
+    ...mapActions(useCounterStore, ["handleLogin"])
+  }
 };
 </script>
 
@@ -17,7 +24,7 @@ export default {
         class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
       <div
         class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-        <form @submit.prevent="handleLogin" action="">
+        <form @submit.prevent="handleLogin({email, password})" action="">
           <div class="max-w-md mx-auto">
             <div>
               <h1 class="text-2xl font-semibold">Login Form</h1>
