@@ -1,24 +1,42 @@
 <script>
-
+export default {
+    props : ['el']
+}
 </script>
 
 <template>
-<a href="#" class="block group">
+ <div class="w-[300px] p-2 ml-12 mt-[200px]"> 
+    <a href="#" class="block group">
   <img
-    src="https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    :src="el.imageUrl" style="height: 50%;"
     alt=""
-    class="object-cover w-full rounded aspect-square"
+    class="h-[350px] w-full object-cover sm:h-[450px]"
   />
 
   <div class="mt-3">
     <h3
-      class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4"
+      class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4"
     >
-      Simple Watch
+      {{ el.name }}
+    </h3>
+    <button>
+        <h3
+      class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4"
+    >
+     see detail
+    </h3>
+    </button>
+    <h3
+      class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4"
+    >
+      size : {{ el.size }}
     </h3>
 
-    <p class="mt-1 text-sm text-gray-700">$150</p>
+    <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500">
+     price :  {{ el.price }}
+    </p>
   </div>
 </a>
+</div>
 
 </template>

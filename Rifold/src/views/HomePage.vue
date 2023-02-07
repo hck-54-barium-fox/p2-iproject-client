@@ -1,5 +1,21 @@
 <script>
-
+import { mapActions,mapState } from 'pinia';
+import CardProduct from '../components/CardProduct.vue';
+import { useAppStore } from '../stores/app';
+export default {
+    components : {
+        CardProduct
+    },
+    methods : {
+        ...mapActions(useAppStore,['Product']),
+    },
+    computed : {
+        ...mapState(useAppStore,['dataProduct'])
+    },
+    created() {
+        this.Product()
+    }
+}
 </script>
 
 
@@ -47,26 +63,7 @@
     </div>
   </div>
 </section>
-<div class="w-[300px] p-2 ml-12 mt-[200px]"> 
-    <a href="#" class="block group">
-  <img
-    src="https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-    alt=""
-    class="h-[350px] w-full object-cover sm:h-[450px]"
-  />
-
-  <div class="mt-3">
-    <h3
-      class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4"
-    >
-      Small Headphones
-    </h3>
-
-    <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quibusdam
-      ab maiores placeat odio id?
-    </p>
-  </div>
-</a>
+<div class="grid grid-cols-3">
+   <CardProduct v-for="el in dataProduct" :key="el.id" :el="el"/>
 </div>
 </template>

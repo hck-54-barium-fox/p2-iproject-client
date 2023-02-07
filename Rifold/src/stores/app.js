@@ -4,12 +4,9 @@ import axios from 'axios'
 // import { useToast } from 'vue-toastification'
 // const toast = useToast()
 export const useAppStore = defineStore('App',{
-    // state : {
-
-    // },
     state() {
         return{
-
+            dataProduct : [],
         }
     },
     actions : {
@@ -40,6 +37,18 @@ export const useAppStore = defineStore('App',{
             } catch (error) {
                 console.log(error);
             }
-        }
+        },
+        async Product() {
+            try {
+                const {data} = await axios({
+                    method : 'get',
+                    url : 'http://localhost:3000/product'
+                })
+                this.dataProduct = data
+                console.log(this.dataProduct);
+            } catch (error) {
+                console.log(error);
+            }
+        },
     }
 })
