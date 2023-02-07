@@ -1,6 +1,17 @@
 <script>
+import { mapActions,mapState } from 'pinia';
+import { useAppStore } from '../stores/app';
 export default {
-
+    methods : {
+        ...mapActions(useAppStore,['detailProduct'])
+    },
+    computed : {
+        ...mapState(useAppStore,['productDetail'])
+    },
+    created() {
+        this.detailProduct()
+        this.detailProduct(this.$route.params.id)
+    }
 }
 
 </script>
@@ -13,7 +24,7 @@ export default {
       <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
         <img
           alt="Les Paul"
-          src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          :src="productDetail.imageUrl"
           class="object-cover w-full aspect-square rounded-xl"
         />
 
@@ -29,11 +40,9 @@ export default {
         <div class="flex justify-between mt-8">
           <div class="max-w-[35ch]">
             <h1 class="text-2xl font-bold">
-              Fun Product That Does Something Cool
+            {{ productDetail.name }}
+              <!-- Fun Product That Does Something Cool -->
             </h1>
-
-            <p class="mt-0.5 text-sm">Highest Rated Product</p>
-
             <div class="mt-2 -ml-0.5 flex">
               <svg
                 class="w-5 h-5 text-yellow-400"
@@ -92,7 +101,7 @@ export default {
             </div>
           </div>
 
-          <p class="text-lg font-bold">$119.99</p>
+          <p class="text-lg font-bold">Price : {{ productDetail.price }}</p>
         </div>
 
         <details
@@ -102,91 +111,15 @@ export default {
             <div>
               <div class="prose max-w-none group-open:hidden">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                  veniam dicta beatae eos ex error culpa delectus rem tenetur,
-                  architecto quam nesciunt, dolor veritatis nisi minus
-                  inventore, rerum at recusandae?
+                    {{ productDetail.description }}
                 </p>
               </div>
 
-              <span
-                class="mt-4 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0"
-              >
-                Read More
-              </span>
             </div>
           </summary>
-
-          <div class="pb-6 prose max-w-none">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-              veniam dicta beatae eos ex error culpa delectus rem tenetur,
-              architecto quam nesciunt, dolor veritatis nisi minus inventore,
-              rerum at recusandae?
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              nam sapiente nobis ea veritatis error consequatur nisi
-              exercitationem iure laudantium culpa, animi temporibus non! Maxime
-              et quisquam amet. A, deserunt!
-            </p>
-          </div>
         </details>
 
         <form class="mt-8">
-          <fieldset>
-            <legend class="mb-1 text-sm font-medium">Color</legend>
-
-            <div class="flow-root">
-              <div class="-m-0.5 flex flex-wrap">
-                <label for="color_tt" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="color"
-                    id="color_tt"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-block px-3 py-1 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    Texas Tea
-                  </span>
-                </label>
-
-                <label for="color_fr" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="color"
-                    id="color_fr"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-block px-3 py-1 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    Fiesta Red
-                  </span>
-                </label>
-
-                <label for="color_cb" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="color"
-                    id="color_cb"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-block px-3 py-1 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    Cobalt Blue
-                  </span>
-                </label>
-              </div>
-            </div>
-          </fieldset>
 
           <fieldset class="mt-4">
             <legend class="mb-1 text-sm font-medium">Size</legend>

@@ -3,10 +3,12 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 // import { useToast } from 'vue-toastification'
 // const toast = useToast()
+const BASE_URL = 'http://localhost:3000'
 export const useAppStore = defineStore('App',{
     state() {
         return{
             dataProduct : [],
+           productDetail : []
         }
     },
     actions : {
@@ -50,5 +52,21 @@ export const useAppStore = defineStore('App',{
                 console.log(error);
             }
         },
+        async detailProduct(id) {
+            try {
+                const {data} = await axios({
+                    method : 'get',
+                    url : `${BASE_URL}/product/${id}`,
+                    headers : {
+                        access_token : localStorage.access_token
+                    }
+                })
+                // console.log(data,'addda');
+                this.productDetail = data
+                console.log(this.productDetail);
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
 })

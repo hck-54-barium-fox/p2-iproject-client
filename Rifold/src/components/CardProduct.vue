@@ -1,6 +1,11 @@
 <script>
 export default {
-    props : ['el']
+    props : ['el'],
+    methods : {
+        handleDetail(id) {
+            this.$route.push(`/detail/${id}`)
+        }
+    }
 }
 </script>
 
@@ -19,13 +24,15 @@ export default {
     >
       {{ el.name }}
     </h3>
-    <button>
+   <router-link :to='`/detail/${el.id}`'>  
+   <button>
         <h3
       class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4"
     >
      see detail
     </h3>
     </button>
+    </router-link>
     <h3
       class="text-sm text-gray-700 group-hover:underline group-hover:underline-offset-4"
     >

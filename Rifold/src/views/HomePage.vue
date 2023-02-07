@@ -63,7 +63,7 @@ export default {
     </div>
   </div>
 </section>
-<div class="grid grid-cols-3">
+<div class="grid grid-cols-3 gap-5">
    <CardProduct v-for="el in dataProduct" :key="el.id" :el="el"/>
 </div>
 </template>

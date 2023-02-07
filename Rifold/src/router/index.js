@@ -25,7 +25,7 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'detail',
       component: DetailProduct
     },
