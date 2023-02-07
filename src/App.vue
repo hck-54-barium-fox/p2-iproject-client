@@ -2,6 +2,6 @@
 </script>
 
 <template>
-  <router-link/>
+  <router-view/>
 </template>
 
