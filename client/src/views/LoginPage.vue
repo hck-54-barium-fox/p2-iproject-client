@@ -1,4 +1,27 @@
 <script>
+import { mapActions } from 'pinia';
+import { useAppStore } from '../stores/app'
+
+export default{
+    data(){
+        return{
+            email:'',
+            password:''
+        }
+    },
+    methods:{
+        ...mapActions(useAppStore, ['login']),
+        loginHandler(){
+            this.login({
+                email:this.email,
+                password: this.password
+            })
+        }
+    },
+    created(){
+      console.log(useAppStore, "INII");
+    }
+}
 </script>
 <template>
   <!-- component -->
@@ -21,13 +44,12 @@
           Log in to your account
         </h1>
 
-        <form class="mt-6" action="#" method="POST">
+        <form @submit.prevent="loginHandler" class="mt-6" action="#" method="POST">
           <div>
             <label class="block text-gray-700">Email Address</label>
             <input
+            v-model="email"
               type="email"
-              name=""
-              id=""
               placeholder="Enter Email Address"
               class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
               autofocus
@@ -39,9 +61,8 @@
           <div class="mt-4">
             <label class="block text-gray-700">Password</label>
             <input
+            v-model="password"
               type="password"
-              name=""
-              id=""
               placeholder="Enter Password"
               minlength="6"
               class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
@@ -57,7 +78,7 @@
             >
           </div>
 
-          <button
+          <button 
             type="submit"
             class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6"
           >
