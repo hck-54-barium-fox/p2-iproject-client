@@ -32,6 +32,17 @@ class PlanetController{
             res.status(500).json(err)
         }
     }
+    static async getAPOD(req,res){
+        try {
+            let {data} = await axios({
+                method:'get',
+                url:`https://api.nasa.gov/planetary/apod?api_key=6SAoXGV3AwKg7FSQjPHVUsJBcjtqDFbxeAXX3GY9`
+            })
+            res.status(200).json(data)
+        } catch (err) {
+            res.status(500).json(err)
+        }
+    }
 }
 
 module.exports = PlanetController
