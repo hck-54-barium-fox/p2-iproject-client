@@ -8,7 +8,11 @@ export const useMainStore = defineStore('main', {
   state: () => {
     return {
       loggedIn: false,
-      currentWeather: {}
+      currentWeather: {},
+      AIsuggestion: '',
+      fetchedPlaylists: [],
+      specificPlaylistTitle: '',
+      trackExamples: []
     }
   },
 
@@ -74,8 +78,54 @@ export const useMainStore = defineStore('main', {
             access_token: localStorage.getItem('access_token')
           }
         })
+        console.log('AI Response: ',data.response);
+        this.AIsuggestion = data.response
+        this.fetchUniquePlaylist(data.response)
       } catch (err) {
-        
+        console.log(err);
+      }
+    },
+
+    async fetchUniquePlaylist(searchQuery) {
+      try {
+        console.log(searchQuery, 'the query');
+        let {data} = await axios({
+          method: 'post',
+          url: `${BASE_URL}/main/playlist`,
+          data: {
+            searchQuery: searchQuery,
+          },
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        console.log(data);
+        this.fetchedPlaylists = data
+        this.router.push('/playlists')
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async fetchTracks(plName, url) {
+      try {
+        console.log('masuk sini ga', url);
+        let {data} = await axios({
+          method: 'post',
+          url: `${BASE_URL}/main/tracks`,
+          data: {
+            url: url
+          },
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        console.log(data, 'track data');
+        this.specificPlaylistTitle = plName,
+        this.trackExamples = data
+        this.router.push('/tracks')
+      } catch (err) {
+        console.log(err);
       }
     }
   }
