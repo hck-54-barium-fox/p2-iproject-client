@@ -60,7 +60,8 @@ export default {
                   Password
                 </div>
                 <div>
-                  <a class="text-xs font-display font-semibold text-sky-600 hover:text-sky-800 cursor-pointer">
+                  <a class="text-xs font-display font-semibold text-sky-600 hover:text-sky-800 cursor-pointer"
+                    @click.prevent="$router.push('/forget-password')">
                     Forgot Password?
                   </a>
                 </div>
@@ -68,7 +69,12 @@ export default {
               <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500"
                 type="password" name="password" placeholder="Enter your password" v-model="userForm.password" />
             </div>
-            <div class="mt-10">
+            <div class="mt-10 flex gap-1">
+              <button
+                class="bg-red-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-red-600 shadow-lg"
+                type="submit" @click="$router.push('/')">
+                Cancel
+              </button>
               <button
                 class="bg-sky-500 text-gray-100 p-4 w-full rounded-full tracking-wide font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-sky-600 shadow-lg"
                 type="submit">

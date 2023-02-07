@@ -24,5 +24,25 @@ export const useBookingStore = defineStore('booking', {
         console.log(err);
       }
     },
+    async resetPassword(email) {
+      try {
+        const { data } = await axios.post(baseUrl + '/forgot-password', email);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async handleResetPassword(password, token) {
+      try {
+        const { data } = await axios.patch(
+          baseUrl + '/reset-password?token=' + token,
+          password
+        );
+        console.log(data);
+        this.router.push('/');
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 });
