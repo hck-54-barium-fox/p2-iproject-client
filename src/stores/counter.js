@@ -2,7 +2,10 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 const baseUrl = 'http://localhost:9000';
 export const useBookingStore = defineStore('booking', {
-  state: () => ({}),
+  state: () => ({
+    hotelByLocation: [],
+    hotelsData: [],
+  }),
   getters: {},
   actions: {
     async handleRegister(form) {
@@ -40,6 +43,24 @@ export const useBookingStore = defineStore('booking', {
         );
         console.log(data);
         this.router.push('/');
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async fetchHotelByLocation() {
+      try {
+        const { data } = await axios.get(baseUrl + '/hotels/location');
+        this.hotelByLocation = data;
+        console.log(data, 'ini dari pinia');
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async fetchHotel() {
+      try {
+        const { data } = await axios.get(baseUrl + '/hotels');
+        this.hotelsData = data;
+        console.log(data);
       } catch (err) {
         console.log(err);
       }

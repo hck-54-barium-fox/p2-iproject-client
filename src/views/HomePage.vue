@@ -1,8 +1,27 @@
 <script>
 import Navbar from '../components/Navbar.vue'
+import axios from 'axios'
+import CardLocation from '../components/CardLocation.vue'
+import CardProperty from '../components/CardProperty.vue'
+import { mapActions, mapState } from 'pinia'
+import { useBookingStore } from '../stores/counter'
 export default {
   components: {
-    Navbar
+    Navbar,
+    CardLocation,
+    CardProperty
+  },
+  methods: {
+    ...mapActions(useBookingStore, ['fetchHotelByLocation', 'fetchHotel'])
+  }
+  ,
+  created() {
+    this.fetchHotelByLocation()
+    this.fetchHotel()
+    console.log(this.hotelByLocation)
+  },
+  computed: {
+    ...mapState(useBookingStore, ['hotelByLocation', 'hotelsData'])
   }
 }
 </script>
@@ -75,28 +94,8 @@ export default {
   <!-- popular -->
 
   <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
-    <div class="flex gap-x-6 justify-center items-start">
-      <div
-        class="bg-[url('https://asianwanderlust.com/wp-content/uploads/2018/08/7-Bali-Resorts-RIMBA-1.jpg')] w-[360px] h-[300px] relative rounded-md shadow-xl ">
-        <div class="bottom-0 absolute left-0   text-white">
-          <p class="text-[4rem]">Bali</p>
-          <p class="text-[2rem]">200 property</p>
-        </div>
-      </div>
-      <div
-        class="bg-[url('https://asianwanderlust.com/wp-content/uploads/2018/08/7-Bali-Resorts-RIMBA-1.jpg')] w-[360px] h-[300px] relative rounded-md shadow-xl ">
-        <div class="bottom-0 absolute left-0 p-2 text-white">
-          <p class="text-[4rem]">Bali</p>
-          <p class="text-[2rem]">200 property</p>
-        </div>
-      </div>
-      <div
-        class="bg-[url('https://asianwanderlust.com/wp-content/uploads/2018/08/7-Bali-Resorts-RIMBA-1.jpg')] w-[360px] h-[300px] relative rounded-md shadow-xl ">
-        <div class="bottom-0 absolute left-0 p-2 text-white">
-          <p class="text-[4rem]">Bali</p>
-          <p class="text-[2rem]">200 property</p>
-        </div>
-      </div>
+    <div class="flex gap-6 justify-center items-start flex-wrap ">
+      <CardLocation v-for="(location, i) in hotelByLocation" :key="i" :location="location" />
     </div>
   </div>
 
@@ -104,97 +103,11 @@ export default {
   <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
     <h2 class="my-8 text-[2rem]">Browse by property</h2>
     <div class="flex justify-center gap-4 items-start flex-wrap">
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[200px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest">Hotels</h3>
-          <p class="font-light">223 hotels</p>
-        </div>
-      </div>
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[200px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest">Hotels</h3>
-          <p class="font-light">223 hotels</p>
-        </div>
-      </div>
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[200px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest">Hotels</h3>
-          <p class="font-light">223 hotels</p>
-        </div>
-      </div>
+      <CardProperty v-for="hotel in hotelsData.hotels" :key="hotel.hotelId" :hotel="hotel" />
     </div>
   </div>
-  <!-- Home Guest -->
-  <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
-    <h2 class="my-8 text-[2rem]">Browse by property</h2>
-    <div class="flex justify-center gap-4 items-start flex-wrap">
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[400px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest my-3">The Bista Hotels</h3>
-          <p class="font-light my-3">Indonesia</p>
-          <p class="font-medium my-3">Starting from $99</p>
-          <p class="my-3">
-            <span class="bg-sky-500 px-2 py-1 text-white rounded">98</span>
-            super execlent
-          </p>
-        </div>
-      </div>
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[400px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest my-3">The Bista Hotels</h3>
-          <p class="font-light my-3">Indonesia</p>
-          <p class="font-medium my-3">Starting from $99</p>
-          <p class="my-3">
-            <span class="bg-sky-500 px-2 py-1 text-white rounded">98</span>
-            super execlent
-          </p>
-        </div>
-      </div>
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[400px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest my-3">The Bista Hotels</h3>
-          <p class="font-light my-3">Indonesia</p>
-          <p class="font-medium my-3">Starting from $99</p>
-          <p class="my-3">
-            <span class="bg-sky-500 px-2 py-1 text-white rounded">98</span>
-            super execlent
-          </p>
-        </div>
-      </div>
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[400px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest my-3">The Bista Hotels</h3>
-          <p class="font-light my-3">Indonesia</p>
-          <p class="font-medium my-3">Starting from $99</p>
-          <p class="my-3">
-            <span class="bg-sky-500 px-2 py-1 text-white rounded">98</span>
-            super execlent
-          </p>
-        </div>
-      </div>
-      <div class="w-[300px] shadow-lg">
-        <img src="https://www.holidify.com/images/bgImages/BALI.jpg" class="w-full rounded h-[400px]" alt="">
-        <div class="p-4">
-          <h3 class="font-semibold text-[1.5rem] tracking-widest my-3">The Bista Hotels</h3>
-          <p class="font-light my-3">Indonesia</p>
-          <p class="font-medium my-3">Starting from $99</p>
-          <p class="my-3">
-            <span class="bg-sky-500 px-2 py-1 text-white rounded">98</span>
-            super execlent
-          </p>
-        </div>
-      </div>
 
 
-    </div>
-  </div>
   <!-- Footer -->
   <div class="bg-sky-500">
     <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem] h-[20rem] flex items-center justify-center">
