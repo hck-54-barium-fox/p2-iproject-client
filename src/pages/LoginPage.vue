@@ -21,10 +21,10 @@ export default {
 </script>
 
 <template>
-  <div class=" bg-theme_red h-[100vh] p-[3rem] flex ">
+  <div class=" bg-theme_red h-[95vh] pb-[3rem] px-[3rem] flex ">
     <div class="login bg-theme_red h-full w-[40%] p-[3rem] flex flex-col justify-center items-center">
       <div class="title font-bold text-[3rem] text-white">Login</div>
-      <div class="login-form w-full">
+      <div class="login-form w-full ">
         <form @submit.prevent="login(formData)">
           <div class="form-content flex flex-col py-4">
             <label class="font-bold text-[1.5rem] text-white">Email</label>
@@ -43,7 +43,7 @@ export default {
         </form>
       </div>
     </div>
-    <div class="banners bg-theme_red h-full w-[60%] flex justify-center items-center">
+    <div class="banners bg-theme_red h-full w-[60%] flex justify-center items-center border-l-4 border-white border-solid">
       <img class="" src="../assets/images/CHILLCLOUDs.png"/>
     </div>
   </div>

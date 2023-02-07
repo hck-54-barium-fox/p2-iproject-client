@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <div class="second-main-page flex flex-col justify-center items-center px-4 py-8">
+  <div class="second-main-page flex flex-col justify-center items-center px-4 pb-8">
     <p class="text-white font-bold text-[3rem] border-b-4 mb-4 italic">Generated Playlists</p>
     <!-- PLAYLIST AREA -->
     <div class="playlist-area w-full p-4 flex justify-center items-center gap-8 flex-wrap">
