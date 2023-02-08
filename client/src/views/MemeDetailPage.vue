@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       formMeme: {},
+      image: null,
     };
   },
   components: {
@@ -16,7 +17,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(useAppStore, ["fetchMemeDetail", "generateMeme", "postMeme"]),
+    ...mapActions(useAppStore, ["fetchMemeDetail", "generateMeme", "postMeme", "uploadFile"]),
 
     async submitMeme() {
       console.log(this.formMeme);
@@ -28,6 +29,24 @@ export default {
       this.formMeme.title = this.formMeme.title;
       this.formMeme.imgUrl = this.memeImage;
       this.postMeme(this.formMeme);
+    },
+
+    onFileSelected(event) {
+      // this.image = event.target.files[0];
+
+      if (event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+        var preview = document.getElementById("file-ip-1-preview");
+        preview.src = src;
+        preview.style.display = "block";
+        this.image = event.target.files[0];
+      }
+    },
+
+    uploadImage() {
+      const fd = new FormData();
+      fd.append("meme", this.image, this.image.name);
+      this.uploadFile(fd);
     },
   },
 
@@ -87,6 +106,16 @@ export default {
                   <button type="submit" class="btn btn-secondary mb-2">Generate Meme</button>
                 </form>
                 <button @click.prevent="postMemeHandler" type="" class="mx-5 btn btn-secondary mb-2">Post Meme</button>
+                <div class="mt-2">
+                  <h3>Have your own meme ? upload it here</h3>
+                  <p>your filename is the title of the post</p>
+                  <input type="file" name="meme" @change="onFileSelected" />
+                  <button @click.prevent="uploadImage">Upload</button>
+                </div>
+
+                <div class="preview">
+                  <img id="file-ip-1-preview" />
+                </div>
               </div>
             </div>
           </div>

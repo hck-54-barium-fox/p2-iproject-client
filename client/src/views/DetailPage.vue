@@ -17,6 +17,17 @@ export default {
   created() {
     this.fetchPostDetail(this.$route.params.id);
   },
+
+  mounted() {
+    (function () {
+      // DON'T EDIT BELOW THIS LINE
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://https-bukan9gag-dbeda-web-app.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  },
 };
 </script>
 
@@ -35,6 +46,8 @@ export default {
         </div>
       </div>
     </div>
+
+    <div id="disqus_thread"></div>
   </section>
 </template>
 
