@@ -1,23 +1,39 @@
 import { defineStore } from "pinia";
 
 import axios from "axios";
+
+const baseUrl = "http://localhost:3000";
+
 export const useAppStore = defineStore("app", {
   state: () => ({
-    animeList: [],
+    productList: [],
+    isLogin: localStorage.getItem("access_token") ? true : false,
   }),
   getters: {},
   actions: {
-    async doLogin(param) {
+    async registerCust(param) {
       try {
-        console.log(param, ">>>>");
-        const { data } = await axios({
+        await axios({
           method: "POST",
-          url: "https://api.hacktiv8.khanz1.dev/v1/auth/sign-in",
+          url: `${baseUrl}/customers/register`,
           data: param,
         });
-        localStorage.setItem("access_token", data.access_token);
-        this.router.push("/animes");
-        console.log(data, "//////");
+        this.router.replace("/login");
+      } catch (err) {
+        console.log(err, "at register stores");
+      }
+    },
+
+    async doLogin(param) {
+      try {
+        const { data } = await axios({
+          method: "POST",
+          url: `${baseUrl}/customers/login`,
+          data: param,
+        });
+        this.isLogin = true;
+        localStorage.setItem("access_token", data.token);
+        this.router.push("/");
       } catch (err) {
         console.log(err);
       }
