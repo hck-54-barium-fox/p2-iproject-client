@@ -15,14 +15,15 @@ export default {
     methods: {
         ...mapActions(useAppStore,['doLogin']),
         handlerLogin() {
-            console.log('iiiii',this.email,this.password);
-            console.log('iiiii');
+            // console.log('iiiii',this.email,this.password);
+            // console.log('iiiii');
             this.doLogin({
                 email: this.email,
                 password: this.password
             })
         }
     }
+   
 }
 </script>
 
