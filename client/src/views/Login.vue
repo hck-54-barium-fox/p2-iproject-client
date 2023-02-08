@@ -3,6 +3,7 @@
 import { mapActions } from 'pinia';
 import { useAppStore } from '../stores/app';
 
+
 export default {
 
     data(){
@@ -12,8 +13,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(useAppStore, ['doLogin']),
+        ...mapActions(useAppStore,['doLogin']),
         handlerLogin() {
+            console.log('iiiii',this.email,this.password);
+            console.log('iiiii');
             this.doLogin({
                 email: this.email,
                 password: this.password

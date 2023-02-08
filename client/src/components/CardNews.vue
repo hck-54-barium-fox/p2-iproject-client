@@ -4,8 +4,8 @@ export default {
 }
 </script>
 <template >
-    <div v-if="news !== null">
-            <div class="col-3 m-2">
+   
+        <div v-if="news !== null"  class="col-3 my-3">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" :src="news.urlToImage" alt="Card image cap">
                     <div class="card-body">
@@ -17,12 +17,13 @@ export default {
                     </div>
                 </div>
         </div>
-    </div>
+
 </template>
 <style scoped>
 
 .container{
     display: flex;
     height: 100vh;
+
 }
 </style>

@@ -22,7 +22,7 @@ export default {
 
 
 
-    <div class="container row m-5">
+    <div class="container-card row m-5">
         <Card v-for="game in games" :game="game" />
     </div>
 
@@ -39,7 +39,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.container {
+.container-card {
     width: 100%;
     height: 90vh;
     overflow: scroll

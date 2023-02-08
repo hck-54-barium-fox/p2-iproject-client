@@ -12,7 +12,10 @@ export const useAppStore = defineStore('app', {
 
         isLogin: false,
         games: [],
-        newsGame:[]
+        newsGame: [],
+        userLogin: '',
+
+        // statusGa:true,
 
     }),
     getters: {},
@@ -40,11 +43,29 @@ export const useAppStore = defineStore('app', {
             this.isLogin = false
             this.router.push('/login')
         },
+        async profile() {
+            try {
+                let { data } = await axios({
+                    method: "GET",
+                    url: `${url}/profile`,
+                    headers: {
+                        access_token: localStorage.getItem('access_token')
+                    }
+
+                })
+                this.userLogin = data
+            } catch (err) {
+                console.log(err);
+            }
+        },
         async fetchGames() {
             try {
                 let { data } = await axios({
                     method: "GET",
-                    url: `${url}/games`
+                    url: `${url}/games`,
+                    headers: {
+                        access_token: localStorage.getItem('access_token')
+                    }
                 })
                 this.games = data
 
@@ -70,12 +91,51 @@ export const useAppStore = defineStore('app', {
         },
         async fetchNewsTechnlogies() {
             try {
-            let {data} = await axios({
-                method:"GET",
-                url:`${url}/newsTechnlogies`
-            })
-            
-            this.newsGame =data
+                let { data } = await axios({
+                    method: "GET",
+                    url: `${url}/newsTechnlogies`,
+                    headers: {
+                        access_token: localStorage.getItem('access_token')
+                    }
+                })
+                this.newsGame = data
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        async paid() {
+            try {
+                console.log("masuk paid");
+                const { data } = await axios({
+                    method: "POST",
+                    url: `${url}/generateMitransToken`,
+                    headers: {
+                        access_token: localStorage.getItem('access_token')
+                    }
+                })
+                console.log(data, "inii token");
+                window.snap.pay(data.token, {
+                    onSuccess: async function (result) {
+                        /* You may add your own implementation here */
+                        // alert("payment success!"); console.log(result);
+                        //
+                        const { data } = await axios({
+                            method: "Patch",
+                            url:`${url}/updatePaid`,
+                            headers:{
+                                access_token:localStorage.getItem('access_token')
+                            }
+                        })
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Success payment ',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+                this.router.push('/profile')
             } catch (err) {
                 console.log(err);
             }

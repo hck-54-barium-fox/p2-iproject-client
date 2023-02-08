@@ -1,14 +1,25 @@
 <script>
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import router from '../router';
 import { useAppStore } from '../stores/app';
 
 export default {
     methods: {
-        ...mapActions(useAppStore, ['doLogout']),
+        ...mapActions(useAppStore, ['doLogout', 'paid','profile','fetchGames']),
         handlerLogout() {
             this.doLogout()
-        }
+        },
+        handlerMitrans() {
+            this.paid()
+        },
+        
+    },
+    computed:{
+        ...mapState(useAppStore,['userLogin'])
+    },
+    created(){
+        this.profile()
+        this.fetchGames()
     }
 }
 </script>
@@ -20,11 +31,13 @@ export default {
                 <div class="firstname"> Wantau</div>
                 <div class="lastname"> Games </div>
             </div>
-
+            <h1 style="color: red;" v-if="userLogin.status=== 'unpaid'">     {{ userLogin.status }} </h1>
+                 
             <ul class="navigation">
                 <!-- class="active" -->
-                <li> <a @click.prevent="$router.push('/home')" > Games</a></li>
-                <li><a @click.prevent="$router.push('/newsGame')"> News Games</a></li>
+                <li> <a v-if="userLogin.status === 'unpaid'" @click.prevent="handlerMitrans" id="pay-button"> Pay Account </a> </li>
+                <li> <a @click.prevent="$router.push('/home')"> Games</a></li>
+                <li><a v-if="userLogin.status === 'paid'" @click.prevent="$router.push('/newsGame')"> News Games</a></li>
                 <li> <a @click.prevent="$router.push('/profile')"> Profile</a></li>
                 <li> <a @click.prevent="handlerLogout"> Logout</a></li>
 

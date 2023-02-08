@@ -19,7 +19,7 @@ export default {
 </script>
 <template >
     <!-- <h1 style="color: red;">News Games</h1> -->
-    <div class="container row m-5">
+    <div class="container-card row m-5">
         <CardNews v-for="news in newsGame" :news="news" />
     </div>
 </template>
@@ -34,7 +34,7 @@ body {
     background-repeat: no-repeat;
 }
 
-.container {
+.container-card  {
     width: 100%;
     height: 90vh;
     overflow: scroll
