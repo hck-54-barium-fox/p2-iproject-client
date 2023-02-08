@@ -9,7 +9,6 @@ export default {
  }
 }
 </script>
-
 <template>
  <div class="rounded hover:shadow-2xl shadow-sm transition-all ease-in-out duration-300 cursor-pointer" :style="{
   'background-image': `url('${location?.imageUrl ? location?.imageUrl : 'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled-1150x647.png'}')`,
@@ -26,6 +25,4 @@ export default {
    <p class="text-[1.2rem]">{{ location.region || 'not found' }}</p>
   </div>
  </div>
-
- <!-- <img :src="location?.imageUrl" alt=""> -->
 </template>

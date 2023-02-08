@@ -5,6 +5,7 @@ export const useBookingStore = defineStore('booking', {
   state: () => ({
     hotelByLocation: [],
     hotelsData: [],
+    roomsHotel: [],
   }),
   getters: {},
   actions: {
@@ -61,6 +62,20 @@ export const useBookingStore = defineStore('booking', {
         const { data } = await axios.get(baseUrl + '/hotels');
         this.hotelsData = data;
         console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async getHotelRooms(idRooms) {
+      try {
+        const { data } = await axios.get(baseUrl + '/hotels/' + idRooms);
+
+        const block = data?.block.map((el) => {
+          el.detail = data.rooms[el.roomId];
+          return el;
+        });
+        console.log(data, '====', block);
+        this.roomsHotel = block;
       } catch (err) {
         console.log(err);
       }

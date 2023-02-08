@@ -13,30 +13,42 @@ import {
   LPolygon,
   LRectangle,
 } from "@vue-leaflet/vue-leaflet";
-
+import { mapActions, mapState } from 'pinia'
+import { useBookingStore } from '../stores/counter'
+import CardRoom from '../components/RoomCard.vue'
 export default {
   components: {
     LMap,
     LTileLayer,
     LMarker,
     LIcon,
-    Navbar
+    Navbar,
+    CardRoom
   },
   data() {
     return {
-      // url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         ' <a target="_blank" >Bista MAp</a>',
       zoom: 5,
       center: [-8.786085, 115.13978],
       customText: 'Foobar',
       iconSize: 64,
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+      // url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
     };
   },
 
-
-
+  methods: {
+    ...mapActions(useBookingStore, ['getHotelRooms'])
+  }
+  ,
+  created() {
+    this.getHotelRooms(this.$route.params.id)
+    // console.log(this.roomsHotel, 'ini data dah jadi')
+  },
+  computed: {
+    ...mapState(useBookingStore, ['roomsHotel'])
+  }
 }
 </script>
 
@@ -150,37 +162,16 @@ export default {
     </div>
   </div>
 
-  <div class="my-[5rem] w-[90vw] max-w-[1200px] m-auto">
-    <h1>Facilities Image</h1>
-    <div class="p-4 flex">
-      <div class="flex gap-5 flex-wrap">
-        <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max500/324263587.jpg?k=2179edd145de2bbc073c20662b03e5979b0c841bb757edd5a387b7b4bf995cf4&o="
-          alt="" class="w-[200px] h-[150px] rounded">
-        <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max500/324263587.jpg?k=2179edd145de2bbc073c20662b03e5979b0c841bb757edd5a387b7b4bf995cf4&o="
-          alt="" class="w-[200px] h-[150px] rounded">
-        <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max500/324263587.jpg?k=2179edd145de2bbc073c20662b03e5979b0c841bb757edd5a387b7b4bf995cf4&o="
-          alt="" class="w-[200px] h-[150px] rounded">
-        <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max500/324263587.jpg?k=2179edd145de2bbc073c20662b03e5979b0c841bb757edd5a387b7b4bf995cf4&o="
-          alt="" class="w-[200px] h-[150px] rounded">
-        <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max500/324263587.jpg?k=2179edd145de2bbc073c20662b03e5979b0c841bb757edd5a387b7b4bf995cf4&o="
-          alt="" class="w-[200px] h-[150px] rounded">
-        <img
-          src="https://cf.bstatic.com/xdata/images/hotel/max500/324263587.jpg?k=2179edd145de2bbc073c20662b03e5979b0c841bb757edd5a387b7b4bf995cf4&o="
-          alt="" class="w-[200px] h-[150px] rounded">
-      </div>
+  <!-- Rooms Hotel -->
+  <div class="w-[90vw] max-w-[1200px] m-auto my-[4rem] flex gap-1 flex-wrap">
+    <div class="flex-1 flex flex-col gap-8">
+      <CardRoom v-for="(room, i) in roomsHotel" :key="i" :room="room" />
     </div>
   </div>
 
   <div class="bg-sky-500">
     <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem] h-[20rem] flex items-center justify-center">
-
     </div>
-
   </div>
 </template>
 

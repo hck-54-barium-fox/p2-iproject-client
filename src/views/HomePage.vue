@@ -18,7 +18,7 @@ export default {
   created() {
     this.fetchHotelByLocation()
     this.fetchHotel()
-    console.log(this.hotelByLocation)
+    // console.log(this.hotelByLocation)
   },
   computed: {
     ...mapState(useBookingStore, ['hotelByLocation', 'hotelsData'])
@@ -94,15 +94,39 @@ export default {
   <!-- popular -->
 
   <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
+    <h2 class="my-8 text-[2rem] text-slate-800">The Wonderful Honai</h2>
     <div class="flex gap-6 justify-center items-start flex-wrap ">
       <CardLocation v-for="(location, i) in hotelByLocation" :key="i" :location="location" />
     </div>
   </div>
 
   <!-- property -->
-  <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
-    <h2 class="my-8 text-[2rem]">Browse by property</h2>
-    <div class="flex justify-center gap-4 items-start flex-wrap">
+  <div class="w-[90vw] max-w-[1200px] m-auto my-[4rem] flex gap-1">
+    <div class="bg-yellow-400 w-[25rem] h-fit sticky top-0 p-4 rounded shadow-lg">
+      <h4 class="text-[1.5rem] text-slate-50">Search</h4>
+      <form>
+        <div class="w-full my-6">
+          <label for="" class="font-light">destination</label>
+          <input type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+        </div>
+        <div class="w-full my-6">
+          <label for="" class="font-light">check in date</label>
+          <input type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+        </div>
+        <div class="w-full my-6">
+          <label for="" class="font-light">check out date</label>
+          <input type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+        </div>
+        <div class="w-full my-6">
+          <label for="" class="font-light">15-night stay</label>
+          <input type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+        </div>
+
+        <button class="w-full bg-sky-500 px-4 py-2 rounded text-white">Search</button>
+
+      </form>
+    </div>
+    <div class="flex-1 flex flex-col gap-8">
       <CardProperty v-for="hotel in hotelsData.hotels" :key="hotel.hotelId" :hotel="hotel" />
     </div>
   </div>

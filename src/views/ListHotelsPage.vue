@@ -16,45 +16,7 @@
   </div>
  </nav>
  <!-- header -->
- <div class="bg-sky-500 flex justify-center items-center shadow-xl ">
-  <div class="w-[90vw] max-w-[1200px]">
-   <div class="flex mt-4 gap-x-6 h-[10rem]">
-    <div class="flex items-center">
-     <span class="material-symbols-outlined text-[2.4rem]">
-      hotel
-     </span>
-     <p class="ml-2 text-lg">Stays</p>
-    </div>
-    <div class="flex items-center">
-     <span class="material-symbols-outlined text-[2.4rem]">
-      flight
-     </span>
-     <p class="ml-2 text-lg">Flight</p>
-    </div>
-    <div class="flex items-center">
-     <span class="material-symbols-outlined text-[2.4rem]">
-      flight
-     </span>
-     <p class="ml-2 text-lg">Flight</p>
-    </div>
-    <div class="flex items-center">
-     <span class="material-symbols-outlined text-[2.4rem]">
-      flight
-     </span>
-     <p class="ml-2 text-lg">Flight</p>
-    </div>
-    <div class="flex items-center">
-     <span class="material-symbols-outlined text-[2.4rem]">
-      flight
-     </span>
-     <p class="ml-2 text-lg">Flight</p>
-    </div>
 
-
-   </div>
-
-  </div>
- </div>
  <!-- List Boking -->
 
  <div class="w-[90vw] max-w-[1200px] m-auto my-[4rem] flex gap-1">
@@ -67,11 +29,11 @@
     </div>
     <div class="w-full my-6">
      <label for="" class="font-light">check in date</label>
-     <input type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+     <input type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
     </div>
     <div class="w-full my-6">
      <label for="" class="font-light">check out date</label>
-     <input type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+     <input type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
     </div>
     <div class="w-full my-6">
      <label for="" class="font-light">15-night stay</label>

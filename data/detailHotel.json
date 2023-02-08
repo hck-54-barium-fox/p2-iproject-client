@@ -1,0 +1,1998 @@
+{
+  "rooms": {
+    "24584101": {
+      "is_high_floor_guaranteed": 0,
+      "facilities": [
+        {
+          "name": "TV",
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "id": 8,
+          "alt_facilitytype_id": 6
+        },
+        {
+          "id": 125,
+          "alt_facilitytype_id": 17,
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_id": 8,
+          "facilitytype_name": "Services & Extras",
+          "name": "Linens"
+        },
+        {
+          "name": "Safe",
+          "facilitytype_name": "Room Amenities",
+          "alt_facilitytype_name": "General",
+          "facilitytype_id": 4,
+          "alt_facilitytype_id": 1,
+          "id": 6
+        },
+        {
+          "alt_facilitytype_id": 19,
+          "id": 132,
+          "alt_facilitytype_name": "Accessibility",
+          "facilitytype_id": 19,
+          "facilitytype_name": "Accessibility",
+          "name": "Upper floors accessible by elevator"
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 31,
+          "name": "Toilet",
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom"
+        },
+        {
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "name": "Flat-screen TV",
+          "id": 75,
+          "alt_facilitytype_id": 6
+        },
+        {
+          "alt_facilitytype_name": "Services",
+          "facilitytype_id": 8,
+          "facilitytype_name": "Services & Extras",
+          "name": "Wake-up service",
+          "alt_facilitytype_id": 3,
+          "id": 83
+        },
+        {
+          "alt_facilitytype_id": 6,
+          "id": 9,
+          "name": "Telephone",
+          "facilitytype_id": 6,
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology"
+        },
+        {
+          "name": "Shower",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "alt_facilitytype_id": 5,
+          "id": 4
+        },
+        {
+          "alt_facilitytype_id": 12,
+          "id": 94,
+          "facilitytype_id": 4,
+          "alt_facilitytype_name": "Kitchen",
+          "facilitytype_name": "Room Amenities",
+          "name": "Dryer"
+        },
+        {
+          "name": "Bidet",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "alt_facilitytype_id": 5,
+          "id": 100
+        },
+        {
+          "name": "Cable channels",
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "alt_facilitytype_id": 6,
+          "id": 68
+        },
+        {
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Services & Extras",
+          "facilitytype_id": 8,
+          "name": "Towels",
+          "id": 124,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "id": 95,
+          "alt_facilitytype_id": 17,
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_name": "Room Amenities",
+          "facilitytype_id": 4,
+          "name": "Wardrobe or closet"
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 27,
+          "name": "Free toiletries",
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5
+        },
+        {
+          "name": "Toilet paper",
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "id": 141,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "alt_facilitytype_id": 1,
+          "id": 11,
+          "name": "Air conditioning",
+          "facilitytype_name": "Room Amenities",
+          "alt_facilitytype_name": "General",
+          "facilitytype_id": 4
+        },
+        {
+          "name": "Slippers",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "id": 43,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "id": 38,
+          "alt_facilitytype_id": 5,
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Private bathroom"
+        },
+        {
+          "name": "Hairdryer",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom",
+          "id": 12,
+          "alt_facilitytype_id": 5
+        }
+      ],
+      "private_bathroom_count": 0,
+      "photos": [
+        {
+          "last_update_date": "2019-02-25 12:29:35",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183611678.jpg?k=c014c057bdb7021b25837880629aafc8336fbe78394c239f44cc84be960412e5&o=",
+          "photo_id": 183611678,
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183611678.jpg?k=c014c057bdb7021b25837880629aafc8336fbe78394c239f44cc84be960412e5&o=",
+          "new_order": 0,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183611678.jpg?k=c014c057bdb7021b25837880629aafc8336fbe78394c239f44cc84be960412e5&o=",
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183611678.jpg?k=c014c057bdb7021b25837880629aafc8336fbe78394c239f44cc84be960412e5&o=",
+          "ratio": 1.5
+        },
+        {
+          "ratio": 1.33333333333333,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "photo_id": 183967005,
+          "last_update_date": "2019-02-27 11:24:07",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "new_order": 1
+        },
+        {
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183966665.jpg?k=818894240cd29ca29bca8b65a72c6d3340e714c7bb002dba46e9e7750fa49955&o=",
+          "last_update_date": "2019-02-27 11:21:36",
+          "photo_id": 183966665,
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183966665.jpg?k=818894240cd29ca29bca8b65a72c6d3340e714c7bb002dba46e9e7750fa49955&o=",
+          "new_order": 2,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183966665.jpg?k=818894240cd29ca29bca8b65a72c6d3340e714c7bb002dba46e9e7750fa49955&o=",
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183966665.jpg?k=818894240cd29ca29bca8b65a72c6d3340e714c7bb002dba46e9e7750fa49955&o=",
+          "ratio": 1.33333333333333
+        },
+        {
+          "ratio": 1.33333333333333,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183966668.jpg?k=a27e57e67f0fce3e07cdaaf34f8bd8386f23a842747859a9462bc43b9c764ff0&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183966668.jpg?k=a27e57e67f0fce3e07cdaaf34f8bd8386f23a842747859a9462bc43b9c764ff0&o=",
+          "photo_id": 183966668,
+          "last_update_date": "2019-02-27 11:21:37",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183966668.jpg?k=a27e57e67f0fce3e07cdaaf34f8bd8386f23a842747859a9462bc43b9c764ff0&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183966668.jpg?k=a27e57e67f0fce3e07cdaaf34f8bd8386f23a842747859a9462bc43b9c764ff0&o=",
+          "new_order": 3
+        }
+      ],
+      "children_and_beds_text": {
+        "children_at_the_property": [
+          {
+            "text": "Children of all ages are welcome.",
+            "highlight": 0
+          },
+          {
+            "highlight": 0,
+            "text": "Children 13 and above are considered adults at this property."
+          },
+          {
+            "highlight": 1,
+            "text": "To see correct prices and occupancy info, add the number and ages of children in your group to your search."
+          }
+        ],
+        "cribs_and_extra_beds": [
+          {
+            "highlight": 0,
+            "text": "No capacity for extra beds or cribs."
+          }
+        ],
+        "age_intervals": [],
+        "allow_children": 1
+      },
+      "highlights": [
+        {
+          "translated_name": "Free WiFi",
+          "icon": "icon_wifi"
+        },
+        {
+          "icon": "icon_airconditioning",
+          "id": 11,
+          "translated_name": "Air conditioning"
+        },
+        {
+          "icon": "icon_bath",
+          "id": 38,
+          "translated_name": "Attached bathroom"
+        },
+        {
+          "translated_name": "Flat-screen TV",
+          "icon": "icon_flattv",
+          "id": 75
+        }
+      ],
+      "private_bathroom_highlight": {
+        "text": "Private bathroom with shower",
+        "has_highlight": 1
+      },
+      "bed_configurations": [
+        {
+          "bed_types": [
+            {
+              "name": "",
+              "description": "131–150 cm wide",
+              "description_localized": null,
+              "bed_type": 2,
+              "description_imperial": "52–59 inches wide",
+              "name_with_count": "1 full bed",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "description": "Rooms are air-conditioned and feature a flat-screen TV with cable channels and an attached bathroom with shower facilities.\n\nRooms are fitted with a queen-size bed."
+    },
+    "24584103": {
+      "bed_configurations": [
+        {
+          "bed_types": [
+            {
+              "count": 1,
+              "bed_type": 2,
+              "description_imperial": "52-59 inches wide",
+              "name_with_count": "1 full bed",
+              "description": "131-150 cm wide",
+              "name": "Full bed(s)"
+            }
+          ]
+        }
+      ],
+      "photos_may_sorted": 1,
+      "private_bathroom_highlight": {
+        "text": "Private bathroom with bathtub",
+        "has_highlight": 1
+      },
+      "description": "Suites are air-conditioned and feature a flat-screen TV with cable channels and an attached bathroom with shower facilities.\n\nSuites offer a bathtub.",
+      "children_and_beds_text": {
+        "allow_children": 1,
+        "age_intervals": [],
+        "cribs_and_extra_beds": [
+          {
+            "highlight": 0,
+            "text": "No capacity for extra beds or cribs."
+          }
+        ],
+        "children_at_the_property": [
+          {
+            "highlight": 0,
+            "text": "Children of all ages are welcome."
+          },
+          {
+            "highlight": 0,
+            "text": "Children 13 and above are considered adults at this property."
+          },
+          {
+            "text": "To see correct prices and occupancy info, add the number and ages of children in your group to your search.",
+            "highlight": 1
+          }
+        ]
+      },
+      "photos": [
+        {
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "photo_id": 183967005,
+          "last_update_date": "2019-02-27 11:24:07",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o=",
+          "new_order": 0,
+          "ratio": 1.33333333333333,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967005.jpg?k=d68887f7e5f767a668fd8c64bf895e9f9c1d5c7e80085825d55bafd1eb51c5a4&o="
+        },
+        {
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o=",
+          "ratio": 1.33333333333333,
+          "new_order": 1,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o=",
+          "photo_id": 183967014,
+          "last_update_date": "2019-02-27 11:24:09",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o="
+        },
+        {
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967011.jpg?k=5d219d9eef037ef6b0e40edd2d878206d664c040ca05a39601bb89d925a78fff&o=",
+          "photo_id": 183967011,
+          "last_update_date": "2019-02-27 11:24:08",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967011.jpg?k=5d219d9eef037ef6b0e40edd2d878206d664c040ca05a39601bb89d925a78fff&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967011.jpg?k=5d219d9eef037ef6b0e40edd2d878206d664c040ca05a39601bb89d925a78fff&o=",
+          "new_order": 3,
+          "ratio": 1.33333333333333,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967011.jpg?k=5d219d9eef037ef6b0e40edd2d878206d664c040ca05a39601bb89d925a78fff&o="
+        },
+        {
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "ratio": 1.33333333333333,
+          "last_update_date": "2019-02-27 11:20:33",
+          "photo_id": 183966438,
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "new_order": 2,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o="
+        }
+      ],
+      "highlights": [
+        {
+          "translated_name": "Free WiFi",
+          "icon": "icon_wifi"
+        },
+        {
+          "translated_name": "Air conditioning",
+          "id": 11,
+          "icon": "icon_airconditioning"
+        },
+        {
+          "icon": "icon_bath",
+          "id": 38,
+          "translated_name": "Attached bathroom"
+        },
+        {
+          "translated_name": "Flat-screen TV",
+          "id": 75,
+          "icon": "icon_flattv"
+        },
+        {
+          "translated_name": "Minibar",
+          "icon": "icon_checkmark",
+          "id": 3
+        }
+      ],
+      "private_bathroom_count": 0,
+      "facilities": [
+        {
+          "id": 8,
+          "alt_facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "name": "TV"
+        },
+        {
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_name": "Services & Extras",
+          "facilitytype_id": 8,
+          "name": "Linens",
+          "id": 125,
+          "alt_facilitytype_id": 17
+        },
+        {
+          "id": 3,
+          "alt_facilitytype_id": 7,
+          "name": "Minibar",
+          "facilitytype_id": 7,
+          "alt_facilitytype_name": "Food & Drink",
+          "facilitytype_name": "Food & Drink"
+        },
+        {
+          "name": "Safe",
+          "alt_facilitytype_name": "General",
+          "facilitytype_id": 4,
+          "facilitytype_name": "Room Amenities",
+          "id": 6,
+          "alt_facilitytype_id": 1
+        },
+        {
+          "alt_facilitytype_name": "Accessibility",
+          "facilitytype_id": 19,
+          "facilitytype_name": "Accessibility",
+          "name": "Upper floors accessible by elevator",
+          "id": 132,
+          "alt_facilitytype_id": 19
+        },
+        {
+          "id": 31,
+          "alt_facilitytype_id": 5,
+          "name": "Toilet",
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5
+        },
+        {
+          "name": "Flat-screen TV",
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "alt_facilitytype_id": 6,
+          "id": 75
+        },
+        {
+          "alt_facilitytype_id": 3,
+          "id": 83,
+          "alt_facilitytype_name": "Services",
+          "facilitytype_name": "Services & Extras",
+          "facilitytype_id": 8,
+          "name": "Wake-up service"
+        },
+        {
+          "id": 9,
+          "alt_facilitytype_id": 6,
+          "facilitytype_id": 6,
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "name": "Telephone"
+        },
+        {
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Shower",
+          "alt_facilitytype_id": 5,
+          "id": 4
+        },
+        {
+          "facilitytype_id": 4,
+          "alt_facilitytype_name": "Kitchen",
+          "facilitytype_name": "Room Amenities",
+          "name": "Dryer",
+          "alt_facilitytype_id": 12,
+          "id": 94
+        },
+        {
+          "name": "Bidet",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_id": 5,
+          "id": 100
+        },
+        {
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "name": "Cable channels",
+          "alt_facilitytype_id": 6,
+          "id": 68
+        },
+        {
+          "alt_facilitytype_id": 17,
+          "id": 95,
+          "name": "Wardrobe or closet",
+          "facilitytype_id": 4,
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_name": "Room Amenities"
+        },
+        {
+          "facilitytype_name": "Services & Extras",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 8,
+          "name": "Towels",
+          "alt_facilitytype_id": 5,
+          "id": 124
+        },
+        {
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Free toiletries",
+          "id": 27,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "id": 141,
+          "alt_facilitytype_id": 5,
+          "name": "Toilet paper",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom"
+        },
+        {
+          "id": 11,
+          "alt_facilitytype_id": 1,
+          "alt_facilitytype_name": "General",
+          "facilitytype_name": "Room Amenities",
+          "facilitytype_id": 4,
+          "name": "Air conditioning"
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 43,
+          "name": "Slippers",
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom"
+        },
+        {
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom",
+          "name": "Bathtub",
+          "alt_facilitytype_id": 5,
+          "id": 5
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 12,
+          "name": "Hairdryer",
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5
+        },
+        {
+          "id": 38,
+          "alt_facilitytype_id": 5,
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Private bathroom"
+        }
+      ],
+      "is_high_floor_guaranteed": 0
+    },
+    "24584104": {
+      "is_high_floor_guaranteed": 0,
+      "facilities": [
+        {
+          "id": 8,
+          "alt_facilitytype_id": 6,
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "name": "TV"
+        },
+        {
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_id": 8,
+          "facilitytype_name": "Services & Extras",
+          "name": "Linens",
+          "id": 125,
+          "alt_facilitytype_id": 17
+        },
+        {
+          "id": 3,
+          "alt_facilitytype_id": 7,
+          "name": "Minibar",
+          "alt_facilitytype_name": "Food & Drink",
+          "facilitytype_name": "Food & Drink",
+          "facilitytype_id": 7
+        },
+        {
+          "name": "Safe",
+          "alt_facilitytype_name": "General",
+          "facilitytype_name": "Room Amenities",
+          "facilitytype_id": 4,
+          "alt_facilitytype_id": 1,
+          "id": 6
+        },
+        {
+          "id": 132,
+          "alt_facilitytype_id": 19,
+          "alt_facilitytype_name": "Accessibility",
+          "facilitytype_name": "Accessibility",
+          "facilitytype_id": 19,
+          "name": "Upper floors accessible by elevator"
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 31,
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "name": "Toilet"
+        },
+        {
+          "name": "Flat-screen TV",
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "alt_facilitytype_id": 6,
+          "id": 75
+        },
+        {
+          "id": 83,
+          "alt_facilitytype_id": 3,
+          "name": "Wake-up service",
+          "alt_facilitytype_name": "Services",
+          "facilitytype_id": 8,
+          "facilitytype_name": "Services & Extras"
+        },
+        {
+          "facilitytype_id": 6,
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "name": "Telephone",
+          "id": 9,
+          "alt_facilitytype_id": 6
+        },
+        {
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "name": "Shower",
+          "alt_facilitytype_id": 5,
+          "id": 4
+        },
+        {
+          "name": "Dryer",
+          "alt_facilitytype_name": "Kitchen",
+          "facilitytype_id": 4,
+          "facilitytype_name": "Room Amenities",
+          "id": 94,
+          "alt_facilitytype_id": 12
+        },
+        {
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Bidet",
+          "id": 100,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "name": "Cable channels",
+          "alt_facilitytype_id": 6,
+          "id": 68
+        },
+        {
+          "alt_facilitytype_id": 17,
+          "id": 95,
+          "name": "Wardrobe or closet",
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_name": "Room Amenities",
+          "facilitytype_id": 4
+        },
+        {
+          "name": "Towels",
+          "facilitytype_name": "Services & Extras",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 8,
+          "id": 124,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Free toiletries",
+          "alt_facilitytype_id": 5,
+          "id": 27
+        },
+        {
+          "id": 141,
+          "alt_facilitytype_id": 5,
+          "name": "Toilet paper",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom"
+        },
+        {
+          "alt_facilitytype_id": 1,
+          "id": 11,
+          "facilitytype_id": 4,
+          "alt_facilitytype_name": "General",
+          "facilitytype_name": "Room Amenities",
+          "name": "Air conditioning"
+        },
+        {
+          "name": "Slippers",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "alt_facilitytype_id": 5,
+          "id": 43
+        },
+        {
+          "id": 5,
+          "alt_facilitytype_id": 5,
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "name": "Bathtub"
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 12,
+          "name": "Hairdryer",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5
+        },
+        {
+          "name": "Private bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "id": 38,
+          "alt_facilitytype_id": 5
+        }
+      ],
+      "private_bathroom_count": 0,
+      "highlights": [
+        {
+          "translated_name": "Free WiFi",
+          "icon": "icon_wifi"
+        },
+        {
+          "id": 11,
+          "icon": "icon_airconditioning",
+          "translated_name": "Air conditioning"
+        },
+        {
+          "translated_name": "Attached bathroom",
+          "id": 38,
+          "icon": "icon_bath"
+        },
+        {
+          "id": 75,
+          "icon": "icon_flattv",
+          "translated_name": "Flat-screen TV"
+        },
+        {
+          "translated_name": "Minibar",
+          "id": 3,
+          "icon": "icon_checkmark"
+        }
+      ],
+      "children_and_beds_text": {
+        "allow_children": 1,
+        "age_intervals": [],
+        "children_at_the_property": [
+          {
+            "highlight": 0,
+            "text": "Children of all ages are welcome."
+          },
+          {
+            "highlight": 0,
+            "text": "Children 13 and above are considered adults at this property."
+          },
+          {
+            "highlight": 1,
+            "text": "To see correct prices and occupancy info, add the number and ages of children in your group to your search."
+          }
+        ],
+        "cribs_and_extra_beds": [
+          {
+            "text": "No capacity for extra beds or cribs.",
+            "highlight": 0
+          }
+        ]
+      },
+      "photos": [
+        {
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183612386.jpg?k=9f1c8f2702e9135fc480eb5ad73398f86b59468a2e78fc135406f9dd16c9bdb3&o=",
+          "ratio": 1.50015342129488,
+          "last_update_date": "2019-02-25 12:33:10",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183612386.jpg?k=9f1c8f2702e9135fc480eb5ad73398f86b59468a2e78fc135406f9dd16c9bdb3&o=",
+          "photo_id": 183612386,
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183612386.jpg?k=9f1c8f2702e9135fc480eb5ad73398f86b59468a2e78fc135406f9dd16c9bdb3&o=",
+          "new_order": 0,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183612386.jpg?k=9f1c8f2702e9135fc480eb5ad73398f86b59468a2e78fc135406f9dd16c9bdb3&o="
+        },
+        {
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967774.jpg?k=4bcb67c92de6a5c5f9d8ec71c4e05fd323d7fe4a05aae2d022e8cd243f1e6385&o=",
+          "last_update_date": "2019-02-27 11:29:30",
+          "photo_id": 183967774,
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967774.jpg?k=4bcb67c92de6a5c5f9d8ec71c4e05fd323d7fe4a05aae2d022e8cd243f1e6385&o=",
+          "new_order": 1,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967774.jpg?k=4bcb67c92de6a5c5f9d8ec71c4e05fd323d7fe4a05aae2d022e8cd243f1e6385&o=",
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967774.jpg?k=4bcb67c92de6a5c5f9d8ec71c4e05fd323d7fe4a05aae2d022e8cd243f1e6385&o=",
+          "ratio": 1.33333333333333
+        },
+        {
+          "last_update_date": "2019-02-27 11:29:31",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967779.jpg?k=693ccc94123fcdbb8d1ea85610cb277e2e7d8c93748044de306d0f00b2c99745&o=",
+          "photo_id": 183967779,
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967779.jpg?k=693ccc94123fcdbb8d1ea85610cb277e2e7d8c93748044de306d0f00b2c99745&o=",
+          "new_order": 2,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967779.jpg?k=693ccc94123fcdbb8d1ea85610cb277e2e7d8c93748044de306d0f00b2c99745&o=",
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967779.jpg?k=693ccc94123fcdbb8d1ea85610cb277e2e7d8c93748044de306d0f00b2c99745&o=",
+          "ratio": 1.33333333333333
+        },
+        {
+          "ratio": 1.33333333333333,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o=",
+          "new_order": 3,
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o=",
+          "photo_id": 183967014,
+          "last_update_date": "2019-02-27 11:24:09",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183967014.jpg?k=0c20ab3e3f44af0786d0441e90ab7d5d30a13b81db2a913e4f39b2156e473a7a&o="
+        }
+      ],
+      "description": "Suites are air-conditioned and feature a flat-screen TV with cable channels and an attached bathroom with shower facilities.\n\nSuites offer a bathtub and are fitted with a double bed and a single bed.",
+      "bed_configurations": [
+        {
+          "bed_types": [
+            {
+              "count": 1,
+              "name_with_count": "1 full bed",
+              "bed_type": 2,
+              "description_imperial": "52-59 inches wide",
+              "description": "131-150 cm wide",
+              "name": "Full bed(s)"
+            },
+            {
+              "name": "Twin bed(s)",
+              "description": "90-130 cm wide",
+              "description_imperial": "35-51 inches wide",
+              "bed_type": 1,
+              "name_with_count": "1 twin bed",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "private_bathroom_highlight": {
+        "has_highlight": 1,
+        "text": "Private bathroom with bathtub"
+      }
+    },
+    "24584106": {
+      "photos": [
+        {
+          "photo_id": 183612613,
+          "last_update_date": "2019-02-25 12:34:19",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183612613.jpg?k=e6c806af69421c5b0cb9a87148022c40d6355d7305a571a481b76cb01467884f&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183612613.jpg?k=e6c806af69421c5b0cb9a87148022c40d6355d7305a571a481b76cb01467884f&o=",
+          "new_order": 0,
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183612613.jpg?k=e6c806af69421c5b0cb9a87148022c40d6355d7305a571a481b76cb01467884f&o=",
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183612613.jpg?k=e6c806af69421c5b0cb9a87148022c40d6355d7305a571a481b76cb01467884f&o=",
+          "ratio": 1.5
+        },
+        {
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183612625.jpg?k=fbba17a3e244f2a4ec67d9b42e6470207605f473300838d20df7898e17be9ed0&o=",
+          "photo_id": 183612625,
+          "last_update_date": "2019-02-25 12:34:25",
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183612625.jpg?k=fbba17a3e244f2a4ec67d9b42e6470207605f473300838d20df7898e17be9ed0&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183612625.jpg?k=fbba17a3e244f2a4ec67d9b42e6470207605f473300838d20df7898e17be9ed0&o=",
+          "new_order": 1,
+          "ratio": 1.5,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183612625.jpg?k=fbba17a3e244f2a4ec67d9b42e6470207605f473300838d20df7898e17be9ed0&o="
+        },
+        {
+          "ratio": 1.5,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183612636.jpg?k=8048960b68f860fef12472e739f5f049ee3ea202f9dda42a6c565cc171b69cac&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183612636.jpg?k=8048960b68f860fef12472e739f5f049ee3ea202f9dda42a6c565cc171b69cac&o=",
+          "last_update_date": "2019-02-25 12:34:30",
+          "photo_id": 183612636,
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183612636.jpg?k=8048960b68f860fef12472e739f5f049ee3ea202f9dda42a6c565cc171b69cac&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183612636.jpg?k=8048960b68f860fef12472e739f5f049ee3ea202f9dda42a6c565cc171b69cac&o=",
+          "new_order": 2
+        },
+        {
+          "ratio": 1.33333333333333,
+          "url_original": "https://cf.bstatic.com/xdata/images/hotel/max500/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "url_square60": "https://cf.bstatic.com/xdata/images/hotel/square60/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "last_update_date": "2019-02-27 11:20:33",
+          "photo_id": 183966438,
+          "url_max300": "https://cf.bstatic.com/xdata/images/hotel/max300/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "url_640x200": "https://cf.bstatic.com/xdata/images/hotel/640x200/183966438.jpg?k=36a3d0b40c895289cb8372f971d15cbf459de6770d880594e2d630995e049a94&o=",
+          "new_order": 3
+        }
+      ],
+      "children_and_beds_text": {
+        "age_intervals": [],
+        "cribs_and_extra_beds": [
+          {
+            "text": "No capacity for extra beds or cribs.",
+            "highlight": 0
+          }
+        ],
+        "children_at_the_property": [
+          {
+            "highlight": 0,
+            "text": "Children of all ages are welcome."
+          },
+          {
+            "highlight": 0,
+            "text": "Children 13 and above are considered adults at this property."
+          },
+          {
+            "highlight": 1,
+            "text": "To see correct prices and occupancy info, add the number and ages of children in your group to your search."
+          }
+        ],
+        "allow_children": 1
+      },
+      "highlights": [
+        {
+          "translated_name": "Free WiFi",
+          "icon": "icon_wifi"
+        },
+        {
+          "translated_name": "Air conditioning",
+          "icon": "icon_airconditioning",
+          "id": 11
+        },
+        {
+          "icon": "icon_bath",
+          "id": 38,
+          "translated_name": "Attached bathroom"
+        },
+        {
+          "translated_name": "Flat-screen TV",
+          "icon": "icon_flattv",
+          "id": 75
+        }
+      ],
+      "bed_configurations": [
+        {
+          "bed_types": [
+            {
+              "name": "Twin bed(s)",
+              "description": "90–130 cm wide",
+              "description_imperial": "35–51 inches wide",
+              "bed_type": 1,
+              "name_with_count": "2 twin beds",
+              "count": 2,
+              "description_localized": null
+            }
+          ]
+        }
+      ],
+      "private_bathroom_highlight": {
+        "has_highlight": 1,
+        "text": "Private bathroom with shower"
+      },
+      "description": "Rooms are air-conditioned and feature a flat-screen TV with cable channels and an attached bathroom with shower facilities.\n\nRooms are fitted with 2 single beds.",
+      "is_high_floor_guaranteed": 0,
+      "facilities": [
+        {
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "name": "TV",
+          "alt_facilitytype_id": 6,
+          "id": 8
+        },
+        {
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_name": "Services & Extras",
+          "facilitytype_id": 8,
+          "name": "Linens",
+          "id": 125,
+          "alt_facilitytype_id": 17
+        },
+        {
+          "alt_facilitytype_id": 1,
+          "id": 6,
+          "name": "Safe",
+          "facilitytype_name": "Room Amenities",
+          "alt_facilitytype_name": "General",
+          "facilitytype_id": 4
+        },
+        {
+          "alt_facilitytype_name": "Accessibility",
+          "facilitytype_name": "Accessibility",
+          "facilitytype_id": 19,
+          "name": "Upper floors accessible by elevator",
+          "alt_facilitytype_id": 19,
+          "id": 132
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 31,
+          "name": "Toilet",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom"
+        },
+        {
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "facilitytype_name": "Media & Technology",
+          "name": "Flat-screen TV",
+          "alt_facilitytype_id": 6,
+          "id": 75
+        },
+        {
+          "alt_facilitytype_id": 3,
+          "id": 83,
+          "alt_facilitytype_name": "Services",
+          "facilitytype_name": "Services & Extras",
+          "facilitytype_id": 8,
+          "name": "Wake-up service"
+        },
+        {
+          "alt_facilitytype_id": 6,
+          "id": 9,
+          "name": "Telephone",
+          "facilitytype_name": "Media & Technology",
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6
+        },
+        {
+          "name": "Shower",
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_id": 5,
+          "id": 4
+        },
+        {
+          "name": "Dryer",
+          "alt_facilitytype_name": "Kitchen",
+          "facilitytype_id": 4,
+          "facilitytype_name": "Room Amenities",
+          "id": 94,
+          "alt_facilitytype_id": 12
+        },
+        {
+          "alt_facilitytype_id": 5,
+          "id": 100,
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Bidet"
+        },
+        {
+          "id": 68,
+          "alt_facilitytype_id": 6,
+          "alt_facilitytype_name": "Media & Technology",
+          "facilitytype_name": "Media & Technology",
+          "facilitytype_id": 6,
+          "name": "Cable channels"
+        },
+        {
+          "id": 124,
+          "alt_facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Services & Extras",
+          "facilitytype_id": 8,
+          "name": "Towels"
+        },
+        {
+          "alt_facilitytype_name": "Bedroom",
+          "facilitytype_name": "Room Amenities",
+          "facilitytype_id": 4,
+          "name": "Wardrobe or closet",
+          "id": 95,
+          "alt_facilitytype_id": 17
+        },
+        {
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Free toiletries",
+          "id": 27,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "name": "Toilet paper",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "alt_facilitytype_id": 5,
+          "id": 141
+        },
+        {
+          "alt_facilitytype_name": "General",
+          "facilitytype_id": 4,
+          "facilitytype_name": "Room Amenities",
+          "name": "Air conditioning",
+          "alt_facilitytype_id": 1,
+          "id": 11
+        },
+        {
+          "facilitytype_name": "Bathroom",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "name": "Slippers",
+          "id": 43,
+          "alt_facilitytype_id": 5
+        },
+        {
+          "id": 38,
+          "alt_facilitytype_id": 5,
+          "name": "Private bathroom",
+          "facilitytype_id": 5,
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_name": "Bathroom"
+        },
+        {
+          "id": 12,
+          "alt_facilitytype_id": 5,
+          "name": "Hairdryer",
+          "alt_facilitytype_name": "Bathroom",
+          "facilitytype_id": 5,
+          "facilitytype_name": "Bathroom"
+        }
+      ],
+      "private_bathroom_count": 0
+    }
+  },
+  "block": [
+    {
+      "priceBreakDown": {
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount_per_night": {
+          "currency": "USD",
+          "value": 31.0687462876709
+        },
+        "excluded_amount": {
+          "value": 14.912998218082,
+          "currency": "USD"
+        },
+        "gross_amount_hotel_currency": {
+          "value": 6846.31,
+          "currency": "PHP"
+        },
+        "all_inclusive_amount": {
+          "value": 139.187983368766,
+          "currency": "USD"
+        },
+        "gross_amount": {
+          "value": 124.274985150684,
+          "currency": "USD"
+        },
+        "discounted_amount": {
+          "currency": "USD",
+          "value": 72.9867375700596
+        },
+        "strikethrough_amount": {
+          "currency": "USD",
+          "value": 197.261722720743
+        },
+        "nr_stays": 7,
+        "net_amount": {
+          "value": 124.274985150684,
+          "currency": "USD"
+        },
+        "has_long_stays_monthly_rate_price": 0,
+        "benefits": [
+          {
+            "badge_variant": "constructive",
+            "name": "Mobile-only price",
+            "identifier": "mobile-rate",
+            "icon": null,
+            "kind": "badge",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device."
+          }
+        ],
+        "strikethrough_amount_per_night": {
+          "currency": "USD",
+          "value": 49.3154306801858
+        },
+        "items": [
+          {
+            "base": {
+              "percentage": 12,
+              "kind": "percentage"
+            },
+            "kind": "charge",
+            "details": "12 % VAT",
+            "inclusion_type": "excluded",
+            "name": "VAT",
+            "item_amount": {
+              "value": 14.912998218082,
+              "currency": "USD"
+            }
+          },
+          {
+            "name": "Bonus savings",
+            "identifier": "basic-deal",
+            "item_amount": {
+              "currency": "USD",
+              "value": 59.1784260556636
+            },
+            "kind": "discount",
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "base": {
+              "kind": "rate"
+            }
+          },
+          {
+            "name": "Mobile-only price",
+            "item_amount": {
+              "currency": "USD",
+              "value": 13.8083115143961
+            },
+            "identifier": "mobile-discount",
+            "kind": "discount",
+            "base": {
+              "kind": "rate"
+            },
+            "details": "You're getting a reduced rate because you're using a mobile device."
+          }
+        ],
+        "included_taxes_and_charges_amount": {
+          "value": 0,
+          "currency": "USD"
+        }
+      },
+      "blockId": "24584101_272392741_0_2_0",
+      "roomId": 24584101,
+      "roomName": "Standard Queen Room",
+      "name": "Standard Queen Room - Low rate – no money back",
+      "roomCount": 14,
+      "meatplan": "Continental breakfast costs US$5 per person per night.",
+      "roomTypeID": 9
+    },
+    {
+      "priceBreakDown": {
+        "has_long_stays_monthly_rate_price": 0,
+        "benefits": [
+          {
+            "badge_variant": "constructive",
+            "icon": null,
+            "identifier": "mobile-rate",
+            "name": "Mobile-only price",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+            "kind": "badge"
+          }
+        ],
+        "strikethrough_amount_per_night": {
+          "currency": "USD",
+          "value": 49.3154306801858
+        },
+        "items": [
+          {
+            "name": "VAT",
+            "item_amount": {
+              "value": 14.912998218082,
+              "currency": "USD"
+            },
+            "kind": "charge",
+            "base": {
+              "kind": "percentage",
+              "percentage": 12
+            },
+            "details": "12 % VAT",
+            "inclusion_type": "excluded"
+          },
+          {
+            "base": {
+              "kind": "rate"
+            },
+            "kind": "discount",
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "name": "Bonus savings",
+            "identifier": "basic-deal",
+            "item_amount": {
+              "value": 59.1784260556636,
+              "currency": "USD"
+            }
+          },
+          {
+            "kind": "discount",
+            "details": "You're getting a reduced rate because you're using a mobile device.",
+            "name": "Mobile-only price",
+            "identifier": "mobile-discount",
+            "item_amount": {
+              "currency": "USD",
+              "value": 13.8083115143961
+            },
+            "base": {
+              "kind": "rate"
+            }
+          }
+        ],
+        "included_taxes_and_charges_amount": {
+          "currency": "USD",
+          "value": 0
+        },
+        "gross_amount": {
+          "value": 124.274985150684,
+          "currency": "USD"
+        },
+        "discounted_amount": {
+          "currency": "USD",
+          "value": 72.9867375700596
+        },
+        "strikethrough_amount": {
+          "value": 197.261722720743,
+          "currency": "USD"
+        },
+        "nr_stays": 3,
+        "net_amount": {
+          "currency": "USD",
+          "value": 124.274985150684
+        },
+        "excluded_amount": {
+          "currency": "USD",
+          "value": 14.912998218082
+        },
+        "gross_amount_hotel_currency": {
+          "currency": "PHP",
+          "value": 6846.31
+        },
+        "all_inclusive_amount": {
+          "value": 139.187983368766,
+          "currency": "USD"
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount_per_night": {
+          "currency": "USD",
+          "value": 31.0687462876709
+        }
+      },
+      "blockId": "24584106_272392741_0_2_0",
+      "roomId": 24584106,
+      "roomName": "Standard Twin Room",
+      "name": "Standard Twin Room - Low rate – no money back",
+      "roomCount": 3,
+      "meatplan": "Continental breakfast costs US$5 per person per night.",
+      "roomTypeID": 8
+    },
+    {
+      "priceBreakDown": {
+        "benefits": [
+          {
+            "badge_variant": "constructive",
+            "name": "Mobile-only price",
+            "icon": null,
+            "identifier": "mobile-rate",
+            "kind": "badge",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device."
+          }
+        ],
+        "has_long_stays_monthly_rate_price": 0,
+        "items": [
+          {
+            "name": "VAT",
+            "item_amount": {
+              "currency": "USD",
+              "value": 18.2896395500904
+            },
+            "base": {
+              "kind": "percentage",
+              "percentage": 12
+            },
+            "kind": "charge",
+            "inclusion_type": "excluded",
+            "details": "12 % VAT"
+          },
+          {
+            "item_amount": {
+              "value": 72.5779520103065,
+              "currency": "USD"
+            },
+            "identifier": "basic-deal",
+            "name": "Bonus savings",
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "kind": "discount",
+            "base": {
+              "kind": "rate"
+            }
+          },
+          {
+            "identifier": "mobile-discount",
+            "item_amount": {
+              "value": 16.9348312662557,
+              "currency": "USD"
+            },
+            "name": "Mobile-only price",
+            "details": "You're getting a reduced rate because you're using a mobile device.",
+            "base": {
+              "kind": "rate"
+            },
+            "kind": "discount"
+          }
+        ],
+        "strikethrough_amount_per_night": {
+          "currency": "USD",
+          "value": 60.4816115484955
+        },
+        "included_taxes_and_charges_amount": {
+          "value": 0,
+          "currency": "USD"
+        },
+        "gross_amount": {
+          "currency": "USD",
+          "value": 152.41366291742
+        },
+        "discounted_amount": {
+          "currency": "USD",
+          "value": 89.5127832765622
+        },
+        "strikethrough_amount": {
+          "currency": "USD",
+          "value": 241.926446193982
+        },
+        "net_amount": {
+          "value": 152.41366291742,
+          "currency": "USD"
+        },
+        "nr_stays": 7,
+        "gross_amount_hotel_currency": {
+          "currency": "PHP",
+          "value": 8396.47
+        },
+        "excluded_amount": {
+          "value": 18.2896395500904,
+          "currency": "USD"
+        },
+        "all_inclusive_amount": {
+          "currency": "USD",
+          "value": 170.70330246751
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount_per_night": {
+          "currency": "USD",
+          "value": 38.103415729355
+        }
+      },
+      "blockId": "24584103_272392741_0_2_0",
+      "roomId": 24584103,
+      "roomName": "Euro Suite 1",
+      "name": "Euro Suite 1 - Low rate – no money back",
+      "roomCount": 7,
+      "meatplan": "Continental breakfast costs US$5 per person per night.",
+      "roomTypeID": 5
+    },
+    {
+      "priceBreakDown": {
+        "all_inclusive_amount": {
+          "value": 179.073720475545,
+          "currency": "USD"
+        },
+        "excluded_amount": {
+          "currency": "USD",
+          "value": 19.1864700509513
+        },
+        "gross_amount_hotel_currency": {
+          "currency": "PHP",
+          "value": 8808.19
+        },
+        "gross_amount_per_night": {
+          "value": 39.9718126061485,
+          "currency": "USD"
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "included_taxes_and_charges_amount": {
+          "currency": "USD",
+          "value": 0
+        },
+        "strikethrough_amount_per_night": {
+          "value": 63.4473489692933,
+          "currency": "USD"
+        },
+        "items": [
+          {
+            "name": "VAT",
+            "item_amount": {
+              "value": 19.1864700509513,
+              "currency": "USD"
+            },
+            "kind": "charge",
+            "details": "12 % VAT",
+            "base": {
+              "kind": "percentage",
+              "percentage": 12
+            },
+            "inclusion_type": "excluded"
+          },
+          {
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "kind": "discount",
+            "identifier": "basic-deal",
+            "item_amount": {
+              "value": 76.1368550673757,
+              "currency": "USD"
+            },
+            "name": "Bonus savings",
+            "base": {
+              "kind": "rate"
+            }
+          },
+          {
+            "base": {
+              "kind": "rate"
+            },
+            "name": "Mobile-only price",
+            "identifier": "mobile-discount",
+            "item_amount": {
+              "value": 17.7652903852035,
+              "currency": "USD"
+            },
+            "kind": "discount",
+            "details": "You're getting a reduced rate because you're using a mobile device."
+          }
+        ],
+        "has_long_stays_monthly_rate_price": 0,
+        "benefits": [
+          {
+            "kind": "badge",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+            "name": "Mobile-only price",
+            "identifier": "mobile-rate",
+            "icon": null,
+            "badge_variant": "constructive"
+          }
+        ],
+        "net_amount": {
+          "currency": "USD",
+          "value": 159.887250424594
+        },
+        "nr_stays": 7,
+        "strikethrough_amount": {
+          "currency": "USD",
+          "value": 253.789395877173
+        },
+        "gross_amount": {
+          "currency": "USD",
+          "value": 159.887250424594
+        },
+        "discounted_amount": {
+          "currency": "USD",
+          "value": 93.9021454525792
+        }
+      },
+      "blockId": "24584101_145409959_0_1_0",
+      "roomId": 24584101,
+      "roomName": "Standard Queen Room",
+      "name": "Standard Queen Room - Low rate – no money back",
+      "roomCount": 14,
+      "meatplan": "Continental breakfast is included in the room rate.",
+      "roomTypeID": 9
+    },
+    {
+      "priceBreakDown": {
+        "all_inclusive_amount": {
+          "currency": "USD",
+          "value": 179.073720475545
+        },
+        "excluded_amount": {
+          "currency": "USD",
+          "value": 19.1864700509513
+        },
+        "gross_amount_hotel_currency": {
+          "currency": "PHP",
+          "value": 8808.19
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount_per_night": {
+          "currency": "USD",
+          "value": 39.9718126061485
+        },
+        "strikethrough_amount_per_night": {
+          "currency": "USD",
+          "value": 63.4473489692933
+        },
+        "items": [
+          {
+            "details": "12 % VAT",
+            "inclusion_type": "excluded",
+            "base": {
+              "percentage": 12,
+              "kind": "percentage"
+            },
+            "kind": "charge",
+            "item_amount": {
+              "currency": "USD",
+              "value": 19.1864700509513
+            },
+            "name": "VAT"
+          },
+          {
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "kind": "discount",
+            "item_amount": {
+              "currency": "USD",
+              "value": 76.1368550673757
+            },
+            "identifier": "basic-deal",
+            "name": "Bonus savings",
+            "base": {
+              "kind": "rate"
+            }
+          },
+          {
+            "base": {
+              "kind": "rate"
+            },
+            "kind": "discount",
+            "details": "You're getting a reduced rate because you're using a mobile device.",
+            "name": "Mobile-only price",
+            "item_amount": {
+              "currency": "USD",
+              "value": 17.7652903852035
+            },
+            "identifier": "mobile-discount"
+          }
+        ],
+        "has_long_stays_monthly_rate_price": 0,
+        "benefits": [
+          {
+            "badge_variant": "constructive",
+            "icon": null,
+            "identifier": "mobile-rate",
+            "name": "Mobile-only price",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+            "kind": "badge"
+          }
+        ],
+        "included_taxes_and_charges_amount": {
+          "currency": "USD",
+          "value": 0
+        },
+        "gross_amount": {
+          "currency": "USD",
+          "value": 159.887250424594
+        },
+        "discounted_amount": {
+          "value": 93.9021454525792,
+          "currency": "USD"
+        },
+        "nr_stays": 3,
+        "net_amount": {
+          "currency": "USD",
+          "value": 159.887250424594
+        },
+        "strikethrough_amount": {
+          "currency": "USD",
+          "value": 253.789395877173
+        }
+      },
+      "blockId": "24584106_145409959_0_1_0",
+      "roomId": 24584106,
+      "roomName": "Standard Twin Room",
+      "name": "Standard Twin Room - Low rate – no money back",
+      "roomCount": 3,
+      "meatplan": "Continental breakfast is included in the room rate.",
+      "roomTypeID": 8
+    },
+    {
+      "priceBreakDown": {
+        "gross_amount_per_night": {
+          "value": 49.2322032471722,
+          "currency": "USD"
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount_hotel_currency": {
+          "currency": "PHP",
+          "value": 10848.81
+        },
+        "excluded_amount": {
+          "currency": "USD",
+          "value": 23.6314575586426
+        },
+        "all_inclusive_amount": {
+          "value": 220.560270547331,
+          "currency": "USD"
+        },
+        "strikethrough_amount": {
+          "value": 312.585356935323,
+          "currency": "USD"
+        },
+        "nr_stays": 7,
+        "net_amount": {
+          "currency": "USD",
+          "value": 196.928812988689
+        },
+        "gross_amount": {
+          "value": 196.928812988689,
+          "currency": "USD"
+        },
+        "discounted_amount": {
+          "value": 115.656543946635,
+          "currency": "USD"
+        },
+        "included_taxes_and_charges_amount": {
+          "currency": "USD",
+          "value": 0
+        },
+        "benefits": [
+          {
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+            "kind": "badge",
+            "identifier": "mobile-rate",
+            "icon": null,
+            "name": "Mobile-only price",
+            "badge_variant": "constructive"
+          }
+        ],
+        "has_long_stays_monthly_rate_price": 0,
+        "items": [
+          {
+            "item_amount": {
+              "value": 23.6314575586426,
+              "currency": "USD"
+            },
+            "name": "VAT",
+            "details": "12 % VAT",
+            "kind": "charge",
+            "inclusion_type": "excluded",
+            "base": {
+              "kind": "percentage",
+              "percentage": 12
+            }
+          },
+          {
+            "identifier": "basic-deal",
+            "item_amount": {
+              "currency": "USD",
+              "value": 93.7756252327089
+            },
+            "name": "Bonus savings",
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "base": {
+              "kind": "rate"
+            },
+            "kind": "discount"
+          },
+          {
+            "name": "Mobile-only price",
+            "item_amount": {
+              "currency": "USD",
+              "value": 21.8809187139258
+            },
+            "identifier": "mobile-discount",
+            "kind": "discount",
+            "details": "You're getting a reduced rate because you're using a mobile device.",
+            "base": {
+              "kind": "rate"
+            }
+          }
+        ],
+        "strikethrough_amount_per_night": {
+          "value": 78.1463392338308,
+          "currency": "USD"
+        }
+      },
+      "blockId": "24584103_145409959_0_1_0",
+      "roomId": 24584103,
+      "roomName": "Euro Suite 1",
+      "name": "Euro Suite 1 - Low rate – no money back",
+      "roomCount": 7,
+      "meatplan": "Continental breakfast is included in the room rate.",
+      "roomTypeID": 5
+    },
+    {
+      "priceBreakDown": {
+        "has_long_stays_weekly_rate_price": 0,
+        "gross_amount_per_night": {
+          "value": 51.5855791733752,
+          "currency": "USD"
+        },
+        "excluded_amount": {
+          "currency": "USD",
+          "value": 24.7610780032201
+        },
+        "gross_amount_hotel_currency": {
+          "currency": "PHP",
+          "value": 11367.4
+        },
+        "all_inclusive_amount": {
+          "currency": "USD",
+          "value": 231.103394696721
+        },
+        "gross_amount": {
+          "currency": "USD",
+          "value": 206.342316693501
+        },
+        "discounted_amount": {
+          "value": 121.184951143722,
+          "currency": "USD"
+        },
+        "strikethrough_amount": {
+          "currency": "USD",
+          "value": 327.527267837223
+        },
+        "net_amount": {
+          "value": 206.342316693501,
+          "currency": "USD"
+        },
+        "nr_stays": 5,
+        "has_long_stays_monthly_rate_price": 0,
+        "benefits": [
+          {
+            "kind": "badge",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+            "name": "Mobile-only price",
+            "badge_variant": "constructive",
+            "icon": null,
+            "identifier": "mobile-rate"
+          }
+        ],
+        "strikethrough_amount_per_night": {
+          "value": 81.8818169593058,
+          "currency": "USD"
+        },
+        "items": [
+          {
+            "base": {
+              "percentage": 12,
+              "kind": "percentage"
+            },
+            "kind": "charge",
+            "details": "12 % VAT",
+            "inclusion_type": "excluded",
+            "name": "VAT",
+            "item_amount": {
+              "currency": "USD",
+              "value": 24.7610780032201
+            }
+          },
+          {
+            "identifier": "basic-deal",
+            "item_amount": {
+              "value": 98.2581077427194,
+              "currency": "USD"
+            },
+            "name": "Bonus savings",
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "kind": "discount",
+            "base": {
+              "kind": "rate"
+            }
+          },
+          {
+            "details": "You're getting a reduced rate because you're using a mobile device.",
+            "kind": "discount",
+            "identifier": "mobile-discount",
+            "item_amount": {
+              "value": 22.9268434010028,
+              "currency": "USD"
+            },
+            "name": "Mobile-only price",
+            "base": {
+              "kind": "rate"
+            }
+          }
+        ],
+        "included_taxes_and_charges_amount": {
+          "currency": "USD",
+          "value": 0
+        }
+      },
+      "blockId": "24584104_272392741_0_2_0",
+      "roomId": 24584104,
+      "roomName": "Euro Suite 2",
+      "name": "Euro Suite 2 - Low rate – no money back",
+      "roomCount": 5,
+      "meatplan": "Continental breakfast costs US$5 per person per night.",
+      "roomTypeID": 5
+    },
+    {
+      "priceBreakDown": {
+        "net_amount": {
+          "currency": "USD",
+          "value": 277.689010954338
+        },
+        "nr_stays": 5,
+        "strikethrough_amount": {
+          "value": 440.776115662825,
+          "currency": "USD"
+        },
+        "gross_amount": {
+          "value": 277.689010954338,
+          "currency": "USD"
+        },
+        "discounted_amount": {
+          "currency": "USD",
+          "value": 163.087104708487
+        },
+        "included_taxes_and_charges_amount": {
+          "value": 0,
+          "currency": "USD"
+        },
+        "items": [
+          {
+            "base": {
+              "percentage": 12,
+              "kind": "percentage"
+            },
+            "inclusion_type": "excluded",
+            "kind": "charge",
+            "details": "12 % VAT",
+            "name": "VAT",
+            "item_amount": {
+              "currency": "USD",
+              "value": 33.3226813145205
+            }
+          },
+          {
+            "base": {
+              "kind": "rate"
+            },
+            "kind": "discount",
+            "details": "You’re getting a reduced rate because this property is offering a discount.",
+            "name": "Bonus savings",
+            "item_amount": {
+              "value": 132.232871003071,
+              "currency": "USD"
+            },
+            "identifier": "basic-deal"
+          },
+          {
+            "base": {
+              "kind": "rate"
+            },
+            "kind": "discount",
+            "details": "You're getting a reduced rate because you're using a mobile device.",
+            "name": "Mobile-only price",
+            "identifier": "mobile-discount",
+            "item_amount": {
+              "currency": "USD",
+              "value": 30.854233705416
+            }
+          }
+        ],
+        "strikethrough_amount_per_night": {
+          "currency": "USD",
+          "value": 110.194028915706
+        },
+        "benefits": [
+          {
+            "badge_variant": "constructive",
+            "kind": "badge",
+            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+            "name": "Mobile-only price",
+            "icon": null,
+            "identifier": "mobile-rate"
+          }
+        ],
+        "has_long_stays_monthly_rate_price": 0,
+        "gross_amount_per_night": {
+          "value": 69.4222527385845,
+          "currency": "USD"
+        },
+        "has_long_stays_weekly_rate_price": 0,
+        "all_inclusive_amount": {
+          "currency": "USD",
+          "value": 311.011692268858
+        },
+        "gross_amount_hotel_currency": {
+          "value": 15297.89,
+          "currency": "PHP"
+        },
+        "excluded_amount": {
+          "value": 33.3226813145205,
+          "currency": "USD"
+        }
+      },
+      "blockId": "24584104_145409959_0_1_0",
+      "roomId": 24584104,
+      "roomName": "Euro Suite 2",
+      "name": "Euro Suite 2 - Low rate – no money back",
+      "roomCount": 5,
+      "meatplan": "Continental breakfast is included in the room rate.",
+      "roomTypeID": 5
+    }
+  ],
+  "hotelId": 245841,
+  "arrivalDate": "2023-02-08",
+  "departureDate": "2023-02-12"
+}
