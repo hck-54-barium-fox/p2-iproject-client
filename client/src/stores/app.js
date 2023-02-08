@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useAppStore = defineStore("app", {
   state: () => ({
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://hafood-production.up.railway.app",
     apiNinjaUrl: "https://api.api-ninjas.com/v1",
     apiNinjaKey: "+syPMONOQl4oaKRKwXbvWw==3cUcTPzERBbf4OkF",
     pixabayUrl: "https://pixabay.com",
