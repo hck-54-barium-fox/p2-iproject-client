@@ -18,7 +18,7 @@ export default {
         <div class="container my-[6vh] ml-[80px]">
             <div class="container text-center">
                 <button class="btn btn-outline mr-10 shadow-md">Generate A Poem Feature</button>
-                <button class="btn btn-outline ml-10 shadow-md">Random Quotes Feature</button>
+                <button class="btn btn-outline ml-10 shadow-md" @click="this.$router.push('/quotegenerate')">Random Quotes Feature</button>
             </div>
         </div>
     </section>
