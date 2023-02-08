@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        /* body {margin: 0;} */
+        a{
+            text-decoration: none;
+        }
+
+        #map { height: 100vh; width: 100%;}
+
+        .container-fluid{
+            padding: 0;
+        }
+
+        .row.d-flex {
+            height: 100vh;
+        }
+
+        #landmark-detail-section {
+            height: 100vh;
+        }
+
+        .header-right {
+            padding-left: 20%;
+            padding-right: 9.5%;
+        }
+
+        .main-btn {
+            padding: 0px 25px;
+            background: transparent;
+            z-index: 222;
+            display: inline-block;
+            text-align: center;
+            color: #222222;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 48px;
+            border: 1px solid #f8b600;
+            border-radius: 0px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            -webkit-transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
+            -o-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+        }
+
+        .header-right .main-btn:hover{
+            background-color: #f8b600;
+        }
+
+        .header-right h1 {
+            font-size: 60px;
+            line-height: 1;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header-right p {
+            height: 350px;
+            padding-right: 10px;
+            text-align: justify;
+        }
+
+        .header-right .weather-detail{
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .header-left {
+            position: relative;
+            padding-right: 0px;
+        }
+
+        .header-left img {
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        .overflow-y-hidden {
+            overflow-y: scroll;
+        }
+
+        #landmark-info::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            background-color: #F5F5F5;
+        }
+
+        #landmark-info::-webkit-scrollbar{
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+
+        #landmark-info::-webkit-scrollbar-thumb{
+            background-color: #0e3d00;
+        }
+
+        #login-section,
+        #register-section{
+            padding: 7em 0;
+        }
+
+        #login-section *,
+        #login-section *::before,
+        #login-section *::after,
+        #register-section *,
+        #register-section *::before,
+        #register-section *::after{
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box; 
+        }
+
+        .wrap{
+            width: 100%;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 5px;
+            -webkit-box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+            -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+            box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+        }
+
+        .login-img, .login-wrap{
+            width: 50%;
+        }
+
+        .login-img{
+            background-image: url('https://wallpaperaccess.com/full/3076955.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .login-wrap{
+            position: relative;
+        }
+
+        .login-wrap a{
+            -webkit-transition: .3s all ease;
+            -o-transition: .3s all ease;
+            transition: .3s all ease;
+            color: #e3b04b;
+        }
+
+        .login-wrap a:hover{
+            color: #0e3d00;
+        }
+
+        .form-group{
+            position: relative;
+        }
+
+        .btn.btn-primary {
+            background: #e3b04b !important;
+            border: 1px solid #e3b04b !important;
+            color: #fff !important;
+        }
+
+        @media (max-width: 1680px){
+            .header-right {
+                padding-left: 8%;
+                padding-right: 6%;
+            }
+        }
+
+        @media (max-width: 1440px){
+            .header-right {
+                padding-left: 12%;
+                padding-right: 11%;
+            }
+
+            .header-left h1 {
+                font-size: 45px;
+            }
+        }
+
+        @media (max-width: 1380px){
+            .header-right {
+                padding-left: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" id="map"></div>
+
+    <!-- <div>
+        <button type="button" class="btn btn-primary rounded">Edit landmark</button>
+    </div> -->
+
+    <section class="position-relative" id="landmark-detail-section">
+        <div class="container-fluid">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-6 header-left">
+                    <div class>
+                        <img class="img-fluid w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Built_in_1016_%2852174876745%29_%28cropped%29.jpg/1920px-Built_in_1016_%2852174876745%29_%28cropped%29.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 header-right">
+                    <a href="#" class="main-btn mb-3">Back</a>
+                    <h1>Santorin Island in Greece</h1>
+                    <p class="pt-20 overflow-y-hidden" id="landmark-info">
+						The Palace of Westminster serves as the meeting place for both the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Informally known as the Houses of Parliament, the Palace lies on the north bank of the River Thames in the City of Westminster, in central London, England.
+
+                        <br /><br />
+                        
+                        Its name, which derives from the neighbouring Westminster Abbey, may refer to several historic structures but most often: the Old Palace, a medieval building-complex largely destroyed by fire in 1834, or its replacement, the New Palace that stands today. The palace is owned by the Crown. Committees appointed by both houses manage the building and report to the Speaker of the House of Commons and to the Lord Speaker.
+
+                        <br /><br />
+                        
+                        The first royal palace constructed on the site dated from the 11th century, and Westminster became the primary residence of the Kings of England until fire destroyed the royal apartments in 1512 (after which, the nearby Palace of Whitehall was established). The remainder of Westminster continued to serve as the home of the Parliament of England, which had met there since the 13th century, and also as the seat of the Royal Courts of Justice, based in and around Westminster Hall. In 1834 an even greater fire ravaged the heavily rebuilt Houses of Parliament, and the only significant medieval structures to survive were Westminster Hall, the Cloisters of St Stephen's, the Chapel of St Mary Undercroft, and the Jewel Tower.
+
+                        <br /><br />
+                        
+                        In the subsequent competition for the reconstruction of the Palace, the architect Charles Barry won with a design for new buildings in the Gothic Revival style, specifically inspired by the English Perpendicular Gothic style of the 14th–16th centuries. The remains of the Old Palace (except the detached Jewel Tower) were incorporated into its much larger replacement, which contains over 1,100 rooms organised symmetrically around two series of courtyards and which has a floor area of 112,476 m2 (1,210,680 sq ft). Part of the New Palace's area of 3.24 hectares (8 acres) was reclaimed from the River Thames, which is the setting of its nearly 300-metre long (980 ft) façade, called the River Front. Augustus Pugin, a leading authority on Gothic architecture and style, assisted Barry and designed the interior of the Palace. Construction started in 1840 and lasted for 30 years, suffering great delays and cost overruns, as well as the death of both leading architects; works for the interior decoration continued intermittently well into the 20th century. Major conservation work has taken place since then to reverse the effects of London's air pollution, and extensive repairs followed the Second World War, including the simplified reconstruction of the Commons Chamber following its bombing in 1941.
+                        
+                        <br /><br />
+
+                        The Palace is one of the centres of political life in the United Kingdom; \"Westminster\" has become a metonym for the UK Parliament and the British Government, and the Westminster system of government commemorates the name of the palace. The Elizabeth Tower, in particular, often referred to by the name of its main bell, Big Ben, has become an iconic landmark of London and of the United Kingdom in general, one of the most popular tourist attractions in the city, and an emblem of parliamentary democracy. Tsar Nicholas I of Russia called the new palace \"a dream in stone\". The Palace of Westminster has been a Grade I listed building since 1970 and part of a UNESCO World Heritage Site since 1987.
+                    </p>
+                    <div class="row" id="weather">
+                      <div class="col">
+                        <div class="row temperature">21&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/sun.png"/></div>
+                        <div class="row day">Mon</div>
+                        <div class="row weather-detail">Sunny</div>
+                      </div>
+                      <div class="col">
+                        <div class="row temperature">20&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/sun.png"/></div>
+                        <div class="row day">Tue</div>
+                        <div class="row weather-detail">Sunny</div>
+                      </div>
+                      <div class="col">
+                        <div class="row temperature">16&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/cloud.png"/></div>
+                        <div class="row day">Wed</div>
+                        <div class="row weather-detail">Cloudy</div>
+                      </div>
+                      <div class="col">
+                        <div class="row temperature">17&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/cloudy.png"/></div>
+                        <div class="row day">Thu</div>
+                        <div class="row weather-detail">Cloudy</div>
+                      </div>
+                      <div class="col">
+                        <div class="row temperature">18&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/rainy-dense.png"/></div>
+                        <div class="row day">Fri</div>
+                        <div class="row weather-detail">Showers</div>
+                      </div>
+                      <div class="col">
+                        <div class="row temperature">21&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/rainy.png"/></div>
+                        <div class="row day">Sat</div>
+                        <div class="row weather-detail">Rainy</div>
+                      </div>
+                      <div class="col">
+                        <div class="row temperature">17&deg;</div>
+                        <div class="row weather-img"><img  src="./Weather icons by iconixar/snowflake.png"/></div>
+                        <div class="row day">Sun</div>
+                        <div class="row weather-detail">Snow Grains</div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="login-section">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="login-img"></div>
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Login</h3>
+                            </div>
+                        </div>
+                        <form class="signin-form">
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email Adress" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Your Password" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
+                            </div>
+                        </form>
+                        <p class="text-center">OR</p>
+                        <div id="googleLogin" class="d-flex justify-content-center"></div>
+                        <p class="text-center mt-3">
+                            Not a member?
+                            <a href="#">Register</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="register-section">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="login-img"></div>
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Register</h3>
+                            </div>
+                        </div>
+                        <form class="signin-form">
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email Adress" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Your Password" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Register</button>
+                            </div>
+                        </form>
+                        <p class="text-center">OR</p>
+                        <div id="googleRegister" class="d-flex justify-content-center"></div>
+                        <p class="text-center mt-3">
+                            Already has an account?
+                            <a href="#">Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid" id="add-landmark-section">
+        <div class="row d-flex align-content-center justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <a href="#" class="main-btn mb-3">Back</a>
+                <h3 class="text-center">Add Landmark</h3>
+                <form class="form-card">
+                    <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Latitude<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="number" id="latitude" name="latitude" placeholder="Enter latitude coordinate" required>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Longitude<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="number" id="longitude" name="longitude" placeholder="Enter latitude coordinate" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-12 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Image<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="file" name="imageUrl" id="imageUrl" placeholder="Enter landmark image" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-12 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Article</label>
+                            <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-3">
+                        <div class="form-group col-sm-6">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Add landmark</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid" id="edit-landmark-section">
+        <div class="row d-flex align-content-center justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <a href="#" class="main-btn mb-3">Back</a>
+                <h3 class="text-center">Edit Landmark</h3>
+                <form class="form-card">
+                    <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Latitude<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="number" id="latitude" name="latitude" placeholder="Enter latitude coordinate" required>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Longitude<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="number" id="longitude" name="longitude" placeholder="Enter latitude coordinate" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-12 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Image<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="file" name="imageUrl" id="imageUrl" placeholder="Enter landmark image" required>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left mb-3">
+                        <div class="form-group col-12 flex-column d-flex">
+                            <label class="form-control-label px-3 mb-1">Article</label>
+                            <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-3">
+                        <div class="form-group col-sm-6">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Edit landmark</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+     <!-- <a href="https://www.flaticon.com/authors/iconixar" title="sun icons">Weather icons created by iconixar - Flaticon</a> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        var marker = L.marker([51.5, -0.09]).addTo(map);
+
+        var circle = L.circle([51.508, -0.11], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+
+        var polygon = L.polygon([
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047]
+        ]).addTo(map);
+
+        marker.bindPopup(`
+        <div class="card" style="width: 18rem;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Built_in_1016_%2852174876745%29_%28cropped%29.jpg/1920px-Built_in_1016_%2852174876745%29_%28cropped%29.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+        `).openPopup();
+        circle.bindPopup("I am a circle.");
+        polygon.bindPopup("I am a polygon.");
+
+        var popup = L.popup()
+            .setLatLng([51.513, -0.09])
+            .setContent("I am a standalone popup.")
+            .openOn(map);
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+        map.on('click', onMapClick);
+
+        function handleCredentialResponse(response) {
+          $.ajax({
+            method: 'POST',
+            // url: "http://newsportal-app-production.up.railway.app/google-login",
+            url: 'http://localhost:5000/google-login',
+            headers: {
+              token: response.credential
+            }
+          }).done(function (result) {
+            localStorage.setItem('access_token', result.token)
+            localStorage.setItem('username', result.username)
+
+            $('#username').append(result.username)
+            
+            allNews()
+            allCategories()
+
+            $('#login-section').hide()
+
+            $('#dashboard-section').show()
+            $('#news-section').hide()
+            $('#add-news-section').hide()
+            $('#category-section').hide()
+            $('#new-category-section').hide()
+
+            $('#home-section').show()
+
+            Toastify({
+                text: result.message,
+                duration: 3000
+            }).showToast()
+          }).fail(function (err) {
+            Toastify({
+              text: err.responseJSON.message,
+              duration: 3000
+            }).showToast()
+          })
+        }
+
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "887501520572-3lg4d1903h05q3riojqvus1jeass9k48.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+          });
+
+          google.accounts.id.renderButton(
+            document.getElementById("googleLogin"),
+            { 
+              theme: "outline",
+              size: "large",
+              width: "250"
+            }
+          );
+
+          google.accounts.id.renderButton(
+            document.getElementById("googleRegister"),
+            {
+              theme: "outline",
+              size: "large",
+              width: "450"
+            }
+          );
+
+          google.accounts.id.prompt();
+        }
+    </script>
+</body>
+</html>
