@@ -43,7 +43,7 @@ const router = createRouter({
 
 // Route Guard
 router.beforeEach((to, from, next) => {
-  let isLogin = localStorage.getItem("access_token");
+  let isLogin = !!localStorage.getItem("access_token");
   if (isLogin && to.path === "/login") {
     next("/");
   } else if (isLogin && to.path === "/register") {

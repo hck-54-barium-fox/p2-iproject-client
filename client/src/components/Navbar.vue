@@ -10,20 +10,19 @@ export default {
     },
     methods: {
         loggingOut() {
-            localStorage.removeItem("access_token");
-            localStorage.removeItem("userId");
+            localStorage.clear()
             Swal.fire({
                 title: "Goodbye!",
-                text: `Please come back later, ${localStorage.getItem("username").split('@')[0]}`,
+                text: `Please come back later`,
                 icon: "warning",
                 confirmButtonText: "OK",
             });
-            localStorage.removeItem("username");
+            this.username = ''
             this.$router.push('/login')
         }
     },
     computed: {
-        ...mapState(useCardStore, ['username'])
+        ...mapWritableState(useCardStore, ['username'])
     }
 }
 

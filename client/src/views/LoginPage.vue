@@ -20,10 +20,14 @@ export default {
         }
     },
     methods: {
-        ...mapActions(useCardStore, ['postLogin']),
+        ...mapActions(useCardStore, ['postLogin', 'postLoginCR']),
         handleLogin() {
             this.postLogin(this.customer)
-            this.$router.push('/')
+            
+        },
+        handleLoginCR(){
+            this.postLoginCR(this.Id)
+            
         }
     }
 }
@@ -54,7 +58,7 @@ export default {
 
                         <Btn label="Sign in" />
                     </form>
-                    <form>
+                    <form @submit.prevent="handleLoginCR">
                         <p class="signup text-decoration-none" style="text-align: center;">Or Sign in with Your Clash
                             Royale ID</p>
                         <label for="password-login" class="form-label"></label>
