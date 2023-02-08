@@ -14,6 +14,8 @@ export const usePoemStore = defineStore("poem", {
       paymentlink: "",
       rawImage: "",
       imageLink: "",
+      myLetters : [],
+      isviewing: ""
     };
   },
 
@@ -60,6 +62,7 @@ export const usePoemStore = defineStore("poem", {
             access_token: localStorage.getItem("access_token"),
           },
         });
+        this.isviewing = false
         this.poem = data.content;
         this.poemId = data.id;
       } catch (err) {
@@ -131,10 +134,44 @@ export const usePoemStore = defineStore("poem", {
             access_token: localStorage.getItem("access_token"),
           },
         });
-        console.log(data)
-        
+        console.log(data);
+        this.$router.push('/')
       } catch (err) {
-        console.log(err)
+        console.log(err);
+      }
+    },
+
+    async fetchMyLetter() {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: `${DATA_URL}/poetry/myletter`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        console.log(data)
+        this.myLetters = data
+      } catch (err) {
+        console.log(err.response.data)
+      }
+    },
+
+    async poetryById(id) {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: `${DATA_URL}/poetry/letterbyid/${id}`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        this.poem = data.content;
+        this.poemId = data.id;
+        this.isviewing = true
+        this.$router.push('/resultpoem')
+      } catch (err) {
+        console.log(err.response.data)
       }
     },
   },

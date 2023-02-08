@@ -7,7 +7,7 @@ export default {
 <template>
     <!-- welcome page -->
 
-    <section>
+    <section class="ml-32">
         <h1 class="text-4xl text-center font-bold mt-[25vh]">Always Have Something To Say To Your Loved Ones</h1>
         <h2 class="text-2xl text-center mt-[30px]">We generate the best poem from all of histories. By legends
             like
