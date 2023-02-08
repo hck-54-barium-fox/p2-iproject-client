@@ -32,35 +32,25 @@ export default {
 <template>
     <div class="d-flex justify-content-center fs-1 mt-5 pt-5 border-bottom">
         <div class="mb-3">
-            Cards
+            My Deck
         </div>
     </div>
-    <div class="d-flex justify-content-center text-secondary pt-2">
-        Filter by Elixir Cost
+    <div class="d-flex justify-content-center text-secondary pt-3">
+        Prepare for battle!
     </div>
     <div class="d-flex justify-content-center pt-3 grid gap-3">
-        <button @click="$router.push(`/`)" type="button" class="btn btn-outline-warning">
-            Asc
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-up"
-                viewBox="0 0 16 16">
-                <path
-                    d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-            </svg>
+        <button type="button" class="card pt-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded fs-6">
+            Total Card: 3
         </button>
-        <button @click="$router.push(`/`)" type="button" class="btn btn-outline-warning">
-            Desc
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-down"
-                viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-            </svg>
+        <button type="button" class="card pt-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded fs-6">
+            Average Elixir: 3.4
         </button>
-        
+
     </div>
     <div class="row row-cols-3 pt-5 pb-5 ps-4 grid gap-4 d-flex justify-content-center">
-        <Card />
-        <Card />
-        <Card />
+        <MyCard />
+        <MyCard />
+        <MyCard />
     </div>
 
     <!-- <nav aria-label="Page navigation example">
