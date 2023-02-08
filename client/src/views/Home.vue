@@ -20,13 +20,28 @@ export default {
 
 <template>
 
-    <h1 style="color: red;"> Games </h1>
-    <div class="row m-5">
-        <Card v-for="game in games"  :game="game"/>
+
+
+    <div class="container row m-5">
+        <Card v-for="game in games" :game="game" />
     </div>
+
+
 
 </template>
 
 <style scoped>
+body {
+    height: 100%;
+    background-image: url(https://img.freepik.com/free-vector/minimal-geometric-stripe-shape-background_1409-1014.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
+.container {
+    width: 100%;
+    height: 90vh;
+    overflow: scroll
+}
 </style>

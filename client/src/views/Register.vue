@@ -1,4 +1,7 @@
 <script>
+import { mapActions } from 'pinia';
+import { useAppStore } from '../stores/app';
+
 
 export default {
     data() {
@@ -7,13 +10,23 @@ export default {
             username: '',
             password: ''
         }
+    },
+    methods: {
+        ...mapActions(useAppStore, ['register']),
+        handlerRegister(){
+            this.register({
+                email:this.email,
+                username:this.username,
+                password:this.password
+            })
+        }
     }
 }
 </script>
 <template>
     <div class="container">
         <h1>Register</h1>
-        <form>
+        <form @submit.prevent="handlerRegister">
             <label>Email</label>
             <input v-model="email" type="email" required>
 
@@ -21,7 +34,7 @@ export default {
             <input v-model="username" type="text" required>
 
             <label>Password </label>
-            <input v-model="password" type="text" required>
+            <input v-model="password" type="password" required>
 
             <div class="register-button">
                 <button> Register </button>

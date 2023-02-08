@@ -11,7 +11,7 @@ computed:{
 }
 </script>
 <template>
-    <div class="col-3">
+    <div class="col-3 my-3">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" :src="game.image" alt="Card image cap">
             <div class="card-body">
@@ -23,3 +23,13 @@ computed:{
         </div>
     </div>
 </template>
+
+<style scoped>
+body {
+    height: 100%;
+    background-image: url(https://img.freepik.com/free-vector/minimal-geometric-stripe-shape-background_1409-1014.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+</style>
