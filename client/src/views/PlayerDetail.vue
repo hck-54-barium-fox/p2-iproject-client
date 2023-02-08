@@ -1,7 +1,7 @@
 <script>
 import PlayerCard from '../components/PlayerCard.vue';
-// import { mapActions, mapState } from 'pinia'
-// import { useFoodStore } from '../stores/food'
+import { mapActions, mapState } from 'pinia'
+import { useCardStore } from '../stores/card';
 export default {
     components: {
         PlayerCard
@@ -11,22 +11,15 @@ export default {
             tag: ''
         }
     },
-    // created(){
-    //     this.fetchFood()
-    //     this.getPage()
-    //     this.fetchWishlist()
-    // },
-    // methods: {
-    //     ...mapActions(useFoodStore, ['fetchFood', 'getPage', 'addWishlist', 'fetchWishlist',])
-    // },
-    // computed: {
-    //     ...mapState(useFoodStore, ['foodData', 'totalPage'])
-    // },
-    // watch: {
-    //     '$route.query'(){
-    //        this.fetchFood(this.$route.query)
-    //     }
-    // }
+    methods: {
+        ...mapActions(useCardStore, ['findPlayer']),
+        getDetailPlayer(){
+            this.findPlayer(this.tag)
+        }
+    },
+    computed: {
+        ...mapState(useCardStore, ['dataPlayer'])
+    },
 }
 </script>
 
@@ -40,11 +33,13 @@ export default {
         Search for Player
     </div>
     <div class="d-flex justify-content-center pt-3 grid gap-3">
-        <label for="email-login" class="form-label"></label>
-        <input v-model="tag" type="email" class="form-control" id="email-login" placeholder="Insert your ID" style="width: 200px">
+        <form @submit.prevent="getDetailPlayer">
+            <label for="email-login" class="form-label"></label>
+            <input v-model="tag" type="text" class="form-control" id="email-login" placeholder="Insert your ID" style="width: 200px">
+        </form>
 
     </div>
     <div class="row row-cols-3 pt-5 pb-5 ps-4 grid gap-4 d-flex justify-content-center">
-        <PlayerCard />
+        <PlayerCard :player="dataPlayer"/>
     </div>
 </template>

@@ -8,7 +8,8 @@ export const useCardStore = defineStore({
     return {
       username: localStorage.getItem('username'),
       dataCard: '',
-      dataDeck: ''
+      dataDeck: '',
+      dataPlayer: ''
     };
   },
   getters: {},
@@ -141,7 +142,7 @@ export const useCardStore = defineStore({
       } catch (error) {
         Swal.fire({
           title: "Error!",
-          html: `${error.response.data.message}`,
+          html: `This card already in your deck!`,
           icon: "error",
           confirmButtonText: "Try again!",
         });
@@ -160,7 +161,7 @@ export const useCardStore = defineStore({
       } catch (error) {
         Swal.fire({
           title: "Error!",
-          html: `This card already in your deck!`,
+          html: `${error.response.data.message}`,
           icon: "error",
           confirmButtonText: "Try again!",
         });
@@ -185,7 +186,28 @@ export const useCardStore = defineStore({
       } catch (error) {
         Swal.fire({
           title: "Error!",
-          html: `${error}`,
+          html: `${error.response.data.message}`,
+          icon: "error",
+          confirmButtonText: "Try again!",
+        });
+      }
+    },
+    async findPlayer(tag){
+      try {
+        console.log(tag, 'initago')
+        let { data } = await axios({
+          method: 'post',
+          url: 'http://localhost:3000/players',
+          data: {
+            tag
+          }
+        })
+        console.log(data, 'inidata')
+        this.dataPlayer = data
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          html: `${error.response.data.message}`,
           icon: "error",
           confirmButtonText: "Try again!",
         });
