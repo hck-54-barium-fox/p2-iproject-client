@@ -5,5 +5,5 @@ export default {
 </script>
 
 <template>
-  <h1>haii</h1>
+  <h1>Home</h1>
 </template>
