@@ -7,6 +7,7 @@ export const useAppStore = defineStore("app", {
   state: () => ({
     isLogin: false,
     postList: [],
+    postDataDetail: "",
   }),
 
   getters: {},
@@ -49,6 +50,20 @@ export const useAppStore = defineStore("app", {
         // console.log(data);
         this.postList = data;
         console.log(this.postList);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async fetchPostDetail(id) {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: `${localhost}/posts/${id}`,
+        });
+
+        this.postDataDetail = data;
+        console.log(postDataDetail, "<<<<<<<<<<<< Detail");
       } catch (err) {
         console.log(err);
       }

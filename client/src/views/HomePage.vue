@@ -25,7 +25,7 @@ export default {
   <Navbar />
   <!-- Blog Post Section -->
 
-  <section id="posts_home" class="mt-3">
+  <section id="posts_home" class="mt-4">
     <div class="container_home">
       <div class="row row-cols-1 row-cols-md-6 g-4" data-masonry='{"percentPosition": true,  "itemSelector": ".col" }'>
         <HomeCard v-for="postData in postList" :key="postData.id" :postData="postData" />

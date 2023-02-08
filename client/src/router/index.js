@@ -3,6 +3,7 @@ import RegisterPage from "../views/RegisterPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import HomePage from "../views/HomePage.vue";
 import MemesPage from "../views/MemesPage.vue";
+import DetailPage from "../views/DetailPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: "/",
       name: "homepage",
       component: HomePage,
+    },
+    {
+      path: "/:id",
+      name: "detailpage",
+      component: DetailPage,
     },
     {
       path: "/memes",

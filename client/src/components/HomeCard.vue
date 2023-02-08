@@ -4,7 +4,13 @@ import { mapActions, mapState } from "pinia";
 export default {
   props: ["postData"],
 
-  methods: {},
+  computed: {
+    ...mapState(useAppStore, ["postDataDetail"]),
+  },
+
+  methods: {
+    ...mapActions(useAppStore, ["fetchPostDetail"]),
+  },
 };
 </script>
 
@@ -13,7 +19,7 @@ export default {
     <article class="article_home">
       <div class="card_home">
         <div class="image" style="margin-bottom: 5px">
-          <a href="">
+          <a href="" @click.prevent="$router.push(`/${postData.id}`)">
             <img :src="postData.imgUrl" class="img_home" alt="" />
           </a>
         </div>
