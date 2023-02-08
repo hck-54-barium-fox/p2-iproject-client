@@ -9,7 +9,9 @@ export const useAppStore = defineStore('app', {
           isAuth: false,
           products: [],
           mycart:[],
-          cartTotalAmount: 0
+          cartTotalAmount: 0,
+          cities:[],
+          fee:0,
         }
       },
       actions:{
@@ -131,20 +133,21 @@ export const useAppStore = defineStore('app', {
         },
         async checkout(){
           try{
-            const { data } = await axios ({
+            const { data } = await axios({
               method:'POST',
-              url: `${url}generate-midtrans-token?amount=${this.cartTotalAmount}`,
+              url: `${url}generate-midtrans-token?amount=${this.cartTotalAmount+this.fee}`,
               headers:{
                 access_token: localStorage.getItem('access_token')
               }
             })
-
+            console.log(data, 'apa sih daata ini ga jelas');
             const cb = this.paid
             console.log(data, "data token");
 
             window.snap.pay(data.token, {
               onSuccess: function(result) {
                 console.log("MASUKKKK PASTI BISA", result, "______")
+                cb()
               }
             })
           }
@@ -165,6 +168,40 @@ export const useAppStore = defineStore('app', {
           } catch(err){
             console.log(err);
           }
+        },
+
+        async selectCity(){
+          try{
+            const { data } = await axios({
+              method: 'GET',
+              url:`${url}delivery/cities`,
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            this.cities = data.rajaongkir.results
+          }
+          catch(err){
+            console.log(err);
+          }
+        },
+
+        async deliveryFee(query){
+          try{
+            const { data } = await axios({
+              method: 'POST',
+              url:`${url}delivery/fee?destination=${query}`,
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            this.fee = +data/15000
+            console.log(this.fee, "FEE");
+          }
+          catch(err){
+            console.log(err);
+          }
+
         }
 
       }

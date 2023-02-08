@@ -25,7 +25,7 @@ import { useAppStore } from '../stores/app';
         async created(){
             const { data } = await axios.get(this.mycart.product_api_url)
             this.detailProduct = data
-            console.log(this.mycart.id, "<<<<<<")
+            // console.log(this.mycart.id, "<<<<<<")
             this.cartTotalAmount += +this.detailProduct.price
             // this.totalmount += data.price
         }
@@ -65,5 +65,5 @@ import { useAppStore } from '../stores/app';
       </p>
     </div>
   </div>
-  
+
 </template>

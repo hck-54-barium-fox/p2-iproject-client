@@ -5,24 +5,35 @@ import CardMyCart from "../components/CardMyCart.vue";
 import { mapActions, mapState } from "pinia";
 import { useAppStore } from "../stores/app";
 export default {
+  data(){
+    return{
+      city:'',
+      total: 0
+    }
+  },
   components: {
     Navbar,
     CardMyCart,
-
   },
   computed: {
-    ...mapState(useAppStore, ["mycart", "cartTotalAmount"]),
+    ...mapState(useAppStore, ["mycart", "cartTotalAmount", 'cities', 'fee', 'total']),
   },
   methods: {
-    ...mapActions(useAppStore, ["fetchMyCart", 'checkout']),
-    payment(){
-     this.checkout()
-     
+    ...mapActions(useAppStore, ["fetchMyCart", "selectCity", "deliveryFee", 'checkout']),
+    payment() {
+      this.checkout();
+    },
+    async handleDeliveryFee(){
+    await this.deliveryFee(this.city)
+    console.log(this.fee, this.cartTotalAmount, "APAA ISINYA");
+    this.total = Number(this.fee) + Number(this.cartTotalAmount)
+
     }
   },
   created() {
-    this.fetchMyCart()
-
+    this.fetchMyCart();
+    this.selectCity()
+    // console.log(this.cities, "<<<<< ini cities");
   },
 };
 </script>
@@ -84,9 +95,36 @@ export default {
           <div
             class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50 flex flex-col mb-6 overflow: scroll;"
           >
-            <CardMyCart v-for="product in mycart" :key="product.id" :mycart="product" />
+            <CardMyCart
+              v-for="product in mycart"
+              :key="product.id"
+              :mycart="product"
+            />
+            <div   class="mt-20">
+              <form @submit.prevent="handleDeliveryFee">
+                <label
+                for="countries"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+                >Select city for delivery</label
+              >
+              <select
+              v-model="city"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Choose city</option>
+                <option  v-for="city in cities" :key="city.city_id" :value="city.city_id">{{ city.city_name }}</option>
+              </select>
+              <button type="submit">
+                submit
+              </button>
+              </form>
+            </div>
+            <div class="mt-8">
+              <p>Delivery Fee: ${{ fee }} </p>
+            </div>
           </div>
         </div>
+        <div></div>
         <div class="lg:w-96 md:w-8/12 w-full bg-gray-100 h-full">
           <div
             class="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto"
@@ -109,17 +147,17 @@ export default {
                 <p class="text-base leading-none text-gray-800 dark:text-black">
                   Shipping
                 </p>
-                <p
-                  class="text-base leading-none text-gray-800 dark:text-black"
-                >Free</p>
+                <p class="text-base leading-none text-gray-800 dark:text-black">
+                 {{ fee }}
+                </p>
               </div>
               <div class="flex items-center justify-between pt-5">
                 <p class="text-base leading-none text-gray-800 dark:text-black">
                   Tax
                 </p>
-                <p
-                  class="text-base leading-none text-gray-800 dark:text-black"
-                >No Tax</p>
+                <p class="text-base leading-none text-gray-800 dark:text-black">
+                  No Tax
+                </p>
               </div>
             </div>
             <div>
@@ -132,11 +170,11 @@ export default {
                 <p
                   class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-black"
                 >
-
-                 $ {{ this.cartTotalAmount }}
+                  $ {{ total }}
                 </p>
               </div>
-              <button @click.prevent="payment"
+              <button
+                @click.prevent="payment"
                 class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
               >
                 Checkout
