@@ -73,5 +73,36 @@ export const useAppStore = defineStore("app", {
         console.log(err);
       }
     },
+
+    async addBookmark(productId) {
+      try {
+        await axios.post(
+          `${baseUrl}/bookmarks/${productId}`,
+          {},
+          {
+            headers: {
+              access_token: localStorage.getItem("access_token"),
+            },
+          }
+        );
+        console.log("Success add bookmark");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async fetchBookmarkList() {
+      try {
+        const { data } = await axios.get(`${baseUrl}/bookmarks`, {
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        this.bookMarkList = data;
+        // console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 });
