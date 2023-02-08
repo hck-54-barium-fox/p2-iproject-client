@@ -62,7 +62,11 @@ export default {
     <main class="my-3">
       <div class="container-xxl">
         <div class="row m-auto">
-          <CardProductComponent v-for="(el , idx) in productList.rows" :key="idx" :product="el"/>
+          <CardProductComponent
+            v-for="(el, idx) in productList.rows"
+            :key="idx"
+            :product="el"
+          />
         </div>
         <div class="row mx-auto">
           <div class="col d-flex">
