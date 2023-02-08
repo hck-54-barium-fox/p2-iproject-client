@@ -92,5 +92,39 @@ export const useBookingStore = defineStore('booking', {
         console.log(err);
       }
     },
+    async doCheckIn() {
+      try {
+        const { data } = await axios.post('http://localhost:9000/check-in', {
+          price: 10000,
+          name: 'bisma',
+          email: 'bisma2coc@gmail.com',
+        });
+        console.log(data);
+        // window.snap.close();
+        window.snap.pay(data.token, {
+          onSuccess: function (result) {
+            /* You may add your own implementation here */
+            alert('payment success!');
+            console.log(result);
+          },
+          onPending: function (result) {
+            /* You may add your own implementation here */
+            alert('wating your payment!');
+            console.log(result);
+          },
+          onError: function (result) {
+            /* You may add your own implementation here */
+            alert('payment failed!');
+            console.log(result);
+          },
+          onClose: function () {
+            /* You may add your own implementation here */
+            alert('you closed the popup without finishing the payment');
+          },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 });

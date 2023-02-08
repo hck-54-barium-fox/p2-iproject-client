@@ -77,7 +77,7 @@ export default {
   <!-- popular -->
 
   <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
-    <h2 class="my-8 text-[2rem] text-sky-900">The Wonderful {{ hotelByLocation[0].country }}</h2>
+    <h2 class="my-8 text-[2rem] text-sky-900">The Wonderful {{ hotelByLocation[0]?.country }}</h2>
     <div class="flex gap-6 justify-center items-start flex-wrap ">
       <CardLocation v-for="(location, i) in hotelByLocation" :key="i" :location="location" />
     </div>

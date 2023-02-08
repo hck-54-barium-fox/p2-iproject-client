@@ -1,6 +1,7 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import "leaflet/dist/leaflet.css";
+import axios from 'axios';
 import {
   LMap,
   LIcon,
@@ -39,7 +40,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(useBookingStore, ['getHotelRooms'])
+    ...mapActions(useBookingStore, ['getHotelRooms']),
   }
   ,
   created() {
@@ -47,7 +48,7 @@ export default {
     this.getDetailHotel(this.$route.params.id, this.$route.query.search_id)
   },
   computed: {
-    ...mapState(useBookingStore, ['roomsHotel', 'getDetailHotel', 'detailHotel']),
+    ...mapState(useBookingStore, ['roomsHotel', 'getDetailHotel', 'detailHotel',]),
     centerMap() {
       if (detailHotel?.longitude && detailHotel?.latitude) {
         this.center = [detailHotel?.latitude, detailHotel?.longitude]
@@ -61,6 +62,7 @@ export default {
 <template>
   <Navbar />
   <!-- main information -->
+
   <div class="w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
     <div class="p-4 bg-white shadow-lg rounded">
       <h1 class="text-[1.4rem]">{{ detailHotel.hotelName }}</h1>
@@ -85,14 +87,13 @@ export default {
       <div class="w-full h-[.1rem] bg-gray-100 my-5"></div>
       <div>
         <div class="flex gap-4 h-[450px]">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNWMPreXboMoHMjXm_FoynvJKtpquk45kvnw&usqp=CAU"
-            class="w-full h-full  object-cover rounded flex-1" alt="">
+          <img :src="roomsHotel[0]?.detail?.photos[0]?.url_original" class="w-full h-full  object-cover rounded flex-1"
+            alt="">
           <div class="flex flex-col gap-5 justify-between items-center">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNWMPreXboMoHMjXm_FoynvJKtpquk45kvnw&usqp=CAU "
-              class="w-full object-cover rounded  h-[45%]" alt="">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNWMPreXboMoHMjXm_FoynvJKtpquk45kvnw&usqp=CAU "
+
+            <img :src="roomsHotel[0]?.detail?.photos[0]?.url_original" class="w-full object-cover rounded  h-[45%]"
+              alt="">
+            <img :src="roomsHotel[0]?.detail?.photos[0]?.url_original"
               class="w-full object-cover rounded  h-[45%] brightness-50" alt="">
           </div>
         </div>
