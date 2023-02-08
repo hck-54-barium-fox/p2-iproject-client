@@ -7,6 +7,7 @@ const baseUrl = "http://localhost:3000";
 export const useAppStore = defineStore("app", {
   state: () => ({
     productList: [],
+    bookMarkList: [],
     isLogin: localStorage.getItem("access_token") ? true : false,
   }),
   getters: {},
@@ -40,8 +41,24 @@ export const useAppStore = defineStore("app", {
     },
 
     doLogout() {
-      localStorage.removeItem("access_token");
+      localStorage.clear();
+      this.isLogin = false;
+      this.bookMarkList = [];
       this.router.replace("/login");
+    },
+
+    async fetchProduct(query) {
+      try {
+        console.log(query);
+        const { page, brand } = query;
+        const { data } = await axios({
+          method: "GET",
+          url: `${baseUrl}/products/?brand=${brand}&page=${page}`,
+        });
+        this.productList = data;
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 });
