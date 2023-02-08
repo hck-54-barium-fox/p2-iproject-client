@@ -7,7 +7,7 @@ export default {};
     <div class="flex flex-col gap-5">
       <!-- Search Recipe -->
       <div class="flex flex-col gap-3">
-        <div class="font-semibold">Search Recipe</div>
+        <div class="font-semibold">👀 Search Recipe</div>
         <input
           type="text"
           name="searchFood"
@@ -18,7 +18,7 @@ export default {};
       </div>
       <!-- Find Ingredients Nutrition -->
       <div class="flex flex-col gap-3">
-        <div class="font-semibold">Ingredient Nutrition</div>
+        <div class="font-semibold">👀 Ingredient Nutrition</div>
         <input
           type="text"
           name="searchFood"
@@ -27,6 +27,10 @@ export default {};
           class="border border-primaryColor rounded-lg placeholder:text-sm"
         />
       </div>
+      <span class="py-5 border-t flex gap-1 font-semibold cursor-pointer"
+        ><div>🏃‍♂️</div>
+        <span>Logout</span></span
+      >
     </div>
   </div>
 </template>
