@@ -50,7 +50,7 @@ export default {
                         <router-link to="/" class="nav-link" aria-current="page" href="#">About The Game</router-link>
                     </li>   
                     <li class="nav-item">
-                        <router-link to="/wishlist" class="nav-link" aria-current="page" href="#">News</router-link>
+                        <router-link to="/news" class="nav-link" aria-current="page" href="#">News</router-link>
                     </li>
                 </ul>
                 <div id="account-name" class="d-flex pe-5">
@@ -66,7 +66,7 @@ export default {
                             <li><button v-if="!username" @click.prevent="$router.push('/login')" class="dropdown-item" style="width: 20px" 
                                     href="#">Login</button>
                             </li>
-                            <li><button v-if="username" @click.prevent="$router.push('/wishlist')" class="dropdown-item"
+                            <li><button v-if="username" @click.prevent="$router.push('/mydeck')" class="dropdown-item"
                                     href="#">My Deck</button>
                             </li>
                         </ul>
