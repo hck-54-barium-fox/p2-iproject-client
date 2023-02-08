@@ -1,4 +1,6 @@
 <script>
+import { useAppStore } from "../stores/app";
+import { mapActions } from "pinia";
 import Card from "../components/Card.vue"
 import Navbar from "../components/Navbar.vue"
 export default {
@@ -6,6 +8,12 @@ export default {
         Navbar,
         Card,
     },
+    methods: {
+        ...mapActions(useAppStore,['fetchPlanet'])
+    },
+    created(){
+        this.fetchPlanet()
+    }
 }
 </script>
 
