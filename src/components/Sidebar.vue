@@ -9,10 +9,10 @@ export default {
   },
 
   methods: {
-    ...mapActions(useCounterStore, ["jadwalSholat"]),
+    ...mapActions(useCounterStore, ["jadwalSholat", "logout", "handleLogin", "favorite"]),
   },
   computed: {
-    ...mapState(useCounterStore, ["data"]),
+    ...mapState(useCounterStore, ["data", "isLogin"]),
   },
 };
 </script>
@@ -41,23 +41,47 @@ export default {
       </div>
       <div class="flex-grow">
         <ul class="flex flex-col py-6 space-y-1">
-          <li class="px-5">
+          <li @click="favorite">
+            <a
+              href="#"
+              class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6">
+              <span class="inline-flex justify-center items-center ml-4">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </span>
+              <span
+                class="ml-2 font-semibold text-sm tracking-wide truncate font-sans"
+                >Favorite</span
+              >
+            </a>
+          </li>
+          <!-- <li class="px-5">
             <div class="flex flex-row items-center h-8">
               <div
                 class="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
-                Dashboard
+                Jadwal Sholat
               </div>
             </div>
-          </li>
+          </li> -->
 
           <li>
             <CardSholat :data="this.data" />
-          </li>
-          <li>
-            <a
+            <li >
+            <a v-if="isLogin"
+              @click.prevent="logout"
               href="#"
               class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-red-500 pr-6">
-              <span
+              <span 
                 class="inline-flex justify-center items-center ml-4 text-red-400">
                 <svg
                   class="w-5 h-5"
@@ -72,12 +96,41 @@ export default {
                     d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                 </svg>
               </span>
-              <span
+              <span 
                 class="ml-2 font-semibold text-sm tracking-wide truncate font-sans"
                 >Logout</span
               >
             </a>
           </li>
+          <li >
+            <RouterLink to="/login" v-if="!isLogin"
+              
+              href="#"
+              class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-red-500 pr-6">
+              <span 
+                class="inline-flex justify-center items-center ml-4 text-red-400">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+              </span>
+              <span 
+                class="ml-2 font-semibold text-sm tracking-wide truncate font-sans"
+                >Log in</span
+              >
+            </RouterLink>
+          </li>
+          </li>
+
+          
         </ul>
       </div>
     </div>

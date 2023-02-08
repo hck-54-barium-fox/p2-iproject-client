@@ -5,29 +5,26 @@ import { useCounterStore } from "../stores/counter";
 
 export default {
   name: "NavBar",
- 
+ computed: {
+  ...mapState(useCounterStore, ["isLogin"])
+ }
 };
 </script>
 
 <template>
 <!-- follow me on twitter @asad_codes -->
 
-<div class="z-50" style="position: sticky;top: 0;">
+<div class="z-50" style="position: sticky;top: 0;overflow: ;">
   <section class="relative mx-auto">
       <!-- navbar -->
     <nav class="flex justify-center bg-gray-900 text-white w-screen">
       <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-        <a class="text-3xl font-bold font-heading" href="#">
+        <RouterLink to="/" class="text-3xl font-bold font-heading" href="#">
           <!-- <img class="h-9" src="logo.png" alt="logo"> -->
           Logo Here.
-        </a>
+        </RouterLink>
         <!-- Nav Links -->
-        <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-          <li><a class="hover:text-gray-200" href="#">Home</a></li>
-          <li><a class="hover:text-gray-200" href="#">Catagory</a></li>
-          <li><a class="hover:text-gray-200" href="#">Collections</a></li>
-          <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
-        </ul>
+       
         <!-- Header Icons -->
         <div class="hidden xl:flex items-center space-x-5 items-center">
           <a class="hover:text-gray-200" href="#">
