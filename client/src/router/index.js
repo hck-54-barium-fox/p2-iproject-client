@@ -4,6 +4,7 @@ import PoemGenerate from "../screens/PoemGenerate.vue";
 import ResultPoem from "../screens/ResultPoem.vue";
 import SubmitPoem from "../screens/SubmitPoem.vue";
 import QuoteGenerate from "../screens/QuoteGenerate.vue";
+import GoogleLogin from "../screens/GoogleLogin.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: GetStarted,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: GoogleLogin,
     },
     {
       path: "/generatepoem",
@@ -35,5 +41,16 @@ const router = createRouter({
     },
   ],
 });
+
+router.beforeEach((to, from, next)=>{
+  const isLogin = !!localStorage.getItem('access_token')
+  if(!isLogin && to.path !== '/login'){
+    next('/login')
+  } else if(isLogin && to.path === '/login'){
+    next('/')
+  } else{
+    next()
+  }
+})
 
 export default router;
