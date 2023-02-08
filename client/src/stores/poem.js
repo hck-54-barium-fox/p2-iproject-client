@@ -7,7 +7,13 @@ export const usePoemStore = defineStore("poem", {
   state: () => {
     return {
       isLogin: !!localStorage.getItem("access_token"),
-      quotes : ''
+      quotes: "",
+      poem: "",
+      poemId: "",
+      search: "",
+      paymentlink: "",
+      rawImage: "",
+      imageLink: "",
     };
   },
 
@@ -31,18 +37,55 @@ export const usePoemStore = defineStore("poem", {
         console.log(err.response.data.msg);
       }
     },
-    async randomQuote(){
+    async randomQuote() {
       try {
-        const {data} = await axios({
+        const { data } = await axios({
           method: "GET",
           url: `${DATA_URL}/randomquote`,
           headers: {
-            access_token: localStorage.getItem('access_token'),
+            access_token: localStorage.getItem("access_token"),
           },
         });
-        this.quotes = data
+        this.quotes = data;
       } catch (err) {
         console.log(err.response.data.msg);
+      }
+    },
+    async searchPoem(search) {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: `${DATA_URL}/poetry/find/${search}`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        this.poem = data.content;
+        this.poemId = data.id;
+      } catch (err) {
+        console.log(err.response.data.msg);
+      }
+    },
+    async paymentPoem(payload) {
+      try {
+        const { data } = await axios({
+          method: "post",
+          url: `${DATA_URL}/poetry/payment/${payload}`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        this.paymentlink = data;
+        console.log(this.paymentlink);
+      } catch (err) {
+        console.log(err.response.data.msg);
+      }
+    },
+    async uploadImage(){
+      try {
+        const {data} = await
+      } catch (err) {
+        
       }
     }
   },

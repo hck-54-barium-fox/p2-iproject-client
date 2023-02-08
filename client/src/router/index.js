@@ -30,7 +30,7 @@ const router = createRouter({
       component: ResultPoem,
     },
     {
-      path: "/submitpoem",
+      path: "/submitpoem/:letterId",
       name: "submitpoem",
       component: SubmitPoem,
     },
