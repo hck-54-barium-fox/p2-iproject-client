@@ -102,7 +102,7 @@ export const useAppStore = defineStore('app', {
           try{
             const { data } = await axios({
               method: 'GET',
-              url: `${url}products/mycart`,
+              url: `${url}mycart`,
               headers:{
                 access_token: localStorage.getItem('access_token')
               }
@@ -112,8 +112,46 @@ export const useAppStore = defineStore('app', {
           catch(err){
             console.log(err);
           }
+        },
+
+        async paid(){
+          try{
+            const { data } = await axios({
+              method: 'PATCH',
+              url:`${url}checkout`,
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            this.fetchMyCart()
+          }
+          catch(err){
+
+          }
+        },
+        async checkout(){
+          try{
+            const { data } = await axios ({
+              method:'POST',
+              url: `${url}generate-midtrans-token?amount=${this.cartTotalAmount}`,
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+
+            const cb = this.paid
+            console.log(data, "data token");
+
+            window.snap.pay(data.token, {
+              onSuccess: function(result) {
+                console.log("MASUKKKK PASTI BISA", result, "______")
+              }
+            })
+          }
+          catch(err){
+            console.log(err, "0000000000")
+          }
         }
       }
-      
   })
 

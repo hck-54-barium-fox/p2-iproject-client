@@ -14,7 +14,11 @@ export default {
     ...mapState(useAppStore, ["mycart", "cartTotalAmount"]),
   },
   methods: {
-    ...mapActions(useAppStore, ["fetchMyCart"]),
+    ...mapActions(useAppStore, ["fetchMyCart", 'checkout']),
+    payment(){
+     this.checkout()
+     
+    }
   },
   created() {
     this.fetchMyCart()
@@ -24,7 +28,7 @@ export default {
 </script>
 <template>
   <!-- component -->
-  <div class="flex items-center justify-center py-8">
+  <div class="flex items-center justify-center py-8 overflow: scroll;">
     <!-- <Navbar/> -->
     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
     <button
@@ -44,7 +48,7 @@ export default {
     >
       <div class="flex items-end lg:flex-row flex-col justify-end" id="cart">
         <div
-          class="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
+          class="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white overflow-x-scroll lg:h-screen h-auto"
           id="scroll"
         >
           <div
@@ -78,7 +82,7 @@ export default {
             My Cart
           </p>
           <div
-            class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50"
+            class="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50 flex flex-col mb-6 overflow: scroll;"
           >
             <CardMyCart v-for="product in mycart" :key="product.id" :mycart="product" />
           </div>
@@ -128,10 +132,11 @@ export default {
                 <p
                   class="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-black"
                 >
+
                  $ {{ this.cartTotalAmount }}
                 </p>
               </div>
-              <button
+              <button @click.prevent="payment"
                 class="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
               >
                 Checkout

@@ -36,7 +36,7 @@ router.beforeEach((to, from, next)=>{
     next()
   } else if(isLogin && (to.path === '/login' || to.path === '/register')){
     next('/')
-  } else if(!isLogin && to.path == '/checkout'){
+  } else if(!isLogin && to.path == '/mycart'){
     next('/')
   }else{
     next()

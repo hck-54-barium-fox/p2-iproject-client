@@ -27,7 +27,7 @@ import { useAppStore } from '../stores/app';
 </script>
 
 <template>
-  <div class="md:w-4/12 2xl:w-1/4 w-full">
+  <div class="md:w-4/12 2xl:w-1/4 w-full overflow: scroll;">
     <img
       :src="detailProduct.image_link"
       alt="Black Leather Bag"
