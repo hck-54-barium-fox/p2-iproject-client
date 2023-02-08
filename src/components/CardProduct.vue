@@ -1,5 +1,5 @@
 <script>
-import { mapState } from "pinia";
+import { mapActions, mapState } from "pinia";
 import { RouterLink } from "vue-router";
 import { useAppStore } from "../stores/app";
 export default {
@@ -18,6 +18,13 @@ export default {
       }).format(this.product.product_price);
     },
   },
+  methods: {
+    ...mapActions(useAppStore, ["addBookmark"]),
+
+    addBookmarkByProductId(id) {
+      this.addBookmark(id);
+    },
+  },
 };
 </script>
 
@@ -34,9 +41,14 @@ export default {
           <RouterLink :to="`/products/${product.id}`" class="btn btn-primary"
             >See Detail</RouterLink
           >
-          <RouterLink v-if="isLogin" to="/" class="btn btn-primary"
-            >Add Bookmark</RouterLink
+          <button
+            v-if="isLogin"
+            @click="addBookmarkByProductId(product.id)"
+            to="/"
+            class="btn btn-primary"
           >
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
