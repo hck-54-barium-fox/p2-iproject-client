@@ -9,7 +9,8 @@ export const useCardStore = defineStore({
       username: localStorage.getItem('username'),
       dataCard: '',
       dataDeck: '',
-      dataPlayer: ''
+      dataPlayer: '',
+      dataYoutube: ''
     };
   },
   getters: {},
@@ -205,6 +206,22 @@ export const useCardStore = defineStore({
         })
         console.log(data, 'inidata')
         this.dataPlayer = data
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          html: `${error.response.data.message}`,
+          icon: "error",
+          confirmButtonText: "Try again!",
+        });
+      }
+    },
+    async fetchYoutube(){
+      try {
+        let { data } = await axios({
+          method: 'get',
+          url: 'http://localhost:3000/youtube'
+        })
+        this.dataYoutube = data
       } catch (error) {
         Swal.fire({
           title: "Error!",

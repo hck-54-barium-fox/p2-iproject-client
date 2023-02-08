@@ -1,7 +1,7 @@
 <script>
 import CardNews from '../components/CardNews.vue'
-// import { mapActions, mapState } from 'pinia'
-// import { useFoodStore } from '../stores/food'
+import { mapActions, mapState } from 'pinia'
+import { useCardStore } from '../stores/card';
 export default {
     components: {
         CardNews,
@@ -10,22 +10,16 @@ export default {
         return {
         }
     },
-    // created(){
-    //     this.fetchFood()
-    //     this.getPage()
-    //     this.fetchWishlist()
-    // },
-    // methods: {
-    //     ...mapActions(useFoodStore, ['fetchFood', 'getPage', 'addWishlist', 'fetchWishlist',])
-    // },
-    // computed: {
-    //     ...mapState(useFoodStore, ['foodData', 'totalPage'])
-    // },
-    // watch: {
-    //     '$route.query'(){
-    //        this.fetchFood(this.$route.query)
-    //     }
-    // }
+    created(){
+        this.fetchYoutube()
+    },
+    methods: {
+        ...mapActions(useCardStore, ['fetchYoutube'])
+    },
+    computed: {
+        ...mapState(useCardStore, ['dataYoutube'])
+    },
+
 }
 </script>
 
@@ -42,13 +36,20 @@ export default {
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="d-block w-100 shadow p-5 mb-5 rounded d-flex justify-content-center">
-                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/XWI5qf3fFUk"
+                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/TMDFP3cukFk"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen></iframe>
                 </div>
             </div>
-            <CardNews />
+            <div v-for="news in dataYoutube" class="carousel-item">
+                <div class="d-block w-100 shadow p-5 mb-5 rounded d-flex justify-content-center">
+                    <iframe width="1280" height="720" :src="`https://www.youtube.com/embed/${news}`"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
@@ -61,17 +62,4 @@ export default {
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- <div class="row row-cols-3 pt-5 pb-5 ps-4 grid gap-5 d-flex justify-content-center">
-        <CardNews />
-        <CardNews />
-        <CardNews />
-        <CardNews />
-        <CardNews />
-    </div> -->
-
-    <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end pe-5 me-5 pb-2">
-            <li v-for="index in Math.ceil(totalPage/8)" class="page-item"><div @click="$router.push(`?page=${index}`)" class="page-link">{{ index }}</div></li>
-        </ul>
-    </nav> -->
 </template>
