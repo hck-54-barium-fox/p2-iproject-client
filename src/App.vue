@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <div class="main-container bg-white">
+  <div class="main-container bg-white rounded-2xl">
     <Navbar 
       v-if="loggedIn"
     />

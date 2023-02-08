@@ -34,7 +34,7 @@ export default {
       class="absolute top-[25px] left-[25px] w-[50px] h-[50px] cursor-pointer hover:scale-110 transition-all"
     />
     <div class="text">
-      <p class=" text-theme_red font-bold text-[3rem] border-red-300 border-b-4 mb-4 italic text-center">Generated Playlists</p>
+      <p class=" text-theme_red font-bold text-[3rem] border-red-300 border-b-4 mb-4 mt-8 italic text-center">Generated Playlists</p>
       <p class="text-theme_red opacity-70 font-bold text-[1rem] mb-4 italic text-center">Psst.. the AI suggested: " <span class="text-red-600 text-[1.3rem]">{{ AIsuggestion }}</span> "</p>
       <div class="start-button text-center">
         <button @click.prevent="regenerate" class="bg-theme_red px-4 p-2 mb-6 mt-2 text-[1.5rem] w-[15rem] rounded-3xl text-white font-semibold drop-shadow-md hover:scale-110 hover:bg-red-300 transition-all italic">REGENERATE!</button>

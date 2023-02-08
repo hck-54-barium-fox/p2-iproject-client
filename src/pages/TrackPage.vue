@@ -28,7 +28,7 @@ export default {
       src="../assets/images/arrow-91-128.png"
       class="absolute top-[-25px] left-[10px] w-[50px] h-[50px] cursor-pointer hover:scale-110 transition-all"
     />
-    <p class="text-theme_red font-bold text-[3rem] px-40 italic text-center">Tracks of</p>
+    <p class="text-theme_red font-bold text-[3rem] px-40 italic text-center">Example Tracks of</p>
     <p class="text-theme_red font-bold text-[3rem] border-b-4 border-red-300 mb-8 pb-4 px-40 italic text-center">" {{ specificPlaylistTitle }} "</p>
     <!-- TRACK AREA -->
     <div class="playlist-area w-[80%] p-4 flex justify-center items-center gap-8 flex-wrap">

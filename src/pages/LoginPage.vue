@@ -12,9 +12,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useMainStore, ['doLogin']),
+    ...mapActions(useMainStore, ['doLogin', 'callback', 'doSpotifyLogin']),
     login(formData) {
       this.doLogin(formData)
+    },
+
+    spotifyLogin() {
+      this.doSpotifyLogin()
     }
   }
 }
@@ -37,8 +41,14 @@ export default {
           <div class="form-content flex justify-center items-center pb-6">
             <p class="text-white">Don't have an account? <a @click.prevent="this.$router.push('/register')" href="#" class="font-bold text-blue-300 hover:text-[1.3rem] transition-all">sign up</a> here!</p>
           </div>
+          <div class="form-content flex justify-center items-center gap-8 mb-4">
+            <button type="submit" class="bg-theme_red px-4 py-2 w-[8rem] border-white border-2 border-solid rounded-3xl text-white font-semibold drop-shadow-xl hover:scale-110 hover:bg-red-300 transition-all">Login</button>
+          </div>
+          <div class="form-content flex justify-center items-center gap-8 mb-4">
+            <button @click.prevent="spotifyLogin" class=" bg-green-500 px-4 py-2 w-[10rem] border-white border-2 border-solid rounded-3xl text-white font-semibold drop-shadow-xl hover:scale-110 hover:bg-green-300 transition-all">Spotify Login</button>
+          </div>
           <div class="form-content flex justify-center items-center gap-8">
-            <button type="submit" class="bg-theme_red px-4 py-2 w-[8rem] rounded-3xl text-white font-semibold shadow-xl hover:scale-110 hover:bg-red-300 transition-all">Login</button>
+            <GoogleLogin :callback="callback" class="pt-3" />
           </div>
         </form>
       </div>

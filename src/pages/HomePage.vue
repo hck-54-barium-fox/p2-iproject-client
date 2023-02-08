@@ -8,8 +8,8 @@ export default {
     PlaylistCard
   },
   computed: {
-    ...mapState(useMainStore, ['isLoading','loggedIn']),
-    ...mapWritableState(useMainStore, ['loggedIn'])
+    ...mapState(useMainStore, ['isLoading','loggedIn',]),
+    ...mapWritableState(useMainStore, ['loggedIn', 'spotifyUser'])
   },
   methods: {
     ...mapActions(useMainStore, ['fetchWeather']),
@@ -36,6 +36,9 @@ export default {
       this.$router.push('/login')
     } else {
       this.loggedIn = true
+      if(localStorage.getItem('spotify_token')) {
+        this.spotifyUser = true
+      }
     }
   },
 
