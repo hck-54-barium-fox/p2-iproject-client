@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import { useAppStore } from '../stores/app'
 
 export default{
@@ -8,6 +8,9 @@ export default{
             email:'',
             password:''
         }
+    },
+    computed:{
+      ...mapState(useAppStore, ['isAuth'])
     },
     methods:{
         ...mapActions(useAppStore, ['login']),
@@ -131,7 +134,7 @@ export default{
 
         <p class="mt-8">
           Need an account?
-          <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold"
+          <a @click.prevent="$router.push('/register')" href="#" class="text-blue-500 hover:text-blue-700 font-semibold"
             >Create an account</a
           >
         </p>

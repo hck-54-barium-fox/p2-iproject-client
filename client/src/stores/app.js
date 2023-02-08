@@ -7,11 +7,15 @@ export const useAppStore = defineStore('app', {
       state(){
         return{
           isAuth: false,
-          products: []
+          products: [],
+          mycart:[],
+          cartTotalAmount: 0
         }
       },
       actions:{
-        
+        checkAuth(){
+          this.isAuth = !!localStorage.getItem('access_token')
+        },
         async register(form){
           try{
             const { data } = await axios({
@@ -35,6 +39,7 @@ export const useAppStore = defineStore('app', {
               data:form
             })
             localStorage.setItem('access_token', data.access_token)
+            this.isAuth = true
             this.$router.push('/')
           }
           catch(err){
@@ -45,6 +50,8 @@ export const useAppStore = defineStore('app', {
         async logout(){
           try{
             localStorage.clear()
+            this.checkAuth()
+            this.$router.push('/')
           }
           catch(err){
             console.log(err);
@@ -66,7 +73,47 @@ export const useAppStore = defineStore('app', {
           catch(err){
             console.log(err);
           }
+        },
+
+        async addCart(ProductId, product_api_url){
+          try{
+            const { data } = await axios({
+              method:'POST',
+              url:`${url}products/${ProductId}`,
+              data:{
+                product_api_url
+              },
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            Swal.fire({
+              icon: 'success',
+              title: `Success add to cart`,
+              showConfirmButton: false,
+              timer: 2000
+            })
+          }
+          catch(err){
+            console.log(err);
+          }
+        },
+        async fetchMyCart(){
+          try{
+            const { data } = await axios({
+              method: 'GET',
+              url: `${url}products/mycart`,
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            this.mycart = data
+          }
+          catch(err){
+            console.log(err);
+          }
         }
       }
+      
   })
 
