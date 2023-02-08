@@ -8,7 +8,7 @@ export default {};
       <div class="col-span-3">
         <div class="flex flex-col gap-3">
           <span class="font-semibold text-2xl">Detail Recipe</span>
-          <div class="flex rounded-lg overflow-hidden border">
+          <div class="flex rounded-lg overflow-hidden border border-primaryColor">
             <div class="w-1/3 border-r">
               <div class="relative">
                 <img
@@ -157,7 +157,7 @@ export default {};
                   >
                 </div>
                 <div class="flex justify-end">
-                  <button class="text-sm px-10 py-3 border rounded-lg">
+                  <button class="text-sm px-10 py-3 font-semibold rounded-lg bg-primaryColor">
                     Buy sample
                   </button>
                 </div>

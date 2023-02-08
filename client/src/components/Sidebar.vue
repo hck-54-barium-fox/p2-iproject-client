@@ -13,7 +13,7 @@ export default {};
           name="searchFood"
           id="searchFood"
           placeholder="Type recipe here .."
-          class="border border-gray-200 rounded-lg placeholder:text-sm"
+          class="border border-primaryColor rounded-lg placeholder:text-sm"
         />
       </div>
       <!-- Find Ingredients Nutrition -->
@@ -24,7 +24,7 @@ export default {};
           name="searchFood"
           id="searchFood"
           placeholder="Find nutrition here .."
-          class="border border-gray-200 rounded-lg placeholder:text-sm"
+          class="border border-primaryColor rounded-lg placeholder:text-sm"
         />
       </div>
     </div>

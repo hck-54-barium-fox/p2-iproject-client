@@ -3,7 +3,7 @@ export default {};
 </script>
 
 <template>
-  <div class="flex flex-col rounded-lg overflow-hidden border">
+  <div class="flex flex-col rounded-lg overflow-hidden border border-primaryColor">
     <div class="flex flex-col relative">
       <img
         src="https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_150.jpg"
@@ -30,7 +30,9 @@ export default {};
       >
     </div>
     <div class="text-sm flex p-3 flex-col gap-3">
-      <button class="px-5 py-3 border rounded-lg">See Recipe</button>
+      <button class="px-5 py-3 rounded-lg bg-primaryColor font-semibold">
+        See Recipe
+      </button>
     </div>
   </div>
 </template>
