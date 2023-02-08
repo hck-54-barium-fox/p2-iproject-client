@@ -2,6 +2,7 @@
 import { mapActions, mapWritableState } from 'pinia';
 import { usePoemStore } from '../stores/poem';
 export default {
+
     methods: {
         handleLogout() {
             localStorage.removeItem("username");
