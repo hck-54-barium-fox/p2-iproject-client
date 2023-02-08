@@ -1,5 +1,20 @@
 <script>
+import { mapActions, mapWritableState } from 'pinia';
+import { usePoemStore } from '../stores/poem';
 export default {
+
+    methods: {
+        handleLogout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("email");
+            localStorage.removeItem("access_token");
+            this.isLogin = false
+            this.$route.push('/')
+        }
+    },
+    computed: {
+        ...mapWritableState(usePoemStore, ['isLogin'])
+    }
 }
 </script>
 
@@ -25,8 +40,9 @@ export default {
             <li class="cursor-pointer hover:bg-white rounded ml-5 whitespace-nowrap"><a>About Us</a></li>
             <div class="navbar-end ml-[110vh]">
                 <ul class="flex mr-10">
-                    <li class="cursor-pointer hover:bg-white rounded hidden"><a>Login</a></li>
-                    <li class="cursor-pointer hover:bg-white rounded"><a>Log Out</a></li>
+                    <li class="cursor-pointer hover:bg-white rounded" v-if="this.isLogin === false" @click="this.$router.push('/login')">
+                        <a>Login</a></li>
+                    <li class="cursor-pointer hover:bg-white rounded"  v-if="this.isLogin === true" @click="handleLogout"><a>Log Out</a></li>
                 </ul>
             </div>
             <div class="navbar-end">
