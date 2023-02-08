@@ -26,9 +26,8 @@ class MidtransController {
 
             snap.createTransaction(parameter).then((transaction) => {
                 // transaction token
-                let transactionToken = transaction.token
-           
-                res.status(201).json({transactionToken})
+                let transactionToken = transaction
+                res.status(201).json(transactionToken)
             })
         } catch (err) {
             console.log(err)
