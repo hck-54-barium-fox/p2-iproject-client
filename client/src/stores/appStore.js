@@ -147,5 +147,23 @@ export const useAppStore = defineStore("app", {
         console.log(err);
       }
     },
+
+    async uploadFile(image) {
+      try {
+        console.log(image);
+        const post = await axios({
+          method: "POST",
+          url: `${localhost}/memes/memeMulter`,
+          data: image,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        this.fetchPosts();
+        this.router.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 });
