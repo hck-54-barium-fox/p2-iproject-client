@@ -1,4 +1,30 @@
 <script>
+import { mapActions, mapState } from 'pinia'
+import { useAppStore } from '../stores/app'
+
+export default {
+    data() {
+        return {
+            email: '',
+            password: '',
+            name: ''
+        }
+    },
+    computed: {
+        ...mapState(useAppStore, ['isLogin'])
+    },
+    methods: {
+        ...mapActions(useAppStore, ['doRegister']),
+
+        handleRegister() {
+            this.doRegister({
+                email: this.email,
+                password: this.password,
+                name: this.name
+            })
+        }
+    }
+}
 </script>
 
 <template>
@@ -11,18 +37,18 @@
                             <div class="mb-md-2 mt-md-2 pb-5">
                                 <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
-                                <form method="post">
+                                <form @submit.prevent="handleRegister">
                                     <div class="form-outline form-white mb-4">
                                         <label class="form-label">Email</label>
-                                        <input type="email" class="form-control form-control-lg" />
+                                        <input v-model="email" type="email" class="form-control form-control-lg" />
                                     </div>
                                     <div class="form-outline form-white mb-4">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control form-control-lg" />
+                                        <input v-model="password" type="password" class="form-control form-control-lg" />
                                     </div>
                                     <div class="form-outline form-white mb-4">
                                         <label class="form-label">Name</label>
-                                        <input type="text" class="form-control form-control-lg" />
+                                        <input v-model="name" type="text" class="form-control form-control-lg" />
                                     </div>
                                     <button class="btn btn-outline-light btn-lg px-5 mt-4" type="submit">Sign Up</button>
                                 </form>

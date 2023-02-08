@@ -1,4 +1,28 @@
 <script>
+import { mapActions, mapState } from 'pinia'
+import { useAppStore } from '../stores/app'
+
+export default {
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+    computed: {
+        ...mapState(useAppStore, ['isLogin'])
+    },
+    methods: {
+        ...mapActions(useAppStore, ['doLogin']),
+
+        handleLogin() {
+            this.doLogin({
+                email: this.email,
+                password: this.password
+            })
+        }
+    }
+}
 </script>
 
 <template>
@@ -11,21 +35,21 @@
                             <div class="mb-md-2 mt-md-2 pb-5">
                                 <h2 class="fw-bold mb-2 text-uppercase">Sign In</h2>
                                 <p class="text-white-50 mb-5">Please enter your login and password!</p>
-                                <form method="post">
+                                <form @submit.prevent="handleLogin" >
                                     <div class="form-outline form-white mb-4">
                                         <label class="form-label">Email</label>
-                                        <input type="email" class="form-control form-control-lg" />
+                                        <input v-model="email" type="email" class="form-control form-control-lg" />
                                     </div>
                                     <div class="form-outline form-white mb-4">
                                         <label class="form-label">Password</label>
-                                        <input type="password" class="form-control form-control-lg" />
+                                        <input v-model="password" type="password" class="form-control form-control-lg" />
                                     </div>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                 </form>
                             </div>
                             <div>
                                 <p class="mb-0">Don't have an account?
-                                    <a @click.prevent="this.$router.push('/register')" href="#!" class="text-white-50 fw-bold">Sign Up</a>
+                                    <a @click.prevent="this.$router.push('/register')" class="text-white-50 fw-bold">Sign Up</a>
                                 </p>
                             </div>
                         </div>
