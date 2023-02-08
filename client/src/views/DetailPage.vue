@@ -1,5 +1,5 @@
 <script>
-import { mapState } from "pinia";
+import { mapState, mapActions } from "pinia";
 import { useAppStore } from "../stores/app";
 import Nutrition from "../components/Nutrition.vue";
 export default {
@@ -26,8 +26,13 @@ export default {
     ]),
   },
   methods: {
+    ...mapActions(useAppStore, ["doPurchase"]),
     handleNutrition(dataName) {
       this.fetchNutrition(dataName);
+    },
+    handlePurchase() {
+      // console.log('masuk handle purchase')
+      this.doPurchase();
     },
   },
   created() {
@@ -93,6 +98,7 @@ export default {
                 </div>
                 <div class="flex justify-end">
                   <button
+                    @click.prevent="handlePurchase"
                     class="text-sm px-10 py-3 font-semibold rounded-lg bg-primaryColor"
                   >
                     Buy sample
