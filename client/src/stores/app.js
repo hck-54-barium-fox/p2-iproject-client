@@ -4,7 +4,7 @@ const server = 'http://localhost:4000'
 
 export const useAppStore = defineStore('app', {
     state : ()=>({
-
+            products : []
     }),
     getters : {},
     actions : {
@@ -46,7 +46,7 @@ export const useAppStore = defineStore('app', {
                     data : payload
                 })
                 localStorage.setItem('access_token', data.access_token)
-                // this.router.push('/')
+                this.router.push('/')
                 console.log(data.access_token, 'INI ACC TOKEN')
             } catch (error) {
                 // console.log(error, 'ERRR LOGIN')
@@ -56,6 +56,23 @@ export const useAppStore = defineStore('app', {
                     text: error.response.data.message,
                     footer: "Try Again :)",
                   });
+            }
+        },
+
+        async fetchProduct(){
+            try {
+                let {data} = await axios({
+                    method : 'get',
+                    url :  `${server}/products`,
+                    headers : {
+                        access_token : localStorage.getItem('access_token')
+                    }
+                })
+
+                console.log(data, 'INI DATA')
+                this.products = data
+            } catch (error) {
+                console.log(error)
             }
         }
     }
