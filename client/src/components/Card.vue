@@ -1,23 +1,19 @@
 <script>
-// import { mapActions, mapState, mapWritableState } from 'pinia';
+import { mapActions, mapState, mapWritableState } from 'pinia';
+import { useCardStore } from '../stores/card';
 
 export default {
     props: ['card'],
-    // methods: {
-    //     ...mapActions(useFoodStore, ['addWishlist', 'getFoodById',]),
-    //     addingNewWishlist(id) {
-    //         this.addWishlist(id)
-    //         this.foodId.push(id)
-    //     },
-    //     getDetail(id){
-    //         this.$router.push(`/${id}`)
+    methods: {
+        ...mapActions(useCardStore, ['postMyDeck']),
+        addCardToDeck(id) {
+            this.postMyDeck(id)
+        },
 
-    //     }
-
-    // },
-    // computed: {
-    //     ...mapWritableState(useFoodStore, ['foodId', 'foodDetailId', 'qrCode'])
-    // }
+    },
+    computed: {
+        // ...mapWritableState(useCardStore)
+    }
 }
 
 </script>
@@ -35,6 +31,7 @@ export default {
         <div class="card-body">
             <h5 class="card-title d-flex justify-content-center pb-3">{{ card.name }}</h5>
             <div
+            @click.prevent="addCardToDeck(card.id)"
              class="btn btn-warning d-flex justify-content-center">
                 Add to My Deck!
             </div>

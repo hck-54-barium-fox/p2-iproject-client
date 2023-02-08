@@ -58,10 +58,4 @@ export default {
     <div class="row row-cols-3 pt-5 pb-5 ps-4 grid gap-4 d-flex justify-content-center">
         <Card v-for="card in dataCard" :card="card"/>
     </div>
-
-    <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end pe-5 me-5 pb-2">
-            <li v-for="index in Math.ceil(totalPage/8)" class="page-item"><div @click="$router.push(`?page=${index}`)" class="page-link">{{ index }}</div></li>
-        </ul>
-    </nav> -->
 </template>

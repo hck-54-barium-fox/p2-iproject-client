@@ -61,8 +61,8 @@ export default {
                     <form @submit.prevent="handleLoginCR">
                         <p class="signup text-decoration-none" style="text-align: center;">Or Sign in with Your Clash
                             Royale ID</p>
-                        <label for="password-login" class="form-label"></label>
-                        <input v-model="this.Id" type="text" class="form-control" id="password-login"
+                        <label for="password-loginCR" class="form-label"></label>
+                        <input v-model="this.Id" type="text" class="form-control" id="password-loginCR"
                             placeholder="Clash Royale ID">
                         <Btn label="Sign in" />
                     </form>

@@ -6,8 +6,9 @@ export const useCardStore = defineStore({
   id: "card",
   state: () => {
     return {
-      username: "",
-      dataCard: ''
+      username: localStorage.getItem('username'),
+      dataCard: '',
+      dataDeck: ''
     };
   },
   getters: {},
@@ -23,6 +24,7 @@ export const useCardStore = defineStore({
         localStorage.setItem("username", data.username);
         this.username = localStorage.username;
         localStorage.setItem("userId", data.id);
+        this.router.push('/')
         Swal.fire({
           title: "Great!",
           text: `Welcome back, ${data.username.split("@")[0]}`,
@@ -30,6 +32,7 @@ export const useCardStore = defineStore({
           confirmButtonText: "Cool!",
         });
       } catch (error) {
+        this.router.push('/login')
         Swal.fire({
           title: "Error!",
           html: `${error.response.data.message}`,
@@ -115,6 +118,74 @@ export const useCardStore = defineStore({
         Swal.fire({
           title: "Error!",
           text: `Internal server error`,
+          icon: "error",
+          confirmButtonText: "Try again!",
+        });
+      }
+    },
+    async postMyDeck(cardId){
+      try {
+        let { data } = await axios({
+          method: 'post',
+          url: `http://localhost:3000/mydeck/${cardId}`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          title: "Great!",
+          text: `Success add to deck!`,
+          icon: "success",
+          confirmButtonText: "Cool!",
+        });
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          html: `${error.response.data.message}`,
+          icon: "error",
+          confirmButtonText: "Try again!",
+        });
+      }
+    },
+    async fetchMyDeck(){
+      try {
+        let { data } = await axios({
+          method: 'get',
+          url: 'http://localhost:3000/mydeck',
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        this.dataDeck = data
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          html: `This card already in your deck!`,
+          icon: "error",
+          confirmButtonText: "Try again!",
+        });
+      }
+    },
+    async deleteCard(cardId){
+      try {
+        let { data } = await axios({
+          method: 'delete',
+          url: `http://localhost:3000/mydeck/${cardId}`,
+          headers: {
+            access_token: localStorage.getItem('access_token')
+          }
+        })
+        Swal.fire({
+          title: "Great!",
+          text: `Success remove from deck!`,
+          icon: "success",
+          confirmButtonText: "Cool!",
+        });
+        this.fetchMyDeck()
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          html: `${error}`,
           icon: "error",
           confirmButtonText: "Try again!",
         });
