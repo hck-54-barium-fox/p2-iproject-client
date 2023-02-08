@@ -52,6 +52,9 @@ export default {
                     <li class="nav-item">
                         <router-link to="/news" class="nav-link" aria-current="page" href="#">News</router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link to="/player" class="nav-link" aria-current="page" href="#">Player</router-link>
+                    </li>
                 </ul>
                 <div id="account-name" class="d-flex pe-5">
                     <div class="dropdown">
