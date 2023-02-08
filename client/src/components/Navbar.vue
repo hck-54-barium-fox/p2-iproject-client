@@ -1,12 +1,13 @@
 <script>
 import { mapActions } from 'pinia';
+import router from '../router';
 import { useAppStore } from '../stores/app';
 
-export default{
-    methods:{
-        ...mapActions(useAppStore,['doLogout']),
-        handlerLogout(){
-           this.doLogout()
+export default {
+    methods: {
+        ...mapActions(useAppStore, ['doLogout']),
+        handlerLogout() {
+            this.doLogout()
         }
     }
 }
@@ -21,10 +22,11 @@ export default{
             </div>
 
             <ul class="navigation">
-                <li> <a href="/" class="active"> Games</a></li>
-                <li> <a href="/"> News Games</a></li>
-                <li> <a href="/"> Profile</a></li>
-                <li> <a @click.prevent="handlerLogout" > Logout</a></li>
+                <!-- class="active" -->
+                <li> <a @click.prevent="$router.push('/home')" > Games</a></li>
+                <li><a @click.prevent="$router.push('/newsGame')"> News Games</a></li>
+                <li> <a @click.prevent="$router.push('/profile')"> Profile</a></li>
+                <li> <a @click.prevent="handlerLogout"> Logout</a></li>
 
             </ul>
         </nav>
@@ -46,8 +48,8 @@ body {
     /* justify-content: center;
     align-items: flex-start; */
     width: 100%;
-   ;
- 
+    ;
+
 }
 
 .wrapper {

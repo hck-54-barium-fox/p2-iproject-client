@@ -39,7 +39,18 @@ export const useAppStore = defineStore('app', {
             this.isLogin = false
             this.router.push('/login')
         },
-        
+        async fetchGames(){
+            try{
+            let {data} = await axios({
+                method:"GET",
+                url:`${url}/games`
+            })
+            this.games= data
+
+            }catch(err){
+                console.log(err);
+            }
+        }
     }
 
 }
