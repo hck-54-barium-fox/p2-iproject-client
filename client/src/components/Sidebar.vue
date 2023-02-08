@@ -1,5 +1,14 @@
 <script>
-export default {};
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/app";
+export default {
+  methods: {
+    ...mapActions(useAppStore, ["doLogout"]),
+    handleLogout() {
+      this.doLogout();
+    },
+  },
+};
 </script>
 
 <template>
@@ -29,7 +38,7 @@ export default {};
       </div>
       <span class="py-5 border-t flex gap-1 font-semibold cursor-pointer"
         ><div>🏃‍♂️</div>
-        <span>Logout</span></span
+        <span @click.prevent="handleLogout">Logout</span></span
       >
     </div>
   </div>

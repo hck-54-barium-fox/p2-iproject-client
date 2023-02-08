@@ -23,5 +23,14 @@ export const useAppStore = defineStore("app", {
         console.log(error);
       }
     },
+    async doLogout() {
+      try {
+        localStorage.removeItem("access_token");
+        this.isLogin = false;
+        this.router.push("/login");
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 });
