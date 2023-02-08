@@ -48,15 +48,15 @@ export const useAppStore = defineStore("app", {
           },
         });
 
-        const { data: imgRecipe } = await axios({
-          method: "get",
-          url: `https://cors-anywhere.herokuapp.com/${this.pixabayUrl}/api?key=${this.pixabayKey}&q=${keyRecipe}`,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        });
+        // const { data: imgRecipe } = await axios({
+        //   method: "get",
+        //   url: `https://cors-anywhere.herokuapp.com/${this.pixabayUrl}/api?key=${this.pixabayKey}&q=pizza`,
+        //   headers: {
+        //     "Access-Control-Allow-Origin": "*",
+        //   },
+        // });
         // jika recipe baru tambah axios pixabay
-        console.log(recipe, imgRecipe);
+        console.log(recipe);
         this.recipes = recipe;
       } catch (error) {
         console.log(error);
@@ -88,6 +88,43 @@ export const useAppStore = defineStore("app", {
         });
         this.nutritions = data;
         console.log(this.nutritions);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async changeIsPurchased() {
+      try {
+        const { data } = axios({
+          method: "patch",
+          url: `${this.baseUrl}/payments`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async doPurchase() {
+      try {
+        const { data } = await axios({
+          method: "post",
+          url: `${this.baseUrl}/generate-midtrans-token`,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+
+        const callback = this.changeIsPurchased;
+
+        window.snap.pay(data.token, {
+          onSuccess: function (result) {
+            /* You may add your own implementation here */
+            callback();
+            // console.log(result);
+          },
+        });
       } catch (error) {
         console.log(error);
       }
