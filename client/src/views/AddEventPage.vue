@@ -1,4 +1,6 @@
 <script>
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/app";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export default {
   data() {
@@ -15,14 +17,20 @@ export default {
       },
     };
   },
+  methods: {
+    ...mapActions(useAppStore,['createEvent']),
+    addEvent(){
+        this.createEvent(this.form)
+    }
+  },
   mounted() {
-    // ClassicEditor.create(document.querySelector("#editor"))
-    //   .then((editor) => {
-    //     console.log(editor);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    ClassicEditor.create(document.querySelector("#editor"))
+      .then((editor) => {
+        console.log(editor);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   },
 };
 </script>
@@ -45,7 +53,7 @@ export default {
     </div>
     <div class="row">
       <div class="col-6 col-offset-3 col-md-6">
-        <form @submit.prevent="submitType">
+        <form @submit.prevent="addEvent">
           <div class="mb-3">
             <label for="product-title"
               >Title<span class="text-danger fw-bold">*</span></label
@@ -62,7 +70,8 @@ export default {
           </div>
           <div class="mb-3">
             <label for="product-content"
-              >Content <span class="text-danger fw-bold">*</span></label
+              > Describe your content Event, place of Event, and message for the Guest here
+           <span class="text-danger fw-bold">*</span></label
             >
             <ckeditor
               :editor="editor"
@@ -104,7 +113,6 @@ export default {
             <div class="col-6">
               <button
                 class="btn btn-lg btn-primary rounded-pill w-100 p-2"
-                id="create-product"
                 type="submit"
               >
                 Submit

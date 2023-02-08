@@ -2,14 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from "../views/LoginPage.vue"
 import RegisterPage from "../views/RegisterPage.vue"
 import AddEvent from "../views/AddEventPage.vue"
+import HomePage from "../views/HomePage.vue"
+import DetailsPage from "../views/EventDetailPage.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/createsevent',
-      name: 'addEvent',
-      component: AddEvent
-    },
     {
       path: '/login',
       name: 'login',
@@ -19,7 +16,23 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterPage
+    },
+    {
+      path: '/createEvent',
+      name: 'createEvent',
+      component: AddEvent
+    },
+    {
+      path: '/',
+      name: 'homePage',
+      component: HomePage
+    },
+    {
+      path:'/event/:eventId',
+      name:'detailsPage',
+      component: DetailsPage
     }
+
   ]
 })
 // router.beforeEach((to, from, next) => {
