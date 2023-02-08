@@ -62,7 +62,7 @@
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                <img src="https://i.pinimg.com/564x/b2/60/f0/b260f0db4040a1f18077d82ac41353f2.jpg"
                   class="img-fluid" alt="Sample image">
 
               </div>
