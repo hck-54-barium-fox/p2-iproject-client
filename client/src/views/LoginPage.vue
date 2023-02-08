@@ -12,7 +12,7 @@
       }
     },
     methods: {
-      ...mapActions(useCounterStore, ['handleLogin'])
+      ...mapActions(useCounterStore, ['handleLogin', 'handleGoogleLogin'])
     }
   }
 </script>
@@ -29,24 +29,20 @@
             <h3 class="mb-5">Sign in</h3>
             <form @submit.prevent="handleLogin(this.value)">
               <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
+                <label for="exampleInputEmail1" class="pb-2">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="value.email">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1" class="pt-4 pb-2">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="value.password" >
               </div>
-              <div class="text-center pb-4">
+              <div class="text-center pb-4 pt-4">
                 Don't have an account? <a href="#" @click.prevent="this.$router.push('/register')">Signup</a>
               </div>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </form>
-
             <hr class="my-4">
-
-            <button class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-              type="submit"><i class="fab fa-google me-2"></i> Sign in with google
-            </button>
+            <GoogleLogin :callback="handleGoogleLogin" />
           </div>
         </div>
       </div>
