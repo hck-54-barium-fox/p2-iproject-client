@@ -13,15 +13,15 @@ export default {
     NavbarComponent,
     FooterComponent,
   },
-  methods : {
-    ...mapActions(useAppStore, ['fetchProductById'])
+  methods: {
+    ...mapActions(useAppStore, ["fetchProductById"]),
   },
   computed: {
     ...mapState(useAppStore, ["productDetail"]),
   },
-  created(){
-    this.fetchProductById(this.$route.params.id)
-  }
+  created() {
+    this.fetchProductById(this.$route.params.id);
+  },
 };
 </script>
 
@@ -31,7 +31,7 @@ export default {
     <main class="my-3">
       <div class="container-xxl">
         <div class="row m-auto">
-          <CardProductDetail :productDetail="productDetail"/>
+          <CardProductDetail :productDetail="productDetail" />
         </div>
       </div>
     </main>
