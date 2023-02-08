@@ -1,8 +1,10 @@
 <script>
 // import { mapActions } from 'pinia'
 // import { useFoodStore } from '../stores/food';
+import { mapActions } from 'pinia';
 import Btn from '../components/Btn.vue';
 import Navbar from '../components/Navbar.vue';
+import { useCardStore } from '../stores/card';
 export default {
     components: {
         Navbar,
@@ -18,10 +20,11 @@ export default {
         }
     },
     methods: {
-        // ...mapActions(useFoodStore, ['submitLogin', 'googleLogin']),
-        // handleLogin() {
-        //   this.submitLogin(this.customer)
-        // }
+        ...mapActions(useCardStore, ['postLogin']),
+        handleLogin() {
+            this.postLogin(this.customer)
+            this.$router.push('/')
+        }
     }
 }
 </script>
@@ -40,7 +43,7 @@ export default {
                                     up</b></router-link>
                         </div>
                     </div>
-                    <form class="login-form">
+                    <form @submit.prevent="handleLogin()" class="login-form">
                         <label for="email-login" class="form-label"></label>
                         <input v-model="this.customer.email" type="email" class="form-control" id="email-login"
                             placeholder="Email">

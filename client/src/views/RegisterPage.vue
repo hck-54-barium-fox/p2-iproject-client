@@ -1,7 +1,7 @@
 <script>
-// import { mapActions } from 'pinia'
+import { mapActions } from 'pinia'
 import Btn from '../components/Btn.vue'
-// import { useFoodStore } from '../stores/food';
+import { useCardStore } from '../stores/card';
 export default {
     components: {
         Btn
@@ -15,11 +15,11 @@ export default {
         }
     },
     methods: {
-        // ...mapActions(useFoodStore, ['submitRegister']),
-        // submittingRegister() {
-        //     this.submitRegister(this.customer)
-        //     this.$router.push('/login')
-        // }
+        ...mapActions(useCardStore, ['submitRegister']),
+        submittingRegister() {
+            this.submitRegister(this.customer)
+            this.$router.push('/login')
+        }
     }
 }
 </script>
