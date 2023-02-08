@@ -5,11 +5,15 @@ import { createPinia } from 'pinia'
 // import "vue-toastification/dist/index.css"
 import App from './App.vue'
 import router from './router'
-
+import vue3GoogleLogin from 'vue3-google-login'
 import './assets/style.css'
 
 const app = createApp(App)
 const pinia = createPinia()
+app.use(vue3GoogleLogin, {
+    clientId: '138981022509-le69kste16ntmh10fo8vo7u82j7rtkou.apps.googleusercontent.com'
+  })
+
 pinia.use(({store}) => {
     store.router = markRaw(router)
 })

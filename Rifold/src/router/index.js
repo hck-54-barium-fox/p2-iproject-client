@@ -37,5 +37,21 @@ const router = createRouter({
     },
   ]
 })
-
+router.beforeEach((to, from, next)=>{ 
+  const isLogin = localStorage.access_token
+  if(isLogin && to.path === '/myproduct'){
+    next()
+  } else if(isLogin && (to.path === '/login' || to.path === '/register')){
+    next('/')
+  } else if(!isLogin && to.path == '/myproduct'){
+    // Swal.fire({
+    //   icon: 'error',
+    //   title: 'Oops...',
+    //   text: 'login dulu',
+    // })
+    next('/login')
+  }else{
+    next()
+  }
+})
 export default router

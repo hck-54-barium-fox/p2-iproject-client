@@ -3,7 +3,8 @@ import { mapActions,mapState } from 'pinia';
 import { useAppStore } from '../stores/app';
 export default {
     methods : {
-        ...mapActions(useAppStore,['detailProduct'])
+        ...mapActions(useAppStore,['detailProduct']),
+        
     },
     computed : {
         ...mapState(useAppStore,['productDetail'])

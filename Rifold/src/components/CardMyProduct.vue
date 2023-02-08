@@ -18,7 +18,36 @@ export default {
 </script>
 
 <template>
- <div class="w-[300px] p-2 ml-12 mt-[200px]">
+      <ul class="-my-4 divide-y divide-gray-100">
+              <li class="flex items-center py-4">
+                <img
+                 :src="product.Product.imageUrl"
+                  alt=""
+                  class="object-cover w-16 h-16 rounded"
+                />
+
+                <div class="ml-4">
+                  <h3 class="text-sm text-gray-900">{{ product.Product.name  }}</h3>
+
+                  <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
+                    <div>
+                      <dt class="inline">Size:</dt>
+                      <dd class="inline">{{product.Product.size }}</dd>
+                    </div>
+
+                    <div>
+                      <dt class="inline">Price:</dt>
+                      <dd class="inline">{{ product.Product.price  }}</dd>
+                    </div>
+                    <div>
+                      <dt class="inline">Description:</dt>
+                      <dd class="inline">{{ product.Product.description  }}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </li>
+            </ul>
+ <!-- <div class="w-[300px] p-2 ml-12 mt-[200px]">
         <a href="#" class="relative block group">
   <img
     :src="product.Product.imageUrl"
@@ -37,7 +66,7 @@ export default {
     </p>
   </div>
 </a>
-      </div>
+      </div> -->
 
   
 

@@ -1,5 +1,5 @@
 <script>
-import { mapActions} from 'pinia';
+import { mapActions, mapState} from 'pinia';
 import { useAppStore } from '../stores/app';
 
 export default {
@@ -7,50 +7,46 @@ export default {
     ...mapActions(useAppStore,['logout']),
     handleLogout() {
       this.logout()
+    },
+    checkLogin() {
+      this.isLogin = localStorage.access_token
     }
+  },
+  computed : {
+    ...mapState(useAppStore,['isLogin'])
+  },
+  created() {
+    this.isLogin = localStorage.access_token
+    this.checkLogin()
   }
 }
 </script>
 <template>
+  <pre>{{ localStorage }}</pre>
  <header class=" text-white header sticky bg-gray-800 hover:bg-gray-900 stiky top-0 z-[50]">
     <div
       class="text-white mx-auto flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8"
     >
       <div class="flex items-center">
-        <button type="button" class="p-2 sm:mr-4 lg:hidden">
-        Rifold
+        <button type="button" class="p-2 sm:mr-4 font-bold hover:border-current hover:text-white hover:transition-colors border-b-4 border-transparent">
+        RIFOLD
         </button>
       </div>
+     <router-link to="/">
+      <div class="flex items-center">
+        <button type="button" class="p-2 sm:mr-4 font-bold hover:border-current hover:text-white hover:transition-colors border-b-4 border-transparent">
+       HOME
+        </button>
+      </div>
+     </router-link>
   
       <div class="flex flex-1 items-center justify-end">
         <nav
           aria-label="Site Nav"
           class="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-white"
-        >
-         <router-link to="/">
+        >  
           <a
-            href="/about"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-white"
-          >
-            Home
-          </a>
-         </router-link>
-  
-          <a
-            href="/news"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-white"
-          >
-            News
-          </a>
-  
-          <a
-            href="/products"
-            class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-white"
-          >
-            Products
-          </a>
-  
-          <a
+          v-if="isLogin"
           @click.prevent="handleLogout"
             href="/contact"
             class="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-white"
@@ -67,7 +63,7 @@ export default {
               <span>
               <a
                 href="/cart"
-                class="block border-b-4 border-transparent p-6 hover:border-red-700"
+                class="block border-b-4 border-transparent p-6 hover:border-white"
               >
                 <svg
 
@@ -90,10 +86,11 @@ export default {
             </span>
             </router-link>
   
+           <router-link v-if="!isLogin" to="/login">
             <span>
               <a
                 href="/account"
-                class="block border-b-4 border-transparent p-6 hover:border-red-700"
+                class="block border-b-4 border-transparent p-6 hover:border-white"
               >
                 <svg
                   class="h-4 w-4"
@@ -113,31 +110,7 @@ export default {
                 <span class="sr-only"> Account </span>
               </a>
             </span>
-  
-            <span class="hidden sm:block">
-              <a
-                href="/search"
-                class="block border-b-4 border-transparent p-6 hover:border-red-700"
-              >
-                <svg
-                  class="h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-  
-                <span class="sr-only">
-                 Search </span>
-              </a>
-            </span>
+           </router-link>
           </div>
         </div>
       </div>

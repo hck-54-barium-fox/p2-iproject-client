@@ -10,7 +10,12 @@ export const useAppStore = defineStore('App',{
             dataProduct : [],
            productDetail : [],
            MYProduct : {},
-           totalHarga : 0
+           totalHarga : 0,
+           dataProvince : [],
+           dataCity : [],
+           cost : [],
+           totalOngkir : 0,
+           isLogin : localStorage.access_token
         }
     },
     actions : {
@@ -27,6 +32,12 @@ export const useAppStore = defineStore('App',{
                 console.log(data)
             } catch (error) {
                 console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                  })
             }
         },
         async login(result) {
@@ -37,9 +48,23 @@ export const useAppStore = defineStore('App',{
                     data : result
                 })
                 localStorage.setItem('access_token',data.access_token)
+                this.isLogin = localStorage.access_token
                 this.router.push({name:'home'})
+                Swal.fire({
+                    icon: 'success',
+                    title: 'success Login',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  
             } catch (error) {
                 console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.response.data.message,
+                    footer: '<a href="">Why do I have this issue?</a>'
+                  })
             }
         },
         async Product() {
@@ -82,6 +107,12 @@ export const useAppStore = defineStore('App',{
             this.router.push('/myproduct')
           } catch (error) {
             console.log(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.response.data.message,
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
           }
         },
         async readMyProduct() {
@@ -105,11 +136,13 @@ export const useAppStore = defineStore('App',{
                 // this.totalHarga = this.MyProduct[i].Product.price
                 console.log(this.totalHarga);
             } catch (error) {
+                // Swal.fire(error.response.data.message);
                 console.log(error);
             }
         },
         logout() {
             localStorage.clear()
+            this.isLogin = localStorage.access_token
             this.router.push('/login')
         },
         async succes() {
@@ -155,10 +188,78 @@ export const useAppStore = defineStore('App',{
         },
         async getProvince() {
             try {
-                // const {data} = await 
+                const {data} = await axios({
+                    method : 'get',
+                    url : `${BASE_URL}/province`,
+                    headers : {
+                        access_token : localStorage.access_token  
+                    }
+                }) 
+                // console.log(data,'<<<<<<<<<');
+                this.dataProvince = data
             } catch (error) {
-                
+                console.log(error);
             }
-        }
+        },
+        async getCity(provinceId) {
+            try {
+                const {data} = await axios({
+                    method : 'get',
+                    url : `${BASE_URL}/city/${provinceId}`,
+                    headers : {
+                        access_token : localStorage.access_token  
+                    }
+                }) 
+                // console.log(data,'<<<<<<<<<');
+                this.dataCity = data.data
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getCost(cityId) {
+            try {
+              const { data } = await axios({
+                method: "get",
+                url: BASE_URL + "/cost?destination=" + cityId,
+                headers: {
+                  access_token: localStorage.access_token,
+                },
+              });
+              this.cost = data;
+              console.log(data.rajaongkir.results[0].costs[0].cost[0].value,'<<<<<<<');
+              this.totalOngkir = data.rajaongkir.results[0].costs[0].cost[0].value
+            } catch (error) {
+              console.log(error);
+            //   Swal.fire(error.response.data.message);
+            }
+          },
+          async GoogleLogin(response) {
+            console.log('masukkk');
+            try {
+              const {data} = await axios({
+                method:'POST',
+                url: `${BASE_URL}/google`,
+                data : {
+                  idToken: response.credential
+                }
+              })
+              console.log(data.username,'dari dari');
+              localStorage.setItem('access_token',data.access_token)
+              localStorage.setItem('username',data.username)
+              localStorage.setItem('role',data.role)
+              this.name = data.username
+              this.router.push('/')
+            //   this.curentPage = 'dashboard'
+              Swal.fire({
+                      icon: 'success',
+                      title: ` berhasil login`,
+                      showConfirmButton: false,
+                      timer: 5000
+                  })
+            //   console.log(this.nameGoogle);
+            } catch (error) {
+              console.log(error,'ini dari google');
+            }
+          },
     }
 })

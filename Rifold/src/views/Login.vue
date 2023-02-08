@@ -9,12 +9,16 @@ export default {
         }
     },
     methods : {
-        ...mapActions(useAppStore,['login']),
+        ...mapActions(useAppStore,['login','GoogleLogin']),
         handleLogin() {
             this.login({
                 email : this.email,
                 password : this.password
             })
+        },
+        callback(response) {
+        //   this.$emit('GoogleLogin',response)
+        this.GoogleLogin(response)
         }
     }
 }
@@ -34,16 +38,16 @@ export default {
   </div>
   <div class="w-full xl:w-1/2 p-8">
     <form @submit.prevent="handleLogin">
-     <router-link to="/register">
         <h1 class=" text-2xl font-bold">Sign in to your account</h1>
-     </router-link>
       <div>
         <span class="text-gray-600 text-sm">
           Don't have an account?
         </span>
-        <span class="text-gray-700 text-sm font-semibold">
+        <router-link to="/register">
+          <span class="text-gray-700 text-sm font-semibold">
           Sign up
         </span>
+        </router-link>
       </div>
       <div class="mb-4 mt-6">
         <label
@@ -88,6 +92,9 @@ export default {
         >
           Sign in
         </button>
+        <div>
+          <GoogleLogin :callback="callback"/>
+        </div>
       </div>
     </form>
   </div>

@@ -42,11 +42,13 @@ export default {
       <h1 class=" text-2xl font-bold">Sign in to your account</h1>
       <div>
         <span class="text-gray-600 text-sm">
-          Don't have an account?
+          already have an account?
         </span>
-        <span class="text-gray-700 text-sm font-semibold">
-          Sign up
+        <router-link to="/login">
+          <span class="text-gray-700 text-sm font-semibold">
+          Login here
         </span>
+        </router-link>
       </div>
       <div class="mb-4 mt-6">
         <label
