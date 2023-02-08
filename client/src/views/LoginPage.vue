@@ -1,9 +1,30 @@
 <script>
-export default {};
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/app";
+
+export default {
+  data() {
+    return {
+      formLogin: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    ...mapActions(useAppStore, ["doLogin"]),
+    handleLogin() {
+      this.doLogin(this.formLogin);
+    },
+  },
+};
 </script>
 
 <template>
-  <div class="flex flex-col px-[35%] gap-[20px] min-h-screen justify-center">
+  <form
+    @submit.prevent="handleLogin"
+    class="flex flex-col px-[35%] gap-[20px] min-h-screen justify-center"
+  >
     <div class="flex flex-col gap-3">
       <span class="text-3xl font-bold text-center italic">hafood</span>
       <span class="text-center text-primaryColor text-sm"
@@ -11,6 +32,7 @@ export default {};
       >
     </div>
     <input
+      v-model="formLogin.email"
       type="text"
       name="email"
       id="email"
@@ -18,14 +40,18 @@ export default {};
       placeholder="Type email here"
     />
     <input
+      v-model="formLogin.password"
       type="password"
       name="password"
       id="password"
       class="rounded-lg placeholder:text-sm"
       placeholder="Type password here"
     />
-    <button class="bg-primaryColor py-[10px] rounded-lg text-white font-bold">
+    <button
+      type="submit"
+      class="bg-primaryColor py-[10px] rounded-lg text-white font-bold"
+    >
       Sign In
     </button>
-  </div>
+  </form>
 </template>
