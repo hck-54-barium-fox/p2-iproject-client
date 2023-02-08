@@ -6,6 +6,7 @@ const localhost = "http://localhost:3000";
 export const useAppStore = defineStore("app", {
   state: () => ({
     isLogin: false,
+    postList: [],
   }),
 
   getters: {},
@@ -28,6 +29,26 @@ export const useAppStore = defineStore("app", {
 
         this.router.push("/memes");
         console.log(data, "<<<<<<<<<<<<<<<");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    doLogout() {
+      this.isLogin = false;
+      localStorage.removeItem("access_token");
+      this.router.push("/login");
+    },
+
+    async fetchPosts() {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: `${localhost}/posts`,
+        });
+        // console.log(data);
+        this.postList = data;
+        console.log(this.postList);
       } catch (err) {
         console.log(err);
       }
