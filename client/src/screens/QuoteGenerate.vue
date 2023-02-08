@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <div class="container absolute top-[40vh] left-[10vh] flex flex-row gap-x-5 px-10 w-sm">
+  <div class="container mt-[30vh] ml-[20vh] flex flex-row gap-x-5  w-sm">
     <showQuote v-for="quote in quotes" :key="quote.id" :quote="quote" />
   </div>
 

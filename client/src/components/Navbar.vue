@@ -22,23 +22,15 @@ export default {
     <!-- Navbar -->
     <section>
 
-        <div class="navbar bg-black">
+        <div class="navbar bg-black w-[204vh]">
             <div class="navbar-start">
-                <div class="dropdown">
-                    <label tabindex="0" class="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </label>
-
-                </div>
+             
                 <img src="../assets/logo.png" class="h-10 w-12 ml-5" alt="logo sts">
-                <a class="btn btn-ghost normal-case text-2xl font-bold">SomethingToSay</a>
+                <a class="btn btn-ghost normal-case text-2xl font-bold" @click="this.$router.push('/')">SomethingToSay</a>
             </div>
 
-            <li class="cursor-pointer hover:bg-white rounded ml-16 whitespace-nowrap"><a>About Us</a></li>
+            <li class="cursor-pointer hover:bg-white rounded ml-16 whitespace-nowrap" @click="this.$router.push('/about')"><a>About Us</a></li>
+            <li class="cursor-pointer hover:bg-white rounded ml-5 whitespace-nowrap" @click="this.$router.push('/myletter')"><a>My Letter</a></li>
             <div class="navbar-end ml-[90vh]">
                 <ul class="flex">
                     <li class="cursor-pointer hover:bg-white rounded whitespace-nowrap" v-if="this.isLogin === false" @click="this.$router.push('/login')">
@@ -46,7 +38,7 @@ export default {
                     <li class="cursor-pointer hover:bg-white rounded whitespace-nowrap"  v-if="this.isLogin === true" @click="handleLogout"><a>Log Out</a></li>
                 </ul>
             </div>
-            <div class="navbar-end">
+            <div class="navbar-end ">
                 <a class="btn" @click.prevent="this.$router.push('/')">Get started</a>
             </div>
         </div>

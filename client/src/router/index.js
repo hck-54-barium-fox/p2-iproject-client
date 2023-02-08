@@ -5,6 +5,7 @@ import ResultPoem from "../screens/ResultPoem.vue";
 import SubmitPoem from "../screens/SubmitPoem.vue";
 import QuoteGenerate from "../screens/QuoteGenerate.vue";
 import GoogleLogin from "../screens/GoogleLogin.vue"
+import MyLetter from "../screens/MyLetter.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       name: "quotegenerate",
       component: QuoteGenerate,
     },
+    {
+      path: "/myletter",
+      name: "myletter",
+      component: MyLetter
+    }
   ],
 });
 
