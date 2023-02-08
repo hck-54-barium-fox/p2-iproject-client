@@ -2,7 +2,7 @@
 import Navbar from "../components/Navbar.vue";
 import CardMyCart from "../components/CardMyCart.vue";
 
-import { mapActions, mapState } from "pinia";
+import { mapActions, mapState, mapWritableState } from "pinia";
 import { useAppStore } from "../stores/app";
 export default {
   data(){
@@ -16,16 +16,18 @@ export default {
     CardMyCart,
   },
   computed: {
-    ...mapState(useAppStore, ["mycart", "cartTotalAmount", 'cities', 'fee', 'total']),
+    ...mapWritableState(useAppStore, ["mycart", "cartTotalAmount", 'cities', 'fee', 'total']),
+    
   },
   methods: {
     ...mapActions(useAppStore, ["fetchMyCart", "selectCity", "deliveryFee", 'checkout']),
-    payment() {
-      this.checkout();
+    async payment() {
+      await this.checkout();
+      
     },
     async handleDeliveryFee(){
     await this.deliveryFee(this.city)
-    console.log(this.fee, this.cartTotalAmount, "APAA ISINYA");
+    // console.log(this.fee, this.cartTotalAmount, "APAA ISINYA");
     this.total = Number(this.fee) + Number(this.cartTotalAmount)
 
     }
@@ -33,6 +35,8 @@ export default {
   created() {
     this.fetchMyCart();
     this.selectCity()
+    this.fee = 0
+    this.cartTotalAmount = 0
     // console.log(this.cities, "<<<<< ini cities");
   },
 };

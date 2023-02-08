@@ -126,6 +126,8 @@ export const useAppStore = defineStore('app', {
               }
             })
             this.fetchMyCart()
+            this.$router.push('/')
+           
           }
           catch(err){
 
@@ -195,7 +197,7 @@ export const useAppStore = defineStore('app', {
                 access_token: localStorage.getItem('access_token')
               }
             })
-            this.fee = +data/15000
+            this.fee = Math.round(+data/15000)
             console.log(this.fee, "FEE");
           }
           catch(err){
