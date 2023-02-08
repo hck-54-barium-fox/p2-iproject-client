@@ -100,5 +100,42 @@ export const usePoemStore = defineStore("poem", {
         console.log(err.response.data);
       }
     },
+
+    async uploadImage(letterId, image) {
+      try {
+        let form = new FormData();
+        form.append("image", image);
+        const { data: response } = await axios({
+          method: "post",
+          url: `${DATA_URL}/poetry/upload-image/${letterId}`,
+          data: form,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+            accept: "application/json",
+            "Accept-Language": "en-US,en;q=0.8",
+            "Content-Type": `multipart/form-data`,
+          },
+        });
+        this.imageLink = response.data.url;
+      } catch (err) {
+        console.log(err.response.data);
+      }
+    },
+    async sendEmail(letter, id) {
+      try {
+        const { data } = await axios({
+          method: "post",
+          url: `${DATA_URL}/poetry/sendemail/${id}`,
+          data: letter,
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        });
+        console.log(data)
+        
+      } catch (err) {
+        console.log(err)
+      }
+    },
   },
 });
