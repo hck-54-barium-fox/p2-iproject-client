@@ -1,5 +1,21 @@
 <script>
+import{mapActions} from 'pinia'
+import {useAppStore} from '../stores/app'
 export default {
+  data(){
+    return {
+      payload :{
+        email : '',
+        password : ''
+      }
+    }
+  },
+  methods : {
+    ...mapActions(useAppStore, ['doRegister']),
+    handleRegister(){
+      this.doRegister(this.payload)
+    }
+  }
     
 }
 </script>
@@ -15,17 +31,17 @@ export default {
       <div class="form-container">
         <p class="title">Sign Up</p>
 
-        <form action="" class="sigup-form">
+        <form @submit.prevent="handleRegister" class="sigup-form">
           <div class="form-item email">
             
-            <input type="text" placeholder="email" required />
+            <input v-model="payload.email" type="text" placeholder="email" required />
             <span class="item-indicator"> <i class="bx bxs-user"></i></span>
           </div>
           <div class="form-item password">
-            <input type="password" placeholder="password" required />
+            <input v-model="payload.password" type="password" placeholder="password" required />
             <span class="item-indicator"><i class="bx bxs-lock-alt"> </i></span>
           </div>
-          <button type="button" class="btn btn-success btn-lg">Sign Up</button>
+          <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
         </form>
       </div>
     </div>
