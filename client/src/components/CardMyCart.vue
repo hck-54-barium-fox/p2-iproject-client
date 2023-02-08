@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import { mapState, mapWritableState } from 'pinia';
+import { mapActions, mapState, mapWritableState } from 'pinia';
 import { useAppStore } from '../stores/app';
 
     export default {
@@ -16,10 +16,16 @@ import { useAppStore } from '../stores/app';
                 detailProduct:{}
             }
         },
+        methods:{
+            ...mapActions(useAppStore,['removeItem']),
+            removeHandler(){
+                this.removeItem(this.mycart.id)
+            }
+        },
         async created(){
             const { data } = await axios.get(this.mycart.product_api_url)
             this.detailProduct = data
-            console.log({ type: typeof this.detailProduct.price, price: this.detailProduct.price })
+            console.log(this.mycart.id, "<<<<<<")
             this.cartTotalAmount += +this.detailProduct.price
             // this.totalmount += data.price
         }
@@ -48,7 +54,7 @@ import { useAppStore } from '../stores/app';
 
     <div class="flex items-center justify-between pt-5">
       <div class="flex itemms-center">
-        <p class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
+        <p @click.prevent="removeHandler" class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
           Remove
         </p>
       </div>

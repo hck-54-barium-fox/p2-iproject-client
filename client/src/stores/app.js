@@ -151,7 +151,22 @@ export const useAppStore = defineStore('app', {
           catch(err){
             console.log(err, "0000000000")
           }
+        },
+        async removeItem(id){
+          try{
+            const { data } = await axios({
+              method: 'DELETE',
+              url: `${url}mycart/${id}`,
+              headers:{
+                access_token: localStorage.getItem('access_token')
+              }
+            })
+            this.fetchMyCart()
+          } catch(err){
+            console.log(err);
+          }
         }
+
       }
   })
 
