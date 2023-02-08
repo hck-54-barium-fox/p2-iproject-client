@@ -1,10 +1,10 @@
 <script>
-import Card from '../components/Card.vue'
+import MyCard from '../components/MyCard.vue'
 // import { mapActions, mapState } from 'pinia'
 // import { useFoodStore } from '../stores/food'
 export default {
     components: {
-        Card,
+        MyCard,
     },
     data() {
         return {

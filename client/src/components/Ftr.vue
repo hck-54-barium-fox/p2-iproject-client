@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-    <div class="pt-4 pb-2" style="background-color: goldenrod;">
+    <div class="pt-4 pb-3" style="background-color: goldenrod;">
 
         <div class="d-flex justify-content-center pb-1 fst-italic" style="color: white; font-size: 12px;">
             <div class="pe-3">

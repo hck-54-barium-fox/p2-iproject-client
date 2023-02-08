@@ -47,30 +47,27 @@ export default {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link" aria-current="page" href="#">News</router-link>
-                    </li>
+                        <router-link to="/" class="nav-link" aria-current="page" href="#">About The Game</router-link>
+                    </li>   
                     <li class="nav-item">
-                        <router-link to="/wishlist" class="nav-link" aria-current="page" href="#">My Deck</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link to="/wishlist" class="nav-link" aria-current="page" href="#">About The Game</router-link>
+                        <router-link to="/wishlist" class="nav-link" aria-current="page" href="#">News</router-link>
                     </li>
                 </ul>
-                <div id="account-name" class="d-flex pe-3">
+                <div id="account-name" class="d-flex pe-5">
                     <div class="dropdown">
-                        <a class="btn dropdown-toggle" style="background-color: goldenrod" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="btn dropdown-toggle btn-warning" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             {{ !username ? 'Guest' : username }}
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu pe-5" style="width: 1px">
                             <li><button v-if="username" @click.prevent="loggingOut" class="dropdown-item"
                                     href="#">Logout</button>
                             </li>
-                            <li><button v-if="!username" @click.prevent="$router.push('/login')" class="dropdown-item"
+                            <li><button v-if="!username" @click.prevent="$router.push('/login')" class="dropdown-item" style="width: 20px" 
                                     href="#">Login</button>
                             </li>
                             <li><button v-if="username" @click.prevent="$router.push('/wishlist')" class="dropdown-item"
-                                    href="#">Wishlist</button>
+                                    href="#">My Deck</button>
                             </li>
                         </ul>
                     </div>
