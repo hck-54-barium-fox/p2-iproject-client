@@ -2,7 +2,7 @@
 // import { mapActions, mapState, mapWritableState } from 'pinia';
 
 export default {
-    // props: ['food'],
+    props: ['player'],
     // methods: {
     //     ...mapActions(useFoodStore, ['addWishlist', 'getFoodById',]),
     //     addingNewWishlist(id) {
@@ -26,26 +26,16 @@ export default {
     <!-- Card 1 -->
     <div class="card pt-3 shadow p-3 mb-5 rounded" style="width: 18rem;">
         <div class="card-header fst-italic">
-           #898HH998
+           {{ player.tag }}
         </div>
-        <!-- <div class="d-flex flex-row-reverse">
-            <div v-if="foodId.some(el => el === food.id)"
-                class="p-2"
-                @click.prevent="addingNewWishlist(food.id)"><i class="bi bi-bookmark-fill"></i>
-            </div>
-            <div v-else>
-                <div @click.prevent="addingNewWishlist(food.id)" class="p-2"><i class="bi bi-bookmark"></i>
-                </div>
-            </div>
-        </div> -->
-        <img src="https://i.pravatar.cc/300?img=3"
-            class="card-img-top pb-2 pt-2" alt="...">
+        <img :src="`https://i.pravatar.cc/300?img=${player.id}`"
+            class="card-img-top pb-2 pt-2" :alt="player.name">
         <div class="card-body">
-            <h5 class="card-title d-flex justify-content-center pb-3 border-bottom">AkuBudi</h5>
-            <h6 class="card-text text-secondary pt-3">Level: 23</h6>
-            <h6 class="card-text text-secondary">Trophies: 2000</h6>
-            <h6 class="card-text text-secondary">Total Wins: 2000</h6>
-            <h6 class="card-text text-secondary">Total Losses: 2400</h6>
+            <h5 class="card-title d-flex justify-content-center pb-3 border-bottom">{{ player.name }}</h5>
+            <h6 class="card-text text-secondary pt-3">Level: {{ player.level }}</h6>
+            <h6 class="card-text text-secondary">Trophies: {{ player.trophies }}</h6>
+            <h6 class="card-text text-secondary">Total Wins: {{ player.wins }}</h6>
+            <h6 class="card-text text-secondary">Total Losses: {{ player.losses }}</h6>
             
         </div>
     </div>
