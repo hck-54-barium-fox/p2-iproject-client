@@ -8,6 +8,7 @@ export const useAppStore = defineStore("app", {
   state: () => ({
     productList: [],
     bookMarkList: [],
+    productDetail: [],
     isLogin: localStorage.getItem("access_token") ? true : false,
   }),
   getters: {},
@@ -49,13 +50,25 @@ export const useAppStore = defineStore("app", {
 
     async fetchProduct(query) {
       try {
-        console.log(query);
         const { page, brand } = query;
         const { data } = await axios({
           method: "GET",
           url: `${baseUrl}/products/?brand=${brand}&page=${page}`,
         });
         this.productList = data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async fetchProductById(id) {
+      try {
+        const { data } = await axios({
+          method: "GET",
+          url: `${baseUrl}/products/${id}`,
+        });
+        this.productDetail = data;
+        // console.log(data,">>>");
       } catch (err) {
         console.log(err);
       }

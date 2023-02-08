@@ -2,6 +2,15 @@
 export default {
   name: "CardProductDetail",
   components: {},
+  props : ["productDetail"],
+  computed : {
+    getRupiah() {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+      }).format(this.productDetail.product_price);
+    },
+  }
 };
 </script>
 
@@ -10,23 +19,23 @@ export default {
     <div class="row g-0">
       <div class="col-md-4">
         <img
-          src="https://cdn.eraspace.com/pub/media/catalog/product/cache/184775a204380039ae47e1177f9cfc1b/i/p/iphone_14_pro_max_deep_purple_1_6.jpg"
+          :src="productDetail.product_image_url"
           class="img-fluid rounded-start"
           alt="..."
         />
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title">{{ productDetail.product_name }}</h5>
           <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
+            Price  {{ getRupiah }}
+          </p>
+          <p class="card-text">
+            Stock {{ productDetail.product_info }}
           </p>
           <button type="button" class="btn btn-outline-info">
             add bookmark
           </button>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
         </div>
       </div>
     </div>
