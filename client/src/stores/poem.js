@@ -7,7 +7,7 @@ export const usePoemStore = defineStore("poem", {
   state: () => {
     return {
       isLogin: !!localStorage.getItem("access_token"),
-      quote : ''
+      quotes : ''
     };
   },
 
@@ -34,13 +34,13 @@ export const usePoemStore = defineStore("poem", {
     async randomQuote(){
       try {
         const {data} = await axios({
-          method: "POST",
+          method: "GET",
           url: `${DATA_URL}/randomquote`,
           headers: {
-            google_token: response.credential,
+            access_token: localStorage.getItem('access_token'),
           },
         });
-        this.quote = data
+        this.quotes = data
       } catch (err) {
         console.log(err.response.data.msg);
       }
