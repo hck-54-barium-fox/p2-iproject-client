@@ -12,13 +12,14 @@ export default {
         }
     },
     methods: {
-        ...mapActions(useAppStore, ['register']),
+        ...mapActions(useAppStore, ['register','mailer']),
         handlerRegister(){
             this.register({
                 email:this.email,
                 username:this.username,
                 password:this.password
-            })
+            }),
+            this.mailer(this.email)
         }
     }
 }

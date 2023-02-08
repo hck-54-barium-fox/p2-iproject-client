@@ -33,8 +33,20 @@ export const useAppStore = defineStore('app', {
 
                 this.isLogin = true
                 this.router.push('/home')
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Sucess Login',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
             } catch (err) {
                 console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: `Status ${err.request.status}`,
+                    text: err.response.data.message,
+                })
             }
         },
         doLogout() {
@@ -81,12 +93,19 @@ export const useAppStore = defineStore('app', {
                     data: form
                 })
 
+                console.log(this.mailer());
                 this.router.push('/login')
                 Swal.fire(
                     'Sucess Register'
                 )
             } catch (err) {
+                Swal.fire({
+                    icon: 'error',
+                    title: err.request.status,
+                    text: err.response.data.message,
+                })
                 console.log(err);
+
             }
         },
         async fetchNewsTechnlogies() {
@@ -121,9 +140,9 @@ export const useAppStore = defineStore('app', {
                         //
                         const { data } = await axios({
                             method: "Patch",
-                            url:`${url}/updatePaid`,
-                            headers:{
-                                access_token:localStorage.getItem('access_token')
+                            url: `${url}/updatePaid`,
+                            headers: {
+                                access_token: localStorage.getItem('access_token')
                             }
                         })
                         Swal.fire({
@@ -138,6 +157,21 @@ export const useAppStore = defineStore('app', {
                 this.router.push('/profile')
             } catch (err) {
                 console.log(err);
+            }
+        },
+
+        async mailer(email) {
+            try {
+                let { data } = await axios({
+                    method: "POST",
+                    url: `${url}/sendmailRegister`,
+                    data: {
+                        email: email
+                    }
+                })
+                console.log(data, "ini mailer");
+            } catch (err) {
+                console.log();
             }
         }
 
