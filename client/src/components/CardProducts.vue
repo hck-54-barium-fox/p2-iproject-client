@@ -14,7 +14,7 @@ export default {
     },
   },
   created() {
-    console.log(this.products.name, "NAME");
+
   },
 };
 </script>

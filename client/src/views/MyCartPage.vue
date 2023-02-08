@@ -27,7 +27,7 @@ export default {
     },
     async handleDeliveryFee(){
     await this.deliveryFee(this.city)
-    // console.log(this.fee, this.cartTotalAmount, "APAA ISINYA");
+
     this.total = Number(this.fee) + Number(this.cartTotalAmount)
 
     }

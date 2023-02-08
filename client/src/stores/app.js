@@ -38,8 +38,9 @@ export const useAppStore = defineStore('app', {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: `${err.response.data.message}`,
+              // text: `${err.response.data.message}`,
            })
+
           }
         },
         
@@ -53,9 +54,19 @@ export const useAppStore = defineStore('app', {
             localStorage.setItem('access_token', data.access_token)
             this.isAuth = true
             this.$router.push('/')
+            Swal.fire({
+              icon: 'success',
+              title: 'Login Succeed',
+              showConfirmButton: false,
+              timer: 2000
+          })
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
 
@@ -66,7 +77,11 @@ export const useAppStore = defineStore('app', {
             this.$router.push('/')
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
 
@@ -83,7 +98,11 @@ export const useAppStore = defineStore('app', {
             this.products = data
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
 
@@ -107,7 +126,11 @@ export const useAppStore = defineStore('app', {
             })
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
         async fetchMyCart(){
@@ -122,7 +145,11 @@ export const useAppStore = defineStore('app', {
             this.mycart = data
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
 
@@ -140,7 +167,11 @@ export const useAppStore = defineStore('app', {
            
           }
           catch(err){
-
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
         async checkout(){
@@ -152,19 +183,20 @@ export const useAppStore = defineStore('app', {
                 access_token: localStorage.getItem('access_token')
               }
             })
-            // console.log(data, 'apa sih daata ini ga jelas');
             const cb = this.paid
-            // console.log(data, "data token");
 
             window.snap.pay(data.token, {
               onSuccess: function(result) {
-                // console.log("MASUKKKK PASTI BISA", result, "______")
                 cb()
               }
             })
           }
           catch(err){
-            console.log(err, "0000000000")
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
         async removeItem(id){
@@ -178,7 +210,11 @@ export const useAppStore = defineStore('app', {
             })
             this.fetchMyCart()
           } catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
 
@@ -194,7 +230,11 @@ export const useAppStore = defineStore('app', {
             this.cities = data.rajaongkir.results
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
         },
 
@@ -208,10 +248,13 @@ export const useAppStore = defineStore('app', {
               }
             })
             this.fee = Math.round(+data/15000)
-            console.log(this.fee, "FEE");
           }
           catch(err){
-            console.log(err);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              // text: `${err.response.data.message}`,
+           })
           }
 
         }
