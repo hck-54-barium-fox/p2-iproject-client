@@ -140,9 +140,10 @@ export const useCardStore = defineStore({
           confirmButtonText: "Cool!",
         });
       } catch (error) {
+
         Swal.fire({
           title: "Error!",
-          html: `This card already in your deck!`,
+          html: `${error.response.data.message}`,
           icon: "error",
           confirmButtonText: "Try again!",
         });

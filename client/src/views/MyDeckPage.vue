@@ -33,10 +33,10 @@ export default {
     </div>
     <div class="d-flex justify-content-center pt-3 grid gap-3">
         <button type="button" class="card pt-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded fs-6">
-            Total Card: {{ dataDeck.length }}
+            Total Card: {{ dataDeck.length || 0}}
         </button>
-        <button type="button" class="card pt-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded fs-6">
-            Average Elixir: {{ (dataDeck.map(el => el.Card.elixir).reduce((a, b) => a + b)/dataDeck.length).toFixed(1) }}
+        <button v-if="dataDeck.length" type="button" class="card pt-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded fs-6">
+            Average Elixir: {{ (dataDeck.map(el => el.Card.elixir).reduce((a, b) => a + b)/dataDeck.length).toFixed(1)  }}
         </button>
 
     </div>
