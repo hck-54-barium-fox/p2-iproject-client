@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import Register from "../views/RegisterView.vue";
 import Login from "../views/LoginView.vue";
 // import MyCard from "../views/MyCartView.ue";
-import ProductDetail from "../views/ProductDetailView.vue"
+import ProductDetail from "../views/ProductDetailView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

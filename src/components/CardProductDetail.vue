@@ -2,15 +2,15 @@
 export default {
   name: "CardProductDetail",
   components: {},
-  props : ["productDetail"],
-  computed : {
+  props: ["productDetail"],
+  computed: {
     getRupiah() {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
       }).format(this.productDetail.product_price);
     },
-  }
+  },
 };
 </script>
 
@@ -27,12 +27,8 @@ export default {
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ productDetail.product_name }}</h5>
-          <p class="card-text">
-            Price  {{ getRupiah }}
-          </p>
-          <p class="card-text">
-            Stock {{ productDetail.product_info }}
-          </p>
+          <p class="card-text">Price {{ getRupiah }}</p>
+          <p class="card-text">Stock {{ productDetail.product_info }}</p>
           <button type="button" class="btn btn-outline-info">
             add bookmark
           </button>

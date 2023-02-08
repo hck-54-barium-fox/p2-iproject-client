@@ -1,5 +1,7 @@
 <script>
+import { mapState } from "pinia";
 import { RouterLink } from "vue-router";
+import { useAppStore } from "../stores/app";
 export default {
   name: "CardProduct",
   components: {
@@ -7,6 +9,8 @@ export default {
   },
   props: ["product"],
   computed: {
+    ...mapState(useAppStore, ["isLogin"]),
+
     getRupiah() {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
@@ -30,7 +34,9 @@ export default {
           <RouterLink :to="`/products/${product.id}`" class="btn btn-primary"
             >See Detail</RouterLink
           >
-          <RouterLink to="/" class="btn btn-primary">Add Bookmark</RouterLink>
+          <RouterLink v-if="isLogin" to="/" class="btn btn-primary"
+            >Add Bookmark</RouterLink
+          >
         </div>
       </div>
     </div>
