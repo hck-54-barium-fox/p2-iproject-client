@@ -7,13 +7,14 @@ export default {
         CardProduct
     },
     methods : {
-        ...mapActions(useAppStore,['Product']),
+        ...mapActions(useAppStore,['Product','succes','MyProduct']),
     },
     computed : {
         ...mapState(useAppStore,['dataProduct'])
     },
     created() {
         this.Product()
+        this.MyProduct()
     }
 }
 </script>

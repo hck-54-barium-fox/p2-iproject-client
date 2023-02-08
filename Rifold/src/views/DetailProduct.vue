@@ -31,11 +31,11 @@ export default {
       </div>
 
       <div class="sticky top-0">
-        <strong
+        <!-- <strong
           class="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
         >
           Pre Order
-        </strong>
+        </strong> -->
 
         <div class="flex justify-between mt-8">
           <div class="max-w-[35ch]">
@@ -121,7 +121,8 @@ export default {
 
         <form class="mt-8">
 
-          <fieldset class="mt-4">
+         <div class="grid grid-col">
+            <fieldset class="mt-4">
             <legend class="mb-1 text-sm font-medium">Size</legend>
 
             <div class="flow-root">
@@ -137,93 +138,48 @@ export default {
                   <span
                     class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
                   >
-                    XS
-                  </span>
-                </label>
-
-                <label for="size_s" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_s"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    S
-                  </span>
-                </label>
-
-                <label for="size_m" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_m"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    M
-                  </span>
-                </label>
-
-                <label for="size_l" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_l"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    L
-                  </span>
-                </label>
-
-                <label for="size_xl" class="cursor-pointer p-0.5">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_xl"
-                    class="sr-only peer"
-                  />
-
-                  <span
-                    class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
-                  >
-                    XL
+                    {{ productDetail.size }}
                   </span>
                 </label>
               </div>
             </div>
           </fieldset>
+          <fieldset class="mt-4">
+            <legend class="mb-1 text-sm font-medium">Stock</legend>
 
-          <div class="flex mt-8">
-            <div>
-              <label for="quantity" class="sr-only">Qty</label>
+            <div class="flow-root">
+              <div class="-m-0.5 flex flex-wrap">
+                <label for="size_xs" class="cursor-pointer p-0.5">
+                  <input
+                    type="radio"
+                    name="size"
+                    id="size_xs"
+                    class="sr-only peer"
+                  />
 
-              <input
-                type="number"
-                id="quantity"
-                min="1"
-                value="1"
-                class="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-              />
+                  <span
+                    class="inline-flex items-center justify-center w-8 h-8 text-xs font-medium border rounded-full group peer-checked:bg-black peer-checked:text-white"
+                  >
+                    {{ productDetail.stock }}
+                  </span>
+                </label>
+              </div>
             </div>
+          </fieldset>
+         </div>
+         
+          <div class="flex mt-8">
+          
 
+         <router-link to="/">
             <button
-              type="submit"
-              class="block px-5 py-3 ml-3 text-xs font-medium text-white bg-green-600 rounded hover:bg-green-500"
-            >
-              Add to Cart
-            </button>
-          </div>
+            type="button"
+            class="block px-5 py-3 ml-3 text-xs font-medium text-white bg-red-600 rounded hover:bg-red-600"
+          >
+           Back
+          </button>
+         </router-link>
+        </div>
         </form>
       </div>
     </div>

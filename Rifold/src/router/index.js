@@ -3,6 +3,7 @@ import Register from '../views/Register.vue'
 import HomePage from '../views/HomePage.vue'
 import Login from '../views/Login.vue'
 import DetailProduct from '../views/DetailProduct.vue'
+import MyProduct from '../views/MyProduct.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,6 +29,11 @@ const router = createRouter({
       path: '/detail/:id',
       name: 'detail',
       component: DetailProduct
+    },
+    {
+      path: '/myproduct',
+      name: 'myproduct',
+      component: MyProduct
     },
   ]
 })
