@@ -61,7 +61,7 @@ export default {
                 </div>
                 <div>
                   <a class="text-xs font-display font-semibold text-sky-600 hover:text-sky-800 cursor-pointer"
-                    @click.prevent="$router.push('/forget-password')">
+                    @click.prevent="$router.push('/forgot-password')">
                     Forgot Password?
                   </a>
                 </div>
