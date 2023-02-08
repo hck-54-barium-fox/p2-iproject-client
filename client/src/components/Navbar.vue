@@ -2,7 +2,13 @@
 import { mapActions, mapState } from "pinia";
 import { useAppStore } from "../stores/appStore";
 export default {
-  methods: {},
+  methods: {
+    ...mapActions(useAppStore, ["doLogout"]),
+
+    handleLogout() {
+      this.doLogout();
+    },
+  },
   computed: {
     ...mapState(useAppStore, ["isLogin"]),
   },
@@ -16,10 +22,10 @@ export default {
 
       <div class="nav-menu-wrap">
         <ul class="navbar-navv-menu mt-3">
-          <a href="#" class="nav-link-pin">Home</a>
-          <a href="#" class="nav-link-pin">Generate Meme</a>
+          <a @click.prevent="$router.push(`/`)" href="#" class="nav-link-pin">Home</a>
+          <a @click.prevent="$router.push(`/memes`)" href="#" class="nav-link-pin">Generate Meme</a>
           <!-- <a href="#" class="nav-link-pin">Categories</a> -->
-          <a href="#" class="nav-link-pin">Logout</a>
+          <a @click.prevent="handleLogout" href="#" class="nav-link-pin">Logout</a>
         </ul>
       </div>
 

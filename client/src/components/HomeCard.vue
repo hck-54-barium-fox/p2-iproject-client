@@ -1,98 +1,34 @@
 <script>
-import { mapActions, mapState, mapStores, mapWritableState } from "pinia";
 import { useAppStore } from "../stores/appStore";
-import Navbar from "../components/Navbar.vue";
-import HomeCard from "../components/HomeCard.vue";
+import { mapActions, mapState } from "pinia";
 export default {
-  components: {
-    Navbar,
-    HomeCard,
-  },
+  props: ["postData"],
 
-  methods: {
-    ...mapActions(useAppStore, ["fetchPosts"]),
-  },
-  computed: {
-    ...mapState(useAppStore, ["postList"]),
-  },
-  created() {
-    this.fetchPosts();
-  },
+  methods: {},
 };
 </script>
 
 <template>
-  <Navbar />
-  <!-- Blog Post Section -->
-
-  <section id="posts_home" class="mt-3">
-    <div class="container_home">
-      <div class="row row-cols-1 row-cols-md-6 g-4" data-masonry='{"percentPosition": true,  "itemSelector": ".col" }'>
-        <HomeCard v-for="postData in postList" :key="postData.id" :postData="postData" />
-
-        <!-- <div class="col">
-          <article class="article_home">
-            <div class="card_home">
-              <div class="image" style="margin-bottom: 5px">
-                <a href="">
-                  <img src="https://i.pinimg.com/564x/6d/a3/24/6da3241e9baad8c02195566be99fc315.jpg" class="img_home" alt="" />
-                </a>
-              </div>
-
-              <a href="" class="caption">Makan nasi</a>
-
-              <div class="post_body">
-                <div style="width: 10px; display: inline-block; margin-right: 20px"><img src="https://i.pinimg.com/564x/f9/8d/37/f98d37ccdb14a73ecec81eeee52ec873.jpg" alt="Avatar" style="border-radius: 50%; height: 30px; width: 30px" /></div>
-                <div style="display: inline-block">
-                  <p class="ketProfile_home">Hamzah</p>
-                </div>
-              </div>
-            </div>
-          </article>
+  <div class="col">
+    <article class="article_home">
+      <div class="card_home">
+        <div class="image" style="margin-bottom: 5px">
+          <a href="">
+            <img :src="postData.imgUrl" class="img_home" alt="" />
+          </a>
         </div>
-        <div class="col">
-          <article class="article_home">
-            <div class="card_home">
-              <div class="image" style="margin-bottom: 5px">
-                <a href="">
-                  <img src="https://i.pinimg.com/564x/6d/a3/24/6da3241e9baad8c02195566be99fc315.jpg" class="img_home" alt="" />
-                </a>
-              </div>
 
-              <a href="" class="caption">Makan nasi</a>
+        <a href="" class="caption">{{ postData.title }}</a>
 
-              <div class="post_body">
-                <div style="width: 10px; display: inline-block; margin-right: 20px"><img src="https://i.pinimg.com/564x/f9/8d/37/f98d37ccdb14a73ecec81eeee52ec873.jpg" alt="Avatar" style="border-radius: 50%; height: 30px; width: 30px" /></div>
-                <div style="display: inline-block">
-                  <p class="ketProfile_home">Hamzah</p>
-                </div>
-              </div>
-            </div>
-          </article>
+        <div class="post_body">
+          <div style="width: 10px; display: inline-block; margin-right: 20px"><img src="https://i.pinimg.com/564x/f9/8d/37/f98d37ccdb14a73ecec81eeee52ec873.jpg" alt="Avatar" style="border-radius: 50%; height: 30px; width: 30px" /></div>
+          <div style="display: inline-block">
+            <p class="ketProfile_home">Hamzah</p>
+          </div>
         </div>
-        <div class="col">
-          <article class="article_home">
-            <div class="card_home">
-              <div class="image" style="margin-bottom: 5px">
-                <a href="">
-                  <img src="https://i.pinimg.com/564x/6d/a3/24/6da3241e9baad8c02195566be99fc315.jpg" class="img_home" alt="" />
-                </a>
-              </div>
-
-              <a href="" class="caption">Makan nasi</a>
-
-              <div class="post_body">
-                <div style="width: 10px; display: inline-block; margin-right: 20px"><img src="https://i.pinimg.com/564x/f9/8d/37/f98d37ccdb14a73ecec81eeee52ec873.jpg" alt="Avatar" style="border-radius: 50%; height: 30px; width: 30px" /></div>
-                <div style="display: inline-block">
-                  <p class="ketProfile_home">Hamzah</p>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div> -->
       </div>
-    </div>
-  </section>
+    </article>
+  </div>
 </template>
 
 <style scoped>
