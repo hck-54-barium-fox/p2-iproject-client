@@ -20,7 +20,7 @@ const router = createRouter({
           component: ContentPage,
         },
         {
-          path: "/detail",
+          path: "/detail/:title",
           component: DetailPage,
         },
       ],
