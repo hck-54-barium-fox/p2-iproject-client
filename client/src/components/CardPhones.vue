@@ -1,6 +1,15 @@
 <script>
+    import { mapActions, mapState } from 'pinia';
+import { useCounterStore } from '../stores/counter';
+
     export default{
-        props: ['item']
+        props: ['item'],
+        methods: {
+            ...mapActions(useCounterStore, ['handleAddTransactions', 'handlePayment'])
+        },
+        computed: {
+            ...mapState(useCounterStore, ['isLogin'])
+        }
     }
 </script>
 
@@ -11,7 +20,7 @@
           <img
             :src="item.imageUrl" />
         </div>
-          <a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+          <a class="card-action" href="#" @click.prevent="handleAddTransactions(item.id)"><i class="fa fa-heart" ></i></a>
           <div class="card-heading">
             {{ item.brand }}
           </div>
@@ -21,8 +30,7 @@
           <div class="card-text">
             {{ item.price }}
           </div>
-        <a href="#" class="card-button"> Purchase</a>
-        <a href="#" class="card-button2"> Detail</a>
+        <a href="#" class="card-button2" @click.prevent="this.$router.push(`/smartphones/${item.id}`)">Detail</a>
       </div>
     </div>
 </template>

@@ -1,29 +1,36 @@
 <script>
+  import { mapActions, mapState } from 'pinia';
+  import { useCounterStore } from '../stores/counter';
+
   export default{
-    
+    computed: {
+    ...mapState(useCounterStore, ['detailPhone', 'qrCode']),
+  },
+  methods: {
+    ...mapActions(useCounterStore, ['handleDetailPhoneById', "rupiah"]),
+
+  },
+  created() {
+    this.handleDetailPhoneById(this.$route.params.id);
+  },
   }
 </script>
 
 <template>
     <!-- detail phone -->
-<div class="container mb-5" style="margin-top: 100px">
+<div class="container mb-5" style="margin-top: 50px">
     <div class="d-flex justify-content-between gap-5">
       <div style="width: 1000px">
-        <h2 class="title">tes</h2>
+        <h2 class="title">{{detailPhone.brand}}</h2>
         <p class="text mt-3">
-          tes
+          {{detailPhone.name}}
         </p>
-        <h4>Amenities</h4>
-        <ul>
-            <li>65 inch LED TV</li>
-            <li>BOSE Bluetooth speaker</li>
-            <li>Individually controlled air conditioning</li>
-            <li>Le Labo® bath products</li>
-            <li>Separate soaking bathtub and rain shower</li>
-            <li>Minibar and espresso machine</li>
-        </ul>
-        <h5 class="mt-3">tess/Night</h5>
-        <button class="btn btn-warning mt-3" @click.prevent="handleTransaction(detailRoom.id)">Booking Now</button>
+        <h4>Harga Sewa {{ detailPhone.brand }} {{ detailPhone.name }} dan Spesifikasi</h4>
+        <p class="text mt-3">
+          {{detailPhone.description}}
+        </p>
+        <h5 class="mt-3">{{ rupiah(detailPhone.price) }}/Day</h5>
+        <button class="btn btn-warning mt-3" @click.prevent="handleTransaction(detailPhone.id)">Purchase Now</button>
         <!-- Vertically centered modal -->
         <button
           type="button"
@@ -46,7 +53,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Scan QR Code - BlackDoorz
+                  Scan QR Code - Rent For Your ego
                 </h1>
                 <button
                   type="button"
@@ -56,18 +63,18 @@
                 ></button>
               </div>
               <div class="modal-body text-center">
-                <img src="qrCode.url" alt="" />
+                <img style="width: 200px;" class="mb-8" :src="qrCode"/>    
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="mt-5">
+      <div class="mt-2 mb-6" style="margin-top: 10px;">
         <img
-          src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          :src="detailPhone.imageUrl"
           class="img-fluid rounded"
           alt="..."
-          width="1000"
+          width="800"
         />
       </div>
     </div>
