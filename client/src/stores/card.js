@@ -7,6 +7,7 @@ export const useCardStore = defineStore({
   state: () => {
     return {
       username: "",
+      dataCard: ''
     };
   },
   getters: {},
@@ -95,5 +96,29 @@ export const useCardStore = defineStore({
         });
       }
     },
+    async fetchCard(sort){
+      try {
+        let query = ''
+        if (sort) {
+          if (sort.sort == 1) {
+            query = '?sort=1'
+          } else {
+            query = '?sort=2'
+          }
+        }
+        let { data } = await axios({
+          method: 'get',
+          url: `http://localhost:3000/cards${query}`
+        })
+        this.dataCard = data
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: `Internal server error`,
+          icon: "error",
+          confirmButtonText: "Try again!",
+        });
+      }
+    }
   },
 });

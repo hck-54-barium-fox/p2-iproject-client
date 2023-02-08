@@ -2,7 +2,7 @@
 // import { mapActions, mapState, mapWritableState } from 'pinia';
 
 export default {
-    // props: ['food'],
+    props: ['card'],
     // methods: {
     //     ...mapActions(useFoodStore, ['addWishlist', 'getFoodById',]),
     //     addingNewWishlist(id) {
@@ -28,23 +28,12 @@ export default {
         <div class="card-header fst-italic">
            <img src="https://www.pngkey.com/png/full/362-3629652_5-elixir-de-clash-of-clans.png"
            style="width: 35px"
-           /> Elixir Cost: 3
+           /> Elixir Cost: {{ card.elixir }}
         </div>
-        <!-- <div class="d-flex flex-row-reverse">
-            <div v-if="foodId.some(el => el === food.id)"
-                class="p-2"
-                @click.prevent="addingNewWishlist(food.id)"><i class="bi bi-bookmark-fill"></i>
-            </div>
-            <div v-else>
-                <div @click.prevent="addingNewWishlist(food.id)" class="p-2"><i class="bi bi-bookmark"></i>
-                </div>
-            </div>
-        </div> -->
-        <img src="https://api-assets.clashroyale.com/cards/300/W4Hmp8MTSdXANN8KdblbtHwtsbt0o749BbxNqmJYfA8.png"
-            class="card-img-top border-bottom border-2 pb-2 pt-2" alt="...">
+        <img :src="card.iconUrl"
+            class="card-img-top border-bottom border-2 pb-2 pt-2" :alt="card.name">
         <div class="card-body">
-            <h5 class="card-title d-flex justify-content-center pb-3">Archer</h5>
-            <!-- <div @click="$router.push(`/food/${food.id}`)" -->
+            <h5 class="card-title d-flex justify-content-center pb-3">{{ card.name }}</h5>
             <div
              class="btn btn-warning d-flex justify-content-center">
                 Add to My Deck!
