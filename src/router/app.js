@@ -4,6 +4,7 @@ import Register from "../views/RegisterView.vue";
 import Login from "../views/LoginView.vue";
 import ProductDetail from "../views/ProductDetailView.vue";
 import MyCart from "../views/MyCartView.vue";
+import MyProfile from "../views/MyProfileView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/mycart",
       name: "myCart",
       component: MyCart,
+    },
+    {
+      path: "/myprofile",
+      name: "myprofile",
+      component: MyProfile,
     },
   ],
 });
