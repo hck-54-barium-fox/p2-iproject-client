@@ -31,8 +31,23 @@ const router = createRouter({
     {
       path: '/detail/:id',
       component: DetailPage,
+      name: 'detail',
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const isLogin = !!localStorage.getItem('access_token');
+  if (
+    (isLogin && to.path === '/login') ||
+    (isLogin && to.path === '/register')
+  ) {
+    next('/');
+  } else if (!isLogin && to.name === 'detail') {
+    next('/login');
+  } else {
+    next();
+  }
 });
 
 export default router;

@@ -7,6 +7,7 @@ export const useBookingStore = defineStore('booking', {
     hotelsData: [],
     roomsHotel: [],
     detailHotel: {},
+    isLogin: false,
   }),
   getters: {},
   actions: {
@@ -24,10 +25,14 @@ export const useBookingStore = defineStore('booking', {
         const { data } = await axios.post(baseUrl + '/login', form);
         console.log(data);
         localStorage.setItem('access_token', data.access_token);
+        this.isLogin = true;
         this.router.push('/');
       } catch (err) {
         console.log(err);
       }
+    },
+    stillLogin() {
+      this.isLogin = true;
     },
     async resetPassword(email) {
       try {
@@ -49,9 +54,18 @@ export const useBookingStore = defineStore('booking', {
         console.log(err);
       }
     },
-    async fetchHotelByLocation() {
+    async fetchHotelByLocation(arrivalDate, departureDate) {
       try {
-        const { data } = await axios.get(baseUrl + '/hotels/location');
+        console.log(arrivalDate, departureDate, 'berhasil masuk');
+        const { data } = await axios({
+          method: 'get',
+          url: baseUrl + '/hotels/location',
+          data: {
+            arrivalDate,
+            departureDate,
+          },
+        });
+        console.log('nunggu ya sabar');
         this.hotelByLocation = data;
         console.log(data, 'ini dari pinia');
       } catch (err) {
@@ -61,15 +75,19 @@ export const useBookingStore = defineStore('booking', {
     async fetchHotel() {
       try {
         const { data } = await axios.get(baseUrl + '/hotels');
+        console.log(data, 'ini hotel');
         this.hotelsData = data;
-        console.log(data);
       } catch (err) {
         console.log(err);
       }
     },
     async getHotelRooms(hotelId) {
       try {
-        const { data } = await axios.get(baseUrl + '/hotels/' + hotelId);
+        const { data } = await axios.get(baseUrl + '/hotels/' + hotelId, {
+          headers: {
+            access_token: localStorage.getItem('access_token'),
+          },
+        });
 
         const block = data?.block.map((el) => {
           el.detail = data.rooms[el.roomId];
@@ -84,7 +102,12 @@ export const useBookingStore = defineStore('booking', {
     async getDetailHotel(idHotel, searchId) {
       try {
         const { data } = await axios.get(
-          baseUrl + '/hotels/properties/' + idHotel + '?search_id=' + searchId
+          baseUrl + '/hotels/properties/' + idHotel + '?search_id=' + searchId,
+          {
+            headers: {
+              access_token: localStorage.getItem('access_token'),
+            },
+          }
         );
         console.log(data);
         this.detailHotel = data;
@@ -94,11 +117,19 @@ export const useBookingStore = defineStore('booking', {
     },
     async doCheckIn() {
       try {
-        const { data } = await axios.post('http://localhost:9000/check-in', {
-          price: 10000,
-          name: 'bisma',
-          email: 'bisma2coc@gmail.com',
-        });
+        const { data } = await axios.post(
+          'http://localhost:9000/check-in',
+          {
+            price: 10000,
+            name: 'bisma',
+            email: 'bisma2coc@gmail.com',
+          },
+          {
+            headers: {
+              access_token: localStorage.getItem('access_token'),
+            },
+          }
+        );
         console.log(data);
         // window.snap.close();
         window.snap.pay(data.token, {

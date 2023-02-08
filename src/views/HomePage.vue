@@ -6,13 +6,36 @@ import CardProperty from '../components/CardProperty.vue'
 import { mapActions, mapState } from 'pinia'
 import { useBookingStore } from '../stores/counter'
 export default {
+  data() {
+    return {
+      searchForm: {
+        destination: '',
+        checkInDate: '',
+        checkOutDate: ''
+      }
+    }
+  },
   components: {
     Navbar,
     CardLocation,
     CardProperty
   },
   methods: {
-    ...mapActions(useBookingStore, ['fetchHotelByLocation', 'fetchHotel'])
+    ...mapActions(useBookingStore, ['fetchHotelByLocation', 'fetchHotel']),
+    handleSearch() {
+      let query = {}
+      if (this.$route.query) {
+        query = {
+          destination: this.searchForm.destination,
+          checkIn: this.searchForm.checkInDate,
+          checkOut: this.searchForm.checkOutDate
+          ,
+          ... this.$route.query
+        }
+      }
+      console.log(query, 'ke push gak?')
+      this.$router.push({ query })
+    }
   }
   ,
   created() {
@@ -24,6 +47,14 @@ export default {
   },
   computed: {
     ...mapState(useBookingStore, ['hotelByLocation', 'hotelsData'])
+  },
+  watch: {
+    '$route.query'() {
+      this.fetchHotelByLocation(this.$route.query.checkIn, this.$route.query.checkOut)
+      this.fetchHotel(this.$route.query.destination)
+    },
+
+
   }
 }
 </script>
@@ -87,24 +118,19 @@ export default {
   <div class="w-[90vw] max-w-[1200px] m-auto my-[4rem] flex gap-1">
     <div class="bg-yellow-400 w-[25rem] h-fit sticky top-0 p-4 rounded shadow-lg">
       <h4 class="text-[1.5rem] text-slate-50">Search</h4>
-      <form>
+      <form @submit.prevent="handleSearch">
         <div class="w-full my-6">
           <label for="" class="font-light">destination</label>
-          <input type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+          <input v-model="searchForm.destination" type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
         </div>
         <div class="w-full my-6">
           <label for="" class="font-light">check in date</label>
-          <input type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+          <input v-model="searchForm.checkInDate" type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
         </div>
         <div class="w-full my-6">
           <label for="" class="font-light">check out date</label>
-          <input type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
+          <input v-model="searchForm.checkOutDate" type="date" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
         </div>
-        <div class="w-full my-6">
-          <label for="" class="font-light">15-night stay</label>
-          <input type="text" class="w-full h-[2.3rem] rounded outline-none px-4 py-2">
-        </div>
-
         <button class="w-full bg-sky-500 px-4 py-2 rounded text-white">Search</button>
 
       </form>
