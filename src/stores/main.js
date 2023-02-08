@@ -10,6 +10,7 @@ export const useMainStore = defineStore('main', {
       loggedIn: false,
       currentWeather: {},
       AIsuggestion: '',
+      isLoading: false,
       fetchedPlaylists: [],
       specificPlaylistTitle: '',
       trackExamples: []

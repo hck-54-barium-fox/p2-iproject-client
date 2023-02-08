@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <div class=" bg-theme_red h-[95vh] pb-[3rem] px-[3rem] flex ">
+  <div class=" bg-theme_red h-[100vh] py-[3rem] px-[3rem] flex ">
     <div class="login bg-theme_red h-full w-[40%] p-[3rem] flex flex-col justify-center items-center">
       <div class="title font-bold text-[3rem] text-white">Login</div>
       <div class="login-form w-full ">
