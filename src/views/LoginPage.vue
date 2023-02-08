@@ -32,11 +32,11 @@ export default {
       </div>
     </div>
     <div class="lg:w-1/2 xl:max-w-screen-sm">
-      <div class="py-12 bg-sky-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
+      <div class="py-12 bg-sky-100 lg:bg-sky-50 flex justify-center lg:justify-start lg:px-12">
         <div class="cursor-pointer flex items-center">
           <div></div>
           <div class="text-2xl text-sky-800 tracking-wide ml-2 font-semibold">
-            Dashboard Admin
+            Ya Booking
           </div>
         </div>
       </div>

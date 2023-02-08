@@ -19,6 +19,8 @@ export default {
     this.fetchHotelByLocation()
     this.fetchHotel()
     // console.log(this.hotelByLocation)
+    // this.getDetailHotel(this.$route.params.id, this.s)
+
   },
   computed: {
     ...mapState(useBookingStore, ['hotelByLocation', 'hotelsData'])
@@ -32,25 +34,6 @@ export default {
   <!-- header -->
   <div class="bg-sky-500 flex justify-center items-center shadow-xl ">
     <div class="w-[90vw] max-w-[1200px]">
-      <div class="flex mt-4 gap-x-6 text-white">
-        <button class="flex items-center">
-          <span class="material-symbols-outlined text-[2.4rem] text-white">
-            hotel
-          </span>
-          <span class="ml-2 text-lg">Stays</span>
-        </button>
-
-        <button class="flex items-center">
-          <span class="material-symbols-outlined text-[2.4rem]">
-            flight
-          </span>
-          <span class="ml-2 text-lg">Flight</span>
-        </button>
-
-
-
-
-      </div>
       <h2 class="text-[3rem] text-white mt-[5rem]">Bingung Cari Singgahan Ketika Liburan?</h2>
       <h2 class="text-[2rem] text-white mt-2">Ya <span class="text-white">Boking</span> Solusi nya</h2>
       <div class=" w-full mt-[7rem] relative">
@@ -94,7 +77,7 @@ export default {
   <!-- popular -->
 
   <div class=" w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
-    <h2 class="my-8 text-[2rem] text-slate-800">The Wonderful Honai</h2>
+    <h2 class="my-8 text-[2rem] text-sky-900">The Wonderful {{ hotelByLocation[0].country }}</h2>
     <div class="flex gap-6 justify-center items-start flex-wrap ">
       <CardLocation v-for="(location, i) in hotelByLocation" :key="i" :location="location" />
     </div>
@@ -127,7 +110,8 @@ export default {
       </form>
     </div>
     <div class="flex-1 flex flex-col gap-8">
-      <CardProperty v-for="hotel in hotelsData.hotels" :key="hotel.hotelId" :hotel="hotel" />
+      <CardProperty v-for="hotel in hotelsData.hotels" :key="hotel.hotelId" :hotel="hotel"
+        :searchId="hotelsData.searchId" />
     </div>
   </div>
 

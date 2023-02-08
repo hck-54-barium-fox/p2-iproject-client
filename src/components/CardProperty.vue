@@ -3,13 +3,14 @@ import { mapActions } from 'pinia';
 import { useBookingStore } from '../stores/counter';
 
 export default {
-  props: ['hotel'],
+  props: ['hotel', 'searchId'],
   methods: {
     toDetail(id) {
+      this.$router.push(`/detail/${id}?search_id=${this.searchId}`)
       this.getHotelRooms(id)
-      this.$router.push(`/detail/${id}`)
+      this.getDetailHotel(id, this.searchId)
     },
-    ...mapActions(useBookingStore, ['getHotelRooms'])
+    ...mapActions(useBookingStore, ['getHotelRooms', 'getDetailHotel'])
   }
 }
 </script>

@@ -44,11 +44,17 @@ export default {
   ,
   created() {
     this.getHotelRooms(this.$route.params.id)
-    // console.log(this.roomsHotel, 'ini data dah jadi')
+    this.getDetailHotel(this.$route.params.id, this.$route.query.search_id)
   },
   computed: {
-    ...mapState(useBookingStore, ['roomsHotel'])
-  }
+    ...mapState(useBookingStore, ['roomsHotel', 'getDetailHotel', 'detailHotel']),
+    centerMap() {
+      if (detailHotel?.longitude && detailHotel?.latitude) {
+        this.center = [detailHotel?.latitude, detailHotel?.longitude]
+      }
+    }
+  },
+
 }
 </script>
 
@@ -57,7 +63,7 @@ export default {
   <!-- main information -->
   <div class="w-[90vw] max-w-[1200px] m-auto mt-[5rem]">
     <div class="p-4 bg-white shadow-lg rounded">
-      <h1 class="text-[1.4rem]">The Bista Hotels</h1>
+      <h1 class="text-[1.4rem]">{{ detailHotel.hotelName }}</h1>
       <div class="flex text-yellow-600 ">
         <span class="material-symbols-outlined ">
           grade
@@ -75,7 +81,7 @@ export default {
           grade
         </span>
       </div>
-      <p class="my-2 text-gray-400">Jambi, Muara bungo kuamang kuning spa</p>
+      <p class="my-2 text-gray-400">{{ detailHotel.countryName }}, {{ detailHotel.city }}</p>
       <div class="w-full h-[.1rem] bg-gray-100 my-5"></div>
       <div>
         <div class="flex gap-4 h-[450px]">
@@ -92,49 +98,15 @@ export default {
         </div>
 
       </div>
-      <h2>Padang</h2>
-      <h4 class="my-4">Facelities</h4>
-      <div class="flex gap-5 mt-2 text-sky-600">
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
-        <span class="material-symbols-outlined ">
-          wifi
-        </span>
+
+      <h4 class="my-4 text-[1.4rem]">Facelities</h4>
+      <div class="flex-wrap flex gap-7">
+        <p class="text-slate-500" v-for="facility in detailHotel?.facilities">{{ facility.name }}</p>
       </div>
 
       <div class="my-8">
-        <h4>Information</h4>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore ullam, sed neque voluptatem consectetur id
-          praesentium voluptate fuga molestias recusandae aliquam quia fugiat, iure ipsum. Quia voluptatem sed
-          distinctio
-          tenetur similique id quaerat maxime! Enim fugit, placeat facilis, quos doloremque minima molestias est
-          pariatur
-          voluptas ad iusto, explicabo sequi consequuntur.</p>
+        <h4 class="text-[1.4rem] my-4">Information</h4>
+        <p class="text-gray-500">{{ detailHotel.importantInformation }}</p>
 
       </div>
 
@@ -144,14 +116,13 @@ export default {
   <div class="my-[5rem] w-[90vw] max-w-[1200px] m-auto">
     <div class="p-4 bg-white shadow-lg rounded">
 
-      <p>Location Info</p>
+      <p>Location {{ detailHotel.hotelName }}</p>
       <p class="text-gray-500">
-        jl meranging kuamang kuning pelepat ilir bungo jambi Indonesia
+
       </p>
-      <p class="my-4">The weather in jl meranging kuamang kuning pelepat ilir bungo jambi Indonesia</p>
-      <div class="my-4">
+      <div class="my-1">
         <div class="w-full">
-          <div class="mt-[6rem] rounded-lg overflow-hidden flex justify-center items-center">
+          <div class="mt-[2rem] rounded-lg overflow-hidden flex justify-center items-center">
             <l-map style="height: 30rem; width: 900px;border-radius: .25rem;" :zoom="zoom" :center="center">
               <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
               <l-marker :lat-lng="[-8.694587, 115.168175]"> </l-marker>
