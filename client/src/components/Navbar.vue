@@ -34,15 +34,16 @@ export default {
                     </label>
 
                 </div>
+                <img src="../assets/logo.png" class="h-10 w-12 ml-5" alt="logo sts">
                 <a class="btn btn-ghost normal-case text-2xl font-bold">SomethingToSay</a>
             </div>
 
-            <li class="cursor-pointer hover:bg-white rounded ml-5 whitespace-nowrap"><a>About Us</a></li>
-            <div class="navbar-end ml-[110vh]">
-                <ul class="flex mr-10">
-                    <li class="cursor-pointer hover:bg-white rounded" v-if="this.isLogin === false" @click="this.$router.push('/login')">
+            <li class="cursor-pointer hover:bg-white rounded ml-16 whitespace-nowrap"><a>About Us</a></li>
+            <div class="navbar-end ml-[90vh]">
+                <ul class="flex">
+                    <li class="cursor-pointer hover:bg-white rounded whitespace-nowrap" v-if="this.isLogin === false" @click="this.$router.push('/login')">
                         <a>Login</a></li>
-                    <li class="cursor-pointer hover:bg-white rounded"  v-if="this.isLogin === true" @click="handleLogout"><a>Log Out</a></li>
+                    <li class="cursor-pointer hover:bg-white rounded whitespace-nowrap"  v-if="this.isLogin === true" @click="handleLogout"><a>Log Out</a></li>
                 </ul>
             </div>
             <div class="navbar-end">

@@ -1,23 +1,29 @@
 <script>
 import { mapActions, mapWritableState } from 'pinia';
 import { usePoemStore } from '../stores/poem';
+import showQuote from '../components/showQuote.vue';
 
-export default{
+export default {
+  components: {
+    showQuote
+  },
   methods: {
     ...mapActions(usePoemStore, ['randomQuote']),
-    handleQuote(){
+    handleQuote() {
       this.randomQuote()
     }
   },
-  computed:{
-    ...mapWritableState(usePoemStore, ['quote'])
+  computed: {
+    ...mapWritableState(usePoemStore, ['quotes'])
   }
 }
 </script>
 
 <template>
-     <div class="container mt-[35vh] pl-[70vh] flex flex-col gap-y-5">
-    <p>{{ this.quote }}</p>
-    <button class="btn max-w-xs ml-10 bg-neutral-800 shadow-md mt-5" type="">Generate Random Movie Qote</button>
+  <div class="container absolute top-[40vh] left-[10vh] flex flex-row gap-x-5 px-10 w-sm">
+    <showQuote v-for="quote in quotes" :key="quote.id" :quote="quote" />
   </div>
+
+    <button class="btn max-w-xs bg-neutral-800 shadow-md absolute bottom-[30vh] left-[75vh]" type="button" @click="handleQuote">Generate
+      Random Movie Quote</button>
 </template>
