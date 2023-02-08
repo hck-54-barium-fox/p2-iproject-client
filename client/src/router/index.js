@@ -4,6 +4,7 @@ import RegisterPage from '../views/RegisterPage.vue'
 import HomePage from '../views/HomePage.vue'
 import MyDeckPage from '../views/MyDeckPage.vue'
 import NewsPage from '../views/NewsPage.vue'
+import AboutGame from '../views/AboutGame.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,10 @@ const router = createRouter({
     {
       path: '/news',
       component: NewsPage
+    },
+    {
+      path: '/about',
+      component: AboutGame
     }
   ]
 })
