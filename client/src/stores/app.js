@@ -26,10 +26,20 @@ export const useAppStore = defineStore('app', {
               data : form
             })
             this.$router.push('/login')
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Your account has been registered',
+              showConfirmButton: false,
+              timer: 1500
+            })
           }
           catch(err){
-            console.log(err, "INII");
-
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${err.response.data.message}`,
+           })
           }
         },
         
@@ -142,13 +152,13 @@ export const useAppStore = defineStore('app', {
                 access_token: localStorage.getItem('access_token')
               }
             })
-            console.log(data, 'apa sih daata ini ga jelas');
+            // console.log(data, 'apa sih daata ini ga jelas');
             const cb = this.paid
-            console.log(data, "data token");
+            // console.log(data, "data token");
 
             window.snap.pay(data.token, {
               onSuccess: function(result) {
-                console.log("MASUKKKK PASTI BISA", result, "______")
+                // console.log("MASUKKKK PASTI BISA", result, "______")
                 cb()
               }
             })

@@ -115,12 +115,11 @@ export default {
               v-model="city"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected>Choose city</option>
+                <option disabled selected value="">Choose city</option>
                 <option  v-for="city in cities" :key="city.city_id" :value="city.city_id">{{ city.city_name }}</option>
               </select>
-              <button type="submit">
-                submit
-              </button>
+              <button type="submit" class="mt-7 text-black hover:text-white border border-rose-700 hover:bg-rose-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-rose-500 dark:text-rose-500 dark:hover:text-white dark:hover:bg-rose-600 dark:focus:ring-rose-800">Submit</button>
+
               </form>
             </div>
             <div class="mt-8">
