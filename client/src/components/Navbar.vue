@@ -1,31 +1,29 @@
 <script>
-// import { mapState, mapWritableState } from 'pinia';
-// import { useFoodStore } from '../stores/food';
+import { mapState, mapWritableState } from 'pinia';
+import { useCardStore } from '../stores/card';
 
 export default {
     data() {
         return {
+            
         }
     },
-    // methods: {
-    //     loggingOut() {
-    //         localStorage.removeItem("access_token");
-    //         localStorage.removeItem("authorId");
-    //         localStorage.removeItem("email");
-    //         Swal.fire({
-    //             title: "Goodbye!",
-    //             text: `Please come back later, ${localStorage.getItem("username")}`,
-    //             icon: "warning",
-    //             confirmButtonText: "OK",
-    //         });
-    //         localStorage.removeItem("username");
-    //         this.isLogin = false
-    //         this.$router.push('/login')
-    //     }
-    // },
-    // computed: {
-    //     ...mapWritableState(useFoodStore, ['isLogin'])
-    // }
+    methods: {
+        loggingOut() {
+            localStorage.clear()
+            Swal.fire({
+                title: "Goodbye!",
+                text: `Please come back later`,
+                icon: "warning",
+                confirmButtonText: "OK",
+            });
+            this.username = ''
+            this.$router.push('/login')
+        }
+    },
+    computed: {
+        ...mapWritableState(useCardStore, ['username'])
+    }
 }
 
 </script>
@@ -60,7 +58,7 @@ export default {
                     <div class="dropdown">
                         <a class="btn dropdown-toggle btn-warning" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            {{ !username ? 'Guest' : username }}
+                            {{ !username ? 'Guest' : username.split('@')[0] }}
                         </a>
                         <ul class="dropdown-menu pe-5" style="width: 1px">
                             <li><button v-if="username" @click.prevent="loggingOut" class="dropdown-item"
