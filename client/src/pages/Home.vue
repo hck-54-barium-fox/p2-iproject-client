@@ -1,6 +1,6 @@
 <script>
 import { useAppStore } from "../stores/app";
-import { mapActions } from "pinia";
+import { mapActions,mapState } from "pinia";
 import Card from "../components/Card.vue"
 import Navbar from "../components/Navbar.vue"
 export default {
@@ -10,6 +10,9 @@ export default {
     },
     methods: {
         ...mapActions(useAppStore,['fetchPlanet'])
+    },
+    computed:{
+        ...mapState(useAppStore,['planets'])
     },
     created(){
         this.fetchPlanet()
@@ -21,13 +24,7 @@ export default {
     <div class="w-screen h-[100%] bg-[url('https://wallpaperaccess.com/full/39632.jpg')]" >
         <Navbar />
         <div class="grid grid-cols-2 relative top-0">
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        <Card v-for="planet in planets" :planet="planet"/>
         </div>
     </div>
    

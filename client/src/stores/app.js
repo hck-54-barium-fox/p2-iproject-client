@@ -5,7 +5,7 @@ let base_url = "http://localhost:3000"
 
 export const useAppStore = defineStore('app',{
     state : ()=>({
-
+        planets : []
     }),
     actions:{
         async login(payload){
@@ -31,9 +31,27 @@ export const useAppStore = defineStore('app',{
                         access_token:localStorage.getItem("access_token")
                     }
                 })
+                this.planets = data
                 console.log(data)
             } catch (err) {
-                
+                console.log(err)
+            }
+        },
+        logout(){
+            localStorage.removeItem("access_token")
+            this.router.push("/login")
+        },
+        async registerUser(payload){
+            try {
+                const{data} = await axios({
+                    method:'post',
+                    url:`${base_url}/register`,
+                    data: payload
+                })
+                console.log(data)
+                this.router.push("/login")
+            } catch (err) {
+                console.log(err)
             }
         }
     },
