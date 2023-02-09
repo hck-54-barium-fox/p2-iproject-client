@@ -31,7 +31,7 @@ export default {
 
     <div
       class="text-white container mx-auto"
-      style="position: sticky; top: 0; height: 500px">
+      style="position: sticky; top: 0; height: ">
       <h1 class="mb-4"></h1>
 
       <a
