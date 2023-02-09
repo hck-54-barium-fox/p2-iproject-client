@@ -18,7 +18,7 @@ export default {
 <template>
   <header>
     <nav class="container-nav navbar-navv">
-      <a href="#" class="nav-logo">PinPentul</a>
+      <a href="/" class="nav-logo ms-2"><img src="../assets/loginpinmeme.png" style="width: 85px; height: 70px" alt="" /></a>
 
       <div class="nav-menu-wrap">
         <ul class="navbar-navv-menu mt-3">
@@ -90,7 +90,7 @@ header {
 }
 
 .nav-logo {
-  font-family: "DM Sans", sans-serif;
+  font-family: "monserrat", sans-serif;
   font-weight: bold;
   font-size: 32px;
   position: relative;

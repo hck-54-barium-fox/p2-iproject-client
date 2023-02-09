@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import axios from "axios";
-const domain = "";
+const domain = "https://deeply-watch-production.up.railway.app";
 const localhost = "http://localhost:3000";
+import Swal from "sweetalert2";
 
 export const useAppStore = defineStore("app", {
   state: () => ({
@@ -12,6 +13,8 @@ export const useAppStore = defineStore("app", {
     memeDataDetail: "",
     memeImage: "",
     boxCount: 0,
+    isUploadImg: false,
+    activePreLoader: false,
   }),
 
   getters: {},
@@ -20,42 +23,121 @@ export const useAppStore = defineStore("app", {
       this.isLogin = status;
     },
 
+    async doRegister(form) {
+      try {
+        console.log(form);
+        const { data } = await axios({
+          method: "POST",
+          url: `${domain}/register`,
+          data: form,
+        });
+
+        this.activePreLoader = true;
+
+        setTimeout(() => {
+          this.activePreLoader = false;
+          this.router.push("/login");
+
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Register Successfully, Please check your email to verified",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }, 1500);
+
+        // console.log(data, "<<<<<<<<<<<<<<<");
+      } catch (err) {
+        this.activePreLoader = false;
+        console.log(err);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    },
+
     async doLogin(form) {
       try {
         console.log(form);
         const { data } = await axios({
           method: "POST",
-          url: `${localhost}/login`,
+          url: `${domain}/login`,
           data: form,
         });
         this.isLogin = true;
 
         localStorage.setItem("access_token", data.access_token);
 
-        this.router.push("/memes");
-        console.log(data, "<<<<<<<<<<<<<<<");
+        this.activePreLoader = true;
+
+        setTimeout(() => {
+          this.activePreLoader = false;
+          this.router.push("/memes");
+
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Login Successfully",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          console.log(data, "<<<<<<<<<<<<<<<");
+        }, 1500);
       } catch (err) {
         console.log(err);
+        this.activePreLoader = false;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     },
 
     doLogout() {
       this.isLogin = false;
       localStorage.removeItem("access_token");
-      this.router.push("/login");
+
+      this.activePreLoader = true;
+
+      setTimeout(() => {
+        this.activePreLoader = false;
+        this.router.push("/login");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Logout Successfully",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }, 1500);
     },
 
     async fetchPosts() {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${localhost}/posts`,
+          url: `${domain}/posts`,
         });
         // console.log(data);
         this.postList = data;
         console.log(this.postList);
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     },
 
@@ -63,13 +145,20 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${localhost}/posts/${id}`,
+          url: `${domain}/posts/${id}`,
         });
 
         this.postDataDetail = data;
         console.log(postDataDetail, "<<<<<<<<<<<< Detail");
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     },
 
@@ -77,7 +166,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${localhost}/memes`,
+          url: `${domain}/memes`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
@@ -87,6 +176,13 @@ export const useAppStore = defineStore("app", {
         console.log(this.memeList);
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     },
 
@@ -95,7 +191,7 @@ export const useAppStore = defineStore("app", {
         // console.log(id);
         const { data } = await axios({
           method: "GET",
-          url: `${localhost}/memes/${id}`,
+          url: `${domain}/memes/${id}`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
@@ -108,6 +204,13 @@ export const useAppStore = defineStore("app", {
         // console.log(this.memeDataDetail, "<<<<<<<<<<<< Detail");
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     },
 
@@ -116,17 +219,31 @@ export const useAppStore = defineStore("app", {
         console.log(form.template_id);
         const { data } = await axios({
           method: "POST",
-          url: `${localhost}/memes`,
+          url: `${domain}/memes`,
           data: form,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
         });
-        console.log(data.data.url, "KKKKKKKKKKKKK");
-        this.memeImage = data.data.url;
-        this.router.push(`/memes/${form.template_id}`);
+
+        this.activePreLoader = true;
+
+        setTimeout(() => {
+          this.activePreLoader = false;
+          console.log(data.data.url, "KKKKKKKKKKKKK");
+          this.memeImage = data.data.url;
+          this.router.push(`/memes/${form.template_id}`);
+        }, 500);
       } catch (err) {
         console.log(err);
+        this.activePreLoader = false;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
     },
 
@@ -135,16 +252,31 @@ export const useAppStore = defineStore("app", {
         console.log(form, ":::::::::::::::::::");
         const { data } = await axios({
           method: "POST",
-          url: `${localhost}/memes/postMeme`,
+          url: `${domain}/memes/postMeme`,
           data: form,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
         });
         // console.log(data.data.url, "LLLPPPPPPPP");
-        this.router.push(`/`);
+
+        this.activePreLoader = true;
+
+        setTimeout(() => {
+          this.activePreLoader = false;
+          this.router.push(`/`);
+
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Posting Meme Successfully",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }, 1500);
       } catch (err) {
         console.log(err);
+        this.activePreLoader = false;
       }
     },
 
@@ -153,17 +285,28 @@ export const useAppStore = defineStore("app", {
         console.log(image);
         const post = await axios({
           method: "POST",
-          url: `${localhost}/memes/memeMulter`,
+          url: `${domain}/memes/memeMulter`,
           data: image,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
         });
-        this.fetchPosts();
+
+        this.activePreLoader = true;
+
+        setTimeout(() => {
+          this.activePreLoader = false;
+          this.fetchPosts();
+        }, 1500);
         this.router.push("/");
       } catch (err) {
         console.log(err);
+        this.activePreLoader = false;
       }
+    },
+
+    uploadImgShow() {
+      this.isUploadImg = true;
     },
   },
 });

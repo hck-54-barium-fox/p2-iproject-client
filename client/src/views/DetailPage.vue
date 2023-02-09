@@ -20,7 +20,6 @@ export default {
 
   mounted() {
     (function () {
-      // DON'T EDIT BELOW THIS LINE
       var d = document,
         s = d.createElement("script");
       s.src = "https://https-bukan9gag-dbeda-web-app.disqus.com/embed.js";
@@ -43,14 +42,13 @@ export default {
               <p class="card-text" style="font-weight: bold">{{ postDataDetail.title }}</p>
             </div>
           </div>
+          <section class="comments mt-4" style="max-width: 800px" aria-labelledby="comment">
+            <h2 id="comment">Comments</h2>
+            <Disqus />
+          </section>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="comments" aria-labelledby="comment">
-    <h2 id="comment">Comments</h2>
-    <Disqus />
   </section>
 </template>
 
