@@ -1,25 +1,15 @@
 <template>
-    <div class="header_sec">
-        <div class="logo">
-            <h2><span class="primary_color">My</span>GYM</h2>
-        </div>
-        <ul class="nav_menu">
-            <li><a href="#">Programs</a></li>
-            <li><a href="#">Schedule</a></li>
-            <li><a href="#">Instructors</a></li>
-            <li><a href="#">Blogs</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ usersBmi.name }}</h5>
-            <p class="card-text">Class: {{ usersBmi.info.health }}</p>
-            <p class="card-text">pls consider to move your ass a bit</p>
-            <a @click="this.$router.push('/exercise')" href="" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+    <div class="banner">
+			<div class="intro">
+				<h1>{{ usersBmi.name }}</h1>
+				<h1>BMI: {{ usersBmi.info.bmi }}</h1>
+				<h1>Health:{{ usersBmi.info.health }}</h1>
+				<h1>Recomendation:{{ usersBmi.info.healthy_bmi_range }}</h1>
+				<h1>Perfect Shape</h1>
+                <a @click="this.$router.push('/exercise')" href="" class="btn btn-primary">Get our exercise</a>
+			</div>
+			<img src="../assets/img/bg.png">
+		</div>
 </template>
 
 <script>
@@ -52,4 +42,31 @@ export default {
     padding: 3rem 0;
     border-radius: 20px;
 }
+
+.banner{
+	height: 80vh;
+	background: black;
+	position: relative;
+}
+.banner .intro{
+	position: absolute;
+	left: 15%;
+	top: 20%;
+}
+.banner .intro h1{
+	color: #fff;
+	font-size: 40px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.banner img{
+	position: absolute;
+	right: 15%;
+	bottom: 0;
+	height: 95%;
+}
+.banner form{
+	margin-top: 1rem;
+}
+
 </style>
