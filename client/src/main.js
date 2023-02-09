@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
+import VueSocialSharing from 'vue-social-sharing'
 
 const app = createApp(App)
 
@@ -15,6 +16,7 @@ pinia.use(({ store }) => {
 })
 app.use(pinia)
 app.use(router)
+app.use(VueSocialSharing);
 
 
 app.mount('#app')

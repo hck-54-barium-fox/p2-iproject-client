@@ -2,8 +2,8 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-const url = 'http://localhost:1812'
-
+// const url = 'http://localhost:1812'
+const url ='https://iproject-wantauu-production.up.railway.app'
 
 
 export const useAppStore = defineStore('app', {
@@ -138,7 +138,7 @@ export const useAppStore = defineStore('app', {
                 window.snap.pay(data.token, {
                     onSuccess: async function (result) {
                         /* You may add your own implementation here */
-                        alert("payment success!"); console.log(result);
+                        
                         //
                         const { data } = await axios({
                             method: "Patch",
@@ -147,6 +147,7 @@ export const useAppStore = defineStore('app', {
                                 access_token: localStorage.getItem('access_token')
                             }
                         })
+                        this.profile()
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -156,7 +157,7 @@ export const useAppStore = defineStore('app', {
                         })
                     }
                 })
-                this.router.push('/profile')
+    
             } catch (err) {
                 console.log(err);
             }
