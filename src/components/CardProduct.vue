@@ -35,7 +35,6 @@ export default {
       <img :src="product.product_image_url" class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ product.product_name }}</h5>
-        <p class="card-text">Stock : {{ product.product_info }}</p>
         <p>Price : {{ getRupiah }}</p>
         <div class="d-flex flex-column justify-content-center gap-2">
           <RouterLink :to="`/products/${product.id}`" class="btn btn-primary"
@@ -44,7 +43,6 @@ export default {
           <button
             v-if="isLogin"
             @click="addBookmarkByProductId(product.id)"
-            to="/"
             class="btn btn-primary"
           >
             Add To Cart

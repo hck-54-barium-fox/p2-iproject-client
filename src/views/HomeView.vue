@@ -27,24 +27,6 @@ export default {
   },
   methods: {
     ...mapActions(useAppStore, ["fetchProduct"]),
-
-    // fetchProductByBrandQuery(e) {
-    //   e.preventDefault();
-    //   let query = { ...this.query };
-    //   if (e.target.value === undefined || e.target.value === "") {
-    //     query.brand = "";
-    //   } else {
-    //     query.brand = e.target.value;
-    //   }
-    //   this.fetchProduct(query);
-    // },
-
-    // fetchProductByPaginate({ id }) {
-    //   if (id) {
-    //     this.query.page = id;
-    //   }
-    //   this.fetchProduct(this.query);
-    // },
   },
   computed: {
     ...mapState(useAppStore, ["productList"]),
@@ -70,7 +52,7 @@ export default {
         </div>
         <div class="row mx-auto">
           <div class="col d-flex">
-            <PaginateComponent />
+            <PaginateComponent :data="productList" />
           </div>
         </div>
       </div>

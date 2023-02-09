@@ -2,6 +2,8 @@
 import MyProfileDetail from "../components/MyProfileDetail.vue";
 import NavbarComponent from "../components/Navbar.vue";
 import FooterComponent from "../components/Footer.vue";
+import { mapState } from "pinia";
+import { useAppStore } from "../stores/app";
 
 export default {
   name: "MyProfile",
@@ -9,6 +11,9 @@ export default {
     MyProfileDetail,
     NavbarComponent,
     FooterComponent,
+  },
+  computed: {
+    ...mapState(useAppStore, ["myProfile"]),
   },
 };
 </script>
@@ -19,7 +24,7 @@ export default {
     <main class="my-3">
       <div class="container-xxl">
         <div class="row m-auto">
-          <MyProfileDetail />
+          <MyProfileDetail :profile="myProfile" />
         </div>
       </div>
     </main>

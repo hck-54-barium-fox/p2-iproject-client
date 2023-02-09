@@ -1,8 +1,20 @@
 <script>
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/app";
+
 export default {
   name: "MyCartDetail",
   components: {},
   props: ["cartDetail"],
+  methods: {
+    ...mapActions(useAppStore, ["payment", "deleteBookmark"]),
+    handlePayment(id) {
+      this.payment(id);
+    },
+    handleRemoveBookmark(id) {
+      this.deleteBookmark(id);
+    },
+  },
 };
 </script>
 
@@ -24,10 +36,25 @@ export default {
               price : {{ cartDetail.Product.product_price }}
             </p>
             <div class="d-flex flex-row gap-2">
-              <button type="button" class="btn btn-outline-info">Pay</button>
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                @click="handlePayment(cartDetail?.Product.id)"
+                v-if="!cartDetail.isPaid"
+              >
+                Pay
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                v-if="!cartDetail.isPaid"
+                @click="handleRemoveBookmark(cartDetail.id)"
+              >
                 cancel bookmark
               </button>
+              <div class="btn btn-outline-success" v-if="cartDetail.isPaid">
+                Success Payment
+              </div>
             </div>
           </div>
         </div>
