@@ -1,14 +1,51 @@
 <script>
 import leaflet from 'leaflet'
+import { mapActions, mapState } from 'pinia'
+import { useAppStore } from '../stores/app'
+import MarkerCard from '../components/MarkerCard.vue'
 
 export default {
+    components: {
+        MarkerCard
+    },
+    methods: {
+        ...mapActions(useAppStore, ['getLandmarks'])
+    },
+    // async created(){
+    //     await this.getLandmarks()
+    // },
+    computed: {
+        ...mapState(useAppStore, ['landmarkList'])
+    },
     mounted(){
-        let map = leaflet.map('map').setView([51.505, -0.09], 4)
+        let mainMap = leaflet.map('map').setView([51.505, -0.09], 4)
 
         leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map)
+        }).addTo(mainMap)
+        // console.log(this.landmarkList);
+        let markers
+
+        this.getLandmarks()
+            .then(() => {
+                markers = this.landmarkList.map(el => {
+                    return leaflet.marker([el.latitude, el.longitude]).addTo(mainMap)
+                })
+
+                for(let i in markers){
+                    markers[i].bindPopup(`<div class="card" style="width: 18rem;">
+                        <img src="${this.landmarkList[i].imageUrl}" class="card-img-top" alt="${this.landmarkList[i].name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${this.landmarkList[i].name}</h5>
+                            <h6 class="card-subtitle">${this.landmarkList[i].country}</h6>
+                            <p class="card-text">${this.landmarkList[i].content.substring(0, 50) + '...'}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    `).openPopup()
+                }
+            })
     }
 }
 </script>

@@ -1,6 +1,23 @@
 <script>
-export default {
+import { mapActions } from 'pinia';
+import { useAppStore } from '../stores/app';
 
+export default {
+    data(){
+        return {
+            registerForm: {
+                email: '',
+                username: '',
+                password: ''
+            }
+        }
+    },
+    methods: {
+        // ...mapActions(useAppStore)
+        callback(){
+            
+        }
+    }
 }
 </script>
 
@@ -34,10 +51,14 @@ export default {
                             </div>
                         </form>
                         <p class="text-center">OR</p>
-                        <div id="googleRegister" class="d-flex justify-content-center"></div>
+                        <div id="googleRegister" class="d-flex justify-content-center">
+                            <GoogleLogin :callback="callback" prompt/>
+                        </div>
                         <p class="text-center mt-3">
                             Already has an account?
-                            <a href="#">Login</a>
+                            <router-link to="/login" tag="button">
+                                <a href="#">Login</a>
+                            </router-link>
                         </p>
                     </div>
                 </div>
