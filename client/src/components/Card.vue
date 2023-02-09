@@ -20,6 +20,9 @@ export default {
                         </div>
                         <div class="w-full h-2/3">
                             <p>{{ planet.description }}</p>
+                            <div class="flex justify-end mt-[10%] mr-[10%]">
+                                <button class="btn btn-primary" @click.prevent="this.$router.push(`/planets/${planet.keyId}`)">See Details</button>
+                            </div>
                         </div>
                     </div>
                   </div>
