@@ -38,7 +38,7 @@ export default {
                 <tr>
                     <td class="event-detail-tag">Venue</td>
                     <td>:</td>
-                    <td class="event-detail-value">{{ eventMoreDetail.venue.address + ' ' + eventMoreDetail.venue.state + ', ' + eventMoreDetail.venue.country }}</td>
+                    <td class="event-detail-value">{{ eventMoreDetail.venue?.address + ' ' + eventMoreDetail.venue?.state + ', ' + eventMoreDetail.venue?.country }}</td>
                 </tr>
                 <tr>
                     <td class="event-detail-tag">Date</td>
@@ -48,13 +48,13 @@ export default {
                 <tr>
                     <td class="event-detail-tag">Performer</td>
                     <td>:</td>
-                    <td class="event-detail-value">{{eventMoreDetail.performer.name}}</td>
+                    <td class="event-detail-value">{{eventMoreDetail.performer?.name}}</td>
                 </tr>
             </table>
         </div>
     </div>
     <div class="event-image-container">
-        <img class="event-image" :src="eventMoreDetail.performer.image" alt="">
+        <img class="event-image" :src="eventMoreDetail.performer?.image" alt="">
     </div>
   </div>
 

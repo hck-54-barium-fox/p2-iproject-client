@@ -2,6 +2,9 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 
+// const BASE_URL = "http://localhost:3000"
+const BASE_URL = "https://eventify-production.up.railway.app"
+
 export const useAppStore = defineStore("app", {
   state: () => ({
     listTaxonomies: [],
@@ -20,7 +23,7 @@ export const useAppStore = defineStore("app", {
       try {
         await axios({
           method: "POST",
-          url: "http://localhost:3000/register",
+          url: `${BASE_URL}/register`,
           data: user,
         });
         Swal.fire({
@@ -40,7 +43,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "POST",
-          url: `http://localhost:3000/login`,
+          url: `${BASE_URL}/login`,
           data: user,
         });
         Swal.fire({
@@ -72,7 +75,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: "http://localhost:3000/taxonomies",
+          url: `${BASE_URL}/taxonomies`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
@@ -87,7 +90,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `http://localhost:3000/events/${name}`,
+          url: `${BASE_URL}/events/${name}`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
@@ -102,7 +105,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `http://localhost:3000/hotels`,
+          url: `${BASE_URL}/hotels`,
           headers: {
             latitude: geolocation.latitude,
             longitude: geolocation.longitude,
@@ -119,7 +122,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `http://localhost:3000/eventDetail/${id}`,
+          url: `${BASE_URL}/eventDetail/${id}`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
