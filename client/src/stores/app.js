@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import axios from 'axios'
-const baseUrl = "http://localhost:4000"
+// const baseUrl = "http://locahost:4000"
+const baseUrl = "https://iprojectapi-production.up.railway.app"
 export const useAppStore = defineStore('app', {
     state: () => ({
         isLogin: false,
@@ -10,15 +11,6 @@ export const useAppStore = defineStore('app', {
     }),
     getters: {},
     actions: {
-        async loginFacebook(response) {
-            try {
-                localStorage.access_token = response.authResponse.access_token
-                this.isLogin = true
-                this.router.push('/')
-            } catch (error) {
-
-            }
-        },
         async doLoginGoogle(response) {
             try {
                 const { data } = await axios({
@@ -115,7 +107,10 @@ export const useAppStore = defineStore('app', {
             try {
                 const { data } = await axios({
                     method: "GET",
-                    url: `${baseUrl}/event`
+                    url: `${baseUrl}/event`,
+                    headers: {
+                        access_token: localStorage.access_token
+                    }
                 })
                 this.eventList = data
                 console.log(this.eventList)
@@ -128,7 +123,10 @@ export const useAppStore = defineStore('app', {
                 const { data } = await axios({
                     method: "POST",
                     url: `${baseUrl}/event/createEvent`,
-                    data: { title: form.title, content: form.content, eventDate: form.eventDate, imageUrl: form.imageUrl }
+                    data: { title: form.title, content: form.content, eventDate: form.eventDate, imageUrl: form.imageUrl },
+                    headers: {
+                        access_token: localStorage.access_token
+                    }
                 })
                 this.router.push('/')
                 this.fetchEvent
@@ -140,7 +138,10 @@ export const useAppStore = defineStore('app', {
             try {
                 const { data } = await axios({
                     method: "GET",
-                    url: `${baseUrl}/event/${eventId}`
+                    url: `${baseUrl}/event/${eventId}`,
+                    headers: {
+                        access_token: localStorage.access_token
+                    }
                 })
                 this.eventDetails = data
                 console.log(this.eventDetails)
@@ -149,16 +150,31 @@ export const useAppStore = defineStore('app', {
                 console.log(error)
             }
         },
-        async getQrCode() {
+        async doLoginFacebook(response) {
             try {
-                // const { data } = await axios({
-                //     method: "POST",
-                //     url: `${baseUrl}/event/qrCode`
-                // })
-                
+                console.log(response, `masukk ke app`)
+                const { data } = await axios({
+                    method: "POST",
+                    url: `${baseUrl}/login-facebook`,
+                    data: { response }
+                })
+                localStorage.setItem('access_token', data.access_token)
+                this.router.push('/')
+                this.isLogin = true
+                this.fetchEvent
+                Swal.fire({
+                    icon: "success",
+                    title: "Success Login",
+                    text: `hello`,
+                });
             } catch (error) {
                 console.log(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "failed login Login",
+                    text: `${error.response.data}`,
+                });
             }
-        },
+        }
     }
 })

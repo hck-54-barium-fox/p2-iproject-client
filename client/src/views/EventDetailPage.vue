@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios'
+import axios from "axios";
 import { mapActions, mapState } from "pinia";
 import { useAppStore } from "../stores/app";
 export default {
@@ -17,18 +17,20 @@ export default {
       return new Date(this.eventDetails.eventDate).toISOString().slice(0, 10);
     },
   },
-  created() {
+  async created() {
+    const baseUrl = "https://partylist-c358a.web.app"
+  //  const baseUrl = 'https://iprojectapi-production.up.railway.app'
     const options = {
       method: "POST",
       url: "https://qrcode3.p.rapidapi.com/qrcode/text",
       headers: {
-        responseType: "arrayBuffer",
         "content-type": "application/json",
         "X-RapidAPI-Key": "c3f6c10d1cmshe95233043f8ec7cp164e6bjsn71d6b4db2f23",
         "X-RapidAPI-Host": "qrcode3.p.rapidapi.com",
       },
+      responseType: "arraybuffer",
       data: {
-        data: "www.facebook.com",
+        data: `${baseUrl}${this.$route.path}`,
         image: {
           uri: "icon://appstore",
           modules: true,
@@ -57,19 +59,14 @@ export default {
         },
       },
     };
-    axios
-      .request(options)
-      .then(function (response) {
-        let blob = new Blob([response.data], {
-          type: response.headers["content-type"],
-        });
-        const qr = URL.createObjectURL(blob);
-        console.log(qr);
-        this.imgQr = qr;
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    const response = await axios.request(options);
+    let blob = new Blob([response.data], {
+      type: response.headers["content-type"],
+    });
+    const qr = URL.createObjectURL(blob);
+    console.log(qr);
+    this.imgQr = qr;
+
     // this.getQrCode();
     this.eventDetails;
     this.getEventById(this.$route.params.eventId);
@@ -79,11 +76,10 @@ export default {
 
 <template>
   <div class="blog-single gray-bg">
-    <h1 class="text-white">apa</h1>
     <div class="container">
       <div class="bg-white rounded-xl overflow-hidden">
         <div class="row align-items-start">
-          <div class="col-lg-8 m-15px-tb">
+          <div class="col-6 offset-3  ">
             <div class="article-title">
               <h1>{{ this.eventDetails.title }}</h1>
               <div class="media">
@@ -99,7 +95,7 @@ export default {
             <div class="">
               <p v-html="eventDetails.content"></p>
             </div>
-            <div><img v-if="imgQr" :src="imgQr" alt="" width="200" /></div>
+            <div><img :src="imgQr" alt="" width="200" /></div>
             <div>
               <p>{{ getDate }}</p>
             </div>

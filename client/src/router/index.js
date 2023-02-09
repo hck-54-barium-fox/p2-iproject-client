@@ -28,20 +28,21 @@ const router = createRouter({
       component: HomePage
     },
     {
-      path:'/event/:eventId',
-      name:'detailsPage',
+      path: '/event/:eventId',
+      name: 'detailsPage',
       component: DetailsPage
     }
 
   ]
 })
-// router.beforeEach((to, from, next) => {
-//   const isLogin = localStorage.access_token
-//   if ((to.name == 'home' || to.name == 'myheroes') && !isLogin) {
-//     next('/login')
-//   } else if (to.name == 'login' && isLogin) {
-//     next('/')
-//   }
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.access_token
+  if ((to.name !== 'login' && to.name !== 'register') && !isLogin) {
+    next('/login')
+  } else if ((to.name == 'login' || to.name == 'register') && isLogin) {
+    next('/')
+  }else{
+    next()
+  }
+})
 export default router

@@ -5,7 +5,7 @@ export default {
   data() {
     return {
       form: {
-        userName: "",
+        username: "",
         email: "",
         password: "",
       },
@@ -49,7 +49,7 @@ export default {
                       placeholder="Enter your username ..."
                       autocomplete="off"
                       required
-                      v-model="form.userName"
+                      v-model="form.username"
                     />
                   </div>
                   <div class="mb-3">

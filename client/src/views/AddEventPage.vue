@@ -46,14 +46,14 @@ export default {
         pt-3
         pb-2
         mb-3
-        border-bottom
+       
       "
     >
-      <h1 class="di splay-2">Make your Event</h1>
+      <h1 class="display-2">Make your Event</h1>
     </div>
     <div class="row">
-      <div class="col-6 col-offset-3 col-md-6">
-        <form @submit.prevent="addEvent">
+      <div class="col-6 offset-3">
+        <form class="bg-white p-4 border rounded" @submit.prevent="addEvent">
           <div class="mb-3">
             <label for="product-title"
               >Title<span class="text-danger fw-bold">*</span></label
@@ -103,13 +103,13 @@ export default {
             />
           </div>
           <div class="row mt-5 mb-3">
-            <router-link to="/">
               <div class="col-6">
+            <router-link to="/">
                 <a class="btn btn-lg btn-light rounded-pill w-100 p-2"
                   >Cancel</a
                 >
-              </div>
             </router-link>
+              </div>
             <div class="col-6">
               <button
                 class="btn btn-lg btn-primary rounded-pill w-100 p-2"
