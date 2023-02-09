@@ -3,8 +3,8 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 
 
-const BASE_URL = 'http://localhost:6060'
-
+// const BASE_URL = 'http://localhost:6060'
+const BASE_URL = 'markazullughoh.up.railway.app'
 
 export const useCounterStore = defineStore('counter', {
   state: () => ({
@@ -133,7 +133,7 @@ export const useCounterStore = defineStore('counter', {
       try {
         const { data } = await axios({
           method: 'get',
-          url: "http://localhost:6060/events/"
+          url: BASE_URL + "/events/"
         })
         this.data.jadwalMajelis = data
         // console.log(this.data.jadwalMajelis, '<<<<<<<<<<<<<<<<<<<<<<<< jadwal majelis');
@@ -160,7 +160,7 @@ export const useCounterStore = defineStore('counter', {
           const { data } = await axios({
             method: 'post',
             // url: BASE_URL + `/favorite/${id}`,
-            url: `http://localhost:6060/events/favorite/${id}`,
+            url: BASE_URL`/events/favorite/${id}`,
             headers: {
               access_token: localStorage.access_token
             }
@@ -271,7 +271,7 @@ export const useCounterStore = defineStore('counter', {
         try {
           let { data } = await axios({
             method: 'post',
-            url: 'http://localhost:6060/midtoken_generate',
+            url: BASE_URL + '/midtoken_generate',
             data: {
               totalPembayaran,
               categorySedekah
@@ -319,7 +319,7 @@ export const useCounterStore = defineStore('counter', {
         })
         const donatur = await axios({
           method: 'post',
-          url: 'http://localhost:6060/donatur',
+          url: BASE_URL + '/donatur',
           data: {
             jumlah: data.jumlah,
             category: data.category
