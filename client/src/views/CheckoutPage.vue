@@ -59,7 +59,7 @@ export default {
 <template>
     <main class="container d-flex gap-4">
         <!-- ORDER DETAIL -->
-        <div class="p-3 bg-body rounded shadow-sm w-75" style="margin-top: 80px; height: fit-content">
+        <div class="p-3 bg-body rounded shadow-lg w-75" style="margin-top: 80px; height: fit-content">
             <h4 class="border-bottom pb-2 mb-0">My Order Detail</h4>
             <!-- PRODUCT ROW -->
             <div class="d-flex text-muted pt-3">
@@ -89,7 +89,7 @@ export default {
 
         <div class="w-25" style="align-items: start;">
             <!-- CHECK ONGKIR SECTION -->
-            <div class="p-3 bg-body rounded shadow-sm" style="height: fit-content; margin-top: 80px;">
+            <div class="p-3 bg-body rounded shadow-lg" style="height: fit-content; margin-top: 80px;">
                 <div class="d-flex align-items-center gap-2 mb-2 border-bottom pb-2">
                     <img src="../assets/truck.svg" alt="">
                     <h5 class="my-0">Check Ongkir</h5>
@@ -128,7 +128,7 @@ export default {
             <!-- END OFCHECK ONGKIR SECTION -->
 
             <!-- CHECK OUT SECTION -->
-            <div class="my-3 p-3 bg-body rounded shadow-sm" style="height: fit-content;">
+            <div class="my-4 p-3 bg-body rounded shadow-lg" style="height: fit-content;">
                 <h5 class="border-bottom pb-2 mb-3">Order Summary</h5>
                 <h6>Your product cost: {{ totalProductPrice.toLocaleString("id-ID", {style:"currency", currency:"IDR"}) }}</h6>
                 <h6>Your delivery cost: {{ ongkir.toLocaleString("id-ID", {style:"currency", currency:"IDR"}) }}</h6>
