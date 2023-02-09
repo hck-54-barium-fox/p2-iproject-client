@@ -11,7 +11,7 @@
       ...mapActions(useCounterStore, ['fetchDataPhone'])
     },
     computed: {
-      ...mapState(useCounterStore, ['phone'])
+      ...mapState(useCounterStore, ['phone', 'isLogin'])
     },
     created() {
       this.fetchDataPhone()
@@ -27,6 +27,7 @@
       </div>
       <div class="container text-left">
       <p>Kamu pasti pernah melihat salah satu artis favorit kamu ataupun artis dunia terkenal yang menggunakan iPhone. iPhone merupakan salah satu produk smartphone yang dikeluarkan oleh Apple, raksasa teknologi dari Amerika Serikat. Seiring dengan perkembangannya, banyak sekali jenis-jenis smartphone dari Apple yang dijual di pasaran sejak perilisan pertamanya di tahun 2007. Namun memang harga dari produk buatan Apple ini tidak murah, eits! tapi tenang kini kamu bisa menggunakan Iphone dengan menyewa nya saja.</p>
+      <p v-if="!isLogin" class="container text-center" style="color: red;">**Register for purchasing**</p>
   </div>
 </div>
 <div class="container" style="margin-top:50px;">

@@ -62,8 +62,7 @@
         <h1>Welcome to RentOPhone</h1>      
         <h2>A place where you can get your dream cellphone to fulfill the high prestige you have. so you can show off to your friends that you use a dream cellphone</h2>
         <p>Just enjoy the exploring and we hope your happiness will be fullfil</p>
-        <p>Just enjoy the exploring and we hope your happiness will be fullfil</p>
-        <p v-if="!isLogin">**Register for purchasing**</p>
+        <p v-if="!isLogin" style="color: red;">**Register for purchasing**</p>
     </div>
 </div>
 </template>

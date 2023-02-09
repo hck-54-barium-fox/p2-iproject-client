@@ -30,7 +30,6 @@
           {{detailPhone.description}}
         </p>
         <h5 class="mt-3">{{ rupiah(detailPhone.price) }}/Day</h5>
-        <button class="btn btn-warning mt-3" @click.prevent="handleTransaction(detailPhone.id)">Purchase Now</button>
         <!-- Vertically centered modal -->
         <button
           type="button"
@@ -38,8 +37,8 @@
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           style="margin-left: 10px"
-        >
-          <img src="tessgambar" alt="" />
+        >QR CODE
+          <img src="" alt="" />
         </button>
         <!-- modal section -->
         <div
