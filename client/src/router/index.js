@@ -4,8 +4,8 @@ import Register from '../views/Register.vue'
 import Home from '../views/Home.vue'
 import NewsGame from '../views/NewsGame.vue'
 import Profile from '../views/Profile.vue'
-
-
+import DetailGames from '../views/DetailGames.vue'
+import DetailNewsGames from '../views/DetailNewsGames.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -42,7 +42,22 @@ const router = createRouter({
       name : 'profile',
       component: Profile
 
+    },
+    {
+      
+      path:'/detailGames/:steam_appid',
+      name : 'DetailGames',
+      component: DetailGames
+
+    },
+    {
+      
+      path:'/detailNewsGames/:id',
+      name : 'DetailNewsGames',
+      component: DetailNewsGames
+
     }
+
   ]
 
 })
