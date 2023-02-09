@@ -34,7 +34,9 @@ export default {
             </div>
 
             <li class="cursor-pointer hover:bg-white rounded ml-16 whitespace-nowrap"
-                @click="this.$router.push('/about')"><a>About Us</a></li>
+                @click="this.$router.push('/api')"><a>API Docs</a></li>
+                <li class="cursor-pointer hover:bg-white rounded ml-5 whitespace-nowrap"
+                @click="this.$router.push('/about')"><a>About</a></li>
             <li class="cursor-pointer hover:bg-white rounded ml-5 whitespace-nowrap"
                 @click="this.$router.push('/myletter')"><a>My Letter</a></li>
             <div class="navbar-end ml-[90vh]">

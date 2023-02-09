@@ -3,7 +3,8 @@ import { defineStore } from "pinia";
 import axios from "axios";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
-const DATA_URL = "http://localhost:3000";
+const DATA_URL = "https://trim-store-production.up.railway.app";
+// const DATA_URL = "http://localhost:3000"
 
 export const usePoemStore = defineStore("poem", {
   state: () => {
@@ -127,7 +128,7 @@ export const usePoemStore = defineStore("poem", {
           },
         });
         console.log(data);
-        toast.success(data);
+        toast.success("Send Email Successful");
         this.$router.push("/");
       } catch (err) {
         toast.error(err.response.data.msg);
