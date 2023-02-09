@@ -1,6 +1,8 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 const DATA_URL = "http://localhost:3000";
 
 export const usePoemStore = defineStore("poem", {
@@ -14,8 +16,8 @@ export const usePoemStore = defineStore("poem", {
       paymentlink: "",
       rawImage: "",
       imageLink: "",
-      myLetters : [],
-      isviewing: ""
+      myLetters: [],
+      isviewing: "",
     };
   },
 
@@ -35,7 +37,9 @@ export const usePoemStore = defineStore("poem", {
         localStorage.setItem("email", data.email);
         this.isLogin = true;
         this.$router.push("/");
+        toast.success('Login Successful!');
       } catch (err) {
+        toast.error('Login Failed');
         console.log(err.response.data.msg);
       }
     },
@@ -48,8 +52,10 @@ export const usePoemStore = defineStore("poem", {
             access_token: localStorage.getItem("access_token"),
           },
         });
+        toast.success('Quote generated!');
         this.quotes = data;
       } catch (err) {
+        toast.error(err.response.data.msg);
         console.log(err.response.data.msg);
       }
     },
@@ -62,10 +68,12 @@ export const usePoemStore = defineStore("poem", {
             access_token: localStorage.getItem("access_token"),
           },
         });
-        this.isviewing = false
+        this.isviewing = false;
         this.poem = data.content;
         this.poemId = data.id;
+        toast.info('Poem generated!');
       } catch (err) {
+        toast.error(err.response.data.msg);
         console.log(err.response.data.msg);
       }
     },
@@ -80,6 +88,7 @@ export const usePoemStore = defineStore("poem", {
         });
         this.paymentlink = data;
       } catch (err) {
+        toast.error(err.response.data.msg);
         console.log(err.response.data.msg);
       }
     },
@@ -98,32 +107,15 @@ export const usePoemStore = defineStore("poem", {
             "Content-Type": `multipart/form-data`,
           },
         });
+        toast.success('Image uploaded!');
         this.imageLink = response.data.url;
       } catch (err) {
+        toast.error(err.response.data.msg);
         console.log(err.response.data);
       }
     },
 
-    async uploadImage(letterId, image) {
-      try {
-        let form = new FormData();
-        form.append("image", image);
-        const { data: response } = await axios({
-          method: "post",
-          url: `${DATA_URL}/poetry/upload-image/${letterId}`,
-          data: form,
-          headers: {
-            access_token: localStorage.getItem("access_token"),
-            accept: "application/json",
-            "Accept-Language": "en-US,en;q=0.8",
-            "Content-Type": `multipart/form-data`,
-          },
-        });
-        this.imageLink = response.data.url;
-      } catch (err) {
-        console.log(err.response.data);
-      }
-    },
+  
     async sendEmail(letter, id) {
       try {
         const { data } = await axios({
@@ -135,9 +127,11 @@ export const usePoemStore = defineStore("poem", {
           },
         });
         console.log(data);
-        this.$router.push('/')
+        toast.success(data);
+        this.$router.push("/");
       } catch (err) {
-        console.log(err);
+        toast.error(err.response.data.msg);
+        console.log(err.response.data.msg);
       }
     },
 
@@ -150,10 +144,11 @@ export const usePoemStore = defineStore("poem", {
             access_token: localStorage.getItem("access_token"),
           },
         });
-        console.log(data)
-        this.myLetters = data
+        console.log(data);
+        this.myLetters = data;
       } catch (err) {
-        console.log(err.response.data)
+        toast.error(err.response.data.msg);
+        console.log(err.response.data);
       }
     },
 
@@ -168,10 +163,11 @@ export const usePoemStore = defineStore("poem", {
         });
         this.poem = data.content;
         this.poemId = data.id;
-        this.isviewing = true
-        this.$router.push('/resultpoem')
+        this.isviewing = true;
+        this.$router.push("/resultpoem");
       } catch (err) {
-        console.log(err.response.data)
+        toast.error(err.response.data.msg);
+        console.log(err.response.data);
       }
     },
   },
