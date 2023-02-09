@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-const BASE_URL = "http://localhost:3000/";
+// const BASE_URL = "http://localhost:3000/";
+const BASE_URL = "https://iproject-ahsan.up.railway.app/";
 
 export const useAppStore = defineStore('app', {
     state: () => ({
