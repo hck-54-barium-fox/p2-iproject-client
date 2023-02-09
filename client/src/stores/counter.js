@@ -15,10 +15,17 @@ export const useCounterStore = defineStore('counter', {
   }),
   actions: {
     handleRegister(register) {
+      let multerData = new FormData()
+      console.log(register)
+      multerData.append("image", register.image)
+      multerData.append("phoneNumber", register.phoneNumber)
+      multerData.append("email", register.email)
+      multerData.append("password", register.password)
+      multerData.append("noIdentity", register.noIdentity)
       axios({
         method: "POST",
         url: `${baseUrl}/register`,
-        data: register,
+        data: multerData,
       })
       .then((res) => {
         this.router.push("/login");

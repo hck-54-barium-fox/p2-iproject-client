@@ -53,7 +53,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  Scan QR Code - Rent For Your ego
+                  Scan QR Code - Rent For Your prestige
                 </h1>
                 <button
                   type="button"

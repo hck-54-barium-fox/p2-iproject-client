@@ -21,6 +21,14 @@
 
 <template>
     <!--home-->
+  <div class="mt-4" style="background-color: white; ">
+    <div class="container text-center">
+      <h1>RentOPhone</h1>
+      </div>
+      <div class="container text-left">
+      <p>Kamu pasti pernah melihat salah satu artis favorit kamu ataupun artis dunia terkenal yang menggunakan iPhone. iPhone merupakan salah satu produk smartphone yang dikeluarkan oleh Apple, raksasa teknologi dari Amerika Serikat. Seiring dengan perkembangannya, banyak sekali jenis-jenis smartphone dari Apple yang dijual di pasaran sejak perilisan pertamanya di tahun 2007. Namun memang harga dari produk buatan Apple ini tidak murah, eits! tapi tenang kini kamu bisa menggunakan Iphone dengan menyewa nya saja.</p>
+  </div>
+</div>
 <div class="container" style="margin-top:50px;">
   <div class="row" >
     <CardPhone v-for="item in phone" :key="item.id" :item="item" />

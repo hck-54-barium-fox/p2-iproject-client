@@ -6,21 +6,27 @@
         return {
           value: {
             email: '',
-            password: ''
+            password: '',
+            phoneNumber: '',
+            noIdentity: '',
+            image: ''
           }
         }
       },
       methods: {
-        ...mapActions(useCounterStore, ['handleRegister'])
+        ...mapActions(useCounterStore, ['handleRegister']),
+        changeFile(){
+          this.value.image = this.$refs.file.files[0]
+        }      
       }
   }
 </script>
 
 <template>
     <!--regist-->
-<section class="vh-100" style="background-color: #eee;">
+<section class="min-100vh" style="background-color: #eee;">
   <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row d-flex justify-content-center align-items-center ">
       <div class="col-lg-12 col-xl-11">
         <div class="card text-black" style="border-radius: 25px;">
           <div class="card-body p-md-5">
@@ -31,22 +37,41 @@
 
                 <form class="mx-1 mx-md-4" @submit.prevent="handleRegister(this.value)" >
 
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                  <div class="d-flex flex-row align-items-center mb-4 bg-warning" style="border-radius: 10px;">
                     <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="form3Example3c">Your Email</label>
-                      <input type="email" id="form3Example3c" class="form-control" v-model="value.email" />
+                      <label class="form-label" style="padding-left: 10px;" for="form3Example3c">Email</label>
+                      <input type="email" id="form3Example3c"  class="form-control bg-light" v-model="value.email" />
                     </div>
                   </div>
 
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                  <div class="d-flex flex-row align-items-center mb-4 bg-warning" style="border-radius: 10px;">
                     <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="form3Example4c">Password</label>
-                      <input type="password" id="form3Example4c" class="form-control" v-model="value.password" />
+                      <label class="form-label" style="padding-left: 10px;" for="form3Example4c">Password</label>
+                      <input type="password" id="form3Example4c" class="form-control bg-light" v-model="value.password" />
                     </div>
                   </div>
 
+                  <div class="d-flex flex-row align-items-center mb-4 bg-warning" style="border-radius: 10px;">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" style="padding-left: 10px;" for="form3Example3c">Phonenumber</label>
+                      <input type="text" id="form3Example3c" class="form-control bg-light" v-model="value.phoneNumber" />
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4 bg-warning" style="border-radius: 10px;">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" style="padding-left: 10px;" for="form3Example3c">ID Card Number</label>
+                      <input type="text" id="form3Example3c" class="form-control bg-light" v-model="value.noIdentity" />
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4 bg-warning" style="border-radius: 10px;">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" style="padding-left: 10px;" for="form3Example3c">Image ID Card</label>
+                      <input type="file" id="form3Example3c" class="form-control bg-light" ref="file" @change="changeFile"/>
+                    </div>
+                  </div>
+                  
                   <div class="form-check d-flex justify-content-center mb-5">
                     <label class="form-check-label" for="form2Example3">
                       <a href="#!" @click.prevent="this.$router.push('/login')">Already have account?</a>

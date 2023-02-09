@@ -19,7 +19,7 @@
     <!-- Left elements -->
     <div class="d-flex">
       <!-- Brand -->
-      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#" @click.prevent="this.$router.push('/')">
         <img
           src="https://i.pinimg.com/564x/b2/60/f0/b260f0db4040a1f18077d82ac41353f2.jpg"
           height="20"

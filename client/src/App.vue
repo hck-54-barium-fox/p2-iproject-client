@@ -3,9 +3,11 @@
   import { RouterView } from 'vue-router';
   import Navbar from './components/Navbar.vue'
   import { useCounterStore } from './stores/counter';
+  import Footer from './components/Footer.vue';
   export default {
     components: {
-      Navbar
+      Navbar,
+      Footer
     },
     computed: {
       ...mapWritableState(useCounterStore, ['isLogin'])
@@ -23,6 +25,7 @@
 
 
   <RouterView />
+  <Footer/>
 </template>
 
 <style>
