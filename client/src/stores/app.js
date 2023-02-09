@@ -143,7 +143,7 @@ export const useAppStore = defineStore('app', {
                     Swal.fire({
                         icon: "success",
                         title: "Good Job!",
-                        text: "Payment success",
+                        text: "Payment success. Thank you for your donation :)",
                       });
                     },
                     onPending: function(result){
