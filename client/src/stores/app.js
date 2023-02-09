@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-const url = 'http://localhost:3000/'
+// const url = 'http://localhost:3000/'
+const url = `https://levainqueur-production.up.railway.app/`
 import axios from 'axios'
 
 export const useAppStore = defineStore('app', {

@@ -22,7 +22,7 @@ export default{
 
     <!-- logo -->
     <div class="mr-auto md:w-48 flex-shrink-0">
-      <img class="h-4 md:h-6 padding-left: 10 px;" src="../assets/Le Vainqueur.png" alt="">
+      <img class="h-4 md:h-6 padding-left: 10 px;" src="../assets/LeVainqueur.png" alt="">
     </div>
 
     <!-- search -->
