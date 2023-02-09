@@ -24,7 +24,6 @@ export default {
 
     changeColor(id) {
       this.changed = id;
-      console.log(this.changed, "<<<")
     }
   },
   created() {
