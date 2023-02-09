@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
+import Swal from 'sweetalert2';
 import axios from 'axios';
-const baseUrl = 'http://localhost:9000';
+const baseUrl = 'https://human-act-production.up.railway.app';
 export const useBookingStore = defineStore('booking', {
   state: () => ({
     hotelByLocation: [],
@@ -8,26 +9,48 @@ export const useBookingStore = defineStore('booking', {
     roomsHotel: [],
     detailHotel: {},
     isLogin: false,
+    isLoading:false
   }),
   getters: {},
   actions: {
     async handleRegister(form) {
       try {
+        this.isLoading = true
         const { data } = await axios.post(baseUrl + '/register', form);
         console.log(data, 'ini data');
         this.router.push('/login');
+        console.log('masuk atas');
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async handleLogin(form) {
       try {
+        this.isLoading = true
         const { data } = await axios.post(baseUrl + '/login', form);
         console.log(data);
         localStorage.setItem('access_token', data.access_token);
         this.isLogin = true;
         this.router.push('/');
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
@@ -36,26 +59,47 @@ export const useBookingStore = defineStore('booking', {
     },
     async resetPassword(email) {
       try {
+        this.isLoading = true
         const { data } = await axios.post(baseUrl + '/forgot-password', email);
         console.log(data);
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async handleResetPassword(password, token) {
       try {
+        this.isLoading = true
         const { data } = await axios.patch(
           baseUrl + '/reset-password?token=' + token,
           password
         );
+        this.isLoading = false
         console.log(data);
         this.router.push('/');
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async fetchHotelByLocation(arrivalDate, departureDate) {
       try {
+        this.isLoading = true
         console.log(arrivalDate, departureDate, 'berhasil masuk');
         const { data } = await axios({
           method: 'get',
@@ -68,21 +112,41 @@ export const useBookingStore = defineStore('booking', {
         console.log('nunggu ya sabar');
         this.hotelByLocation = data;
         console.log(data, 'ini dari pinia');
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async fetchHotel() {
       try {
+        this.isLoading = true
         const { data } = await axios.get(baseUrl + '/hotels');
         console.log(data, 'ini hotel');
         this.hotelsData = data;
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async getHotelRooms(hotelId) {
       try {
+        this.isLoading = true
         const { data } = await axios.get(baseUrl + '/hotels/' + hotelId, {
           headers: {
             access_token: localStorage.getItem('access_token'),
@@ -95,12 +159,22 @@ export const useBookingStore = defineStore('booking', {
         });
         console.log(data, '====', block);
         this.roomsHotel = block;
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async getDetailHotel(idHotel, searchId) {
       try {
+        this.isLoading = true
         const { data } = await axios.get(
           baseUrl + '/hotels/properties/' + idHotel + '?search_id=' + searchId,
           {
@@ -111,14 +185,24 @@ export const useBookingStore = defineStore('booking', {
         );
         console.log(data);
         this.detailHotel = data;
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },
     async doCheckIn() {
       try {
+        this.isLoading = true
         const { data } = await axios.post(
-          'http://localhost:9000/check-in',
+          `${baseUrl}/check-in`,
           {
             price: 10000,
             name: 'bisma',
@@ -153,7 +237,16 @@ export const useBookingStore = defineStore('booking', {
             alert('you closed the popup without finishing the payment');
           },
         });
+        this.isLoading = false
       } catch (err) {
+        this.isLoading = false
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Something Went Wrong Bruhh',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(err);
       }
     },

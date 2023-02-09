@@ -13,7 +13,6 @@ export default {
         localStorage.removeItem('access_token')
         this.$router.push('/login')
       } else {
-        $router.push('/login')
         this.$router.push('/login')
       }
     }

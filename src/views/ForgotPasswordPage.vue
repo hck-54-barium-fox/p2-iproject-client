@@ -8,7 +8,7 @@ import Navbar from '../components/Navbar.vue'
 export default {
   data() {
     return {
-      userForm: {
+      userPassword: {
         email: '',
         password: ''
       }
@@ -18,16 +18,23 @@ export default {
     ...mapActions(useBookingStore, ['resetPassword', 'handleResetPassword']),
     handleReset() {
       if (this?.$route?.query?.token) {
-        this.handleResetPassword(this.userForm, this?.$route?.query?.token)
+        this.handleResetPassword(this.userPassword, this?.$route?.query?.token)
       } else {
-        this.resetPassword(this.userForm)
+        this.resetPassword(this.userPassword)
 
       }
+    }
+    ,
+    passwordRender() {
+      return this.$route?.query?.token ? 'Input Reset Password' : 'find your account'
     }
   },
   components: {
     Navbar
   },
+  created() {
+    console.log(this.$route.query)
+  }
 
 }
 
@@ -39,8 +46,8 @@ export default {
     <div class="lg:w-1/2 xl:max-w-screen-sm">
       <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
         <h2
-          class="text-center text-4xl text-sky-900 font-display font-semibold lg:text-left xl:text-5xl xl:text-bold mt-20">
-          {{ !route?.query?.token ? 'find your account' : 'Input Reset Password' }}
+          class="text-center text-3xl text-sky-900 font-display font-semibold lg:text-left xl:text-3xl xl:text-bold mt-20">
+          {{ passwordRender() }}
         </h2>
         <div class="mt-12 relative">
           <form @submit.prevent="handleReset">
@@ -49,7 +56,7 @@ export default {
                 Email Address
               </div>
               <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500"
-                type="email" placeholder="name@gmail.com" name="email" v-model="userForm.email" />
+                type="email" placeholder="name@gmail.com" name="email" v-model="userPassword.email" />
             </div>
             <div class="mt-8" v-if="$route?.query?.token">
               <div class="flex justify-between items-center">
@@ -59,7 +66,7 @@ export default {
 
               </div>
               <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-sky-500"
-                type="password" name="password" placeholder="Enter your password" v-model="userForm.password" />
+                type="password" name="password" placeholder="Enter your password" v-model="userPassword.password" />
             </div>
             <div class="mt-10">
               <button

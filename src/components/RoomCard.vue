@@ -24,9 +24,10 @@ export default {
       <h3 class="text-[2rem] tracking-wider text-sky-900 mt-8">{{ room?.roomName }}</h3>
       <div class="flex gap-4 items-start">
         <div class="flex-1">
-          <p class="my-1 ">Meat plan : Continental breakfast costs US$5 per person per night.</p>
-          <p>Facilities</p>
-          <p class="text-gray-500">{{ room?.detail?.description }}</p>
+          <p class="text-gray-500 mt-6">{{
+            room?.detail?.description.length > 100 ? room?.detail?.description.substring(0,
+              200) + '...' : room?.detail?.description
+          }}</p>
         </div>
 
         <div class=" flex flex-col mr-5">

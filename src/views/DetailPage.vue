@@ -31,7 +31,7 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
         ' <a target="_blank" >Bista MAp</a>',
-      zoom: 5,
+      zoom: 14,
       center: [-8.786085, 115.13978],
       customText: 'Foobar',
       iconSize: 64,
@@ -50,8 +50,11 @@ export default {
   computed: {
     ...mapState(useBookingStore, ['roomsHotel', 'getDetailHotel', 'detailHotel',]),
     centerMap() {
-      if (detailHotel?.longitude && detailHotel?.latitude) {
-        this.center = [detailHotel?.latitude, detailHotel?.longitude]
+      console.log("------ llllllllllllllll");
+      if (this.detailHotel?.longitude && this.detailHotel?.latitude) {
+        return [this.detailHotel?.latitude, this.detailHotel?.longitude]
+      } else {
+        return this.center
       }
     }
   },
@@ -107,7 +110,10 @@ export default {
 
       <div class="my-8">
         <h4 class="text-[1.4rem] my-4">Information</h4>
-        <p class="text-gray-500">{{ detailHotel.importantInformation }}</p>
+        <p class="text-gray-500">{{
+          detailHotel.importantInformation.length > 1000 ?
+            detailHotel.importantInformation.substring(0, 300) + '...' : detailHotel.importantInformation
+        }}</p>
 
       </div>
 
@@ -117,16 +123,14 @@ export default {
   <div class="my-[5rem] w-[90vw] max-w-[1200px] m-auto">
     <div class="p-4 bg-white shadow-lg rounded">
 
-      <p>Location {{ detailHotel.hotelName }}</p>
-      <p class="text-gray-500">
+      <p class="text-sky-900 text-center text-[1.2rem]">Location - {{ detailHotel.hotelName }}</p>
 
-      </p>
       <div class="my-1">
         <div class="w-full">
           <div class="mt-[2rem] rounded-lg overflow-hidden flex justify-center items-center">
-            <l-map style="height: 30rem; width: 900px;border-radius: .25rem;" :zoom="zoom" :center="center">
+            <l-map style="height: 30rem; width: 900px;border-radius: .25rem;" :zoom="zoom" :center="centerMap">
               <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-              <l-marker :lat-lng="[-8.694587, 115.168175]"> </l-marker>
+              <l-marker :lat-lng="centerMap"> </l-marker>
             </l-map>
           </div>
         </div>
