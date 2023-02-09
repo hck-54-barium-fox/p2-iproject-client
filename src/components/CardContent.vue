@@ -1,28 +1,28 @@
 <script>
-import { mapActions } from 'pinia';
-import { useCounterStore } from '../stores/counter';
+import { mapActions } from "pinia";
+import { useCounterStore } from "../stores/counter";
 
 export default {
   props: ["el"],
   components: {},
   methods: {
-    ...mapActions(useCounterStore, ["likePost"])
-  }
+    ...mapActions(useCounterStore, ["likePost"]),
+  },
 };
 </script>
 
 <template>
-  
-  <div class="pt-16">
-    <div class="card m-2 pt-0 grid-flow-col bg-slate-800" style="width: 18rem height: 10rem;">
-      <img
-       
-        style="cursor: pointer; width: 100%;"
-        :src="el.imageUrl"
-        alt="Your Name"
-        class="card-img-top" 
-         />
-      <div class="card-body ">
+  <div class="pt-16 " style="height: 100%;">
+    <div
+      class="card m-2 h-100 pt-0 grid-flow-col bg-slate-800"
+      style="width: 18rem height: 10rem;">
+      <div style="height: 200px; overflow: hidden">
+        <img
+          style="object-fit: cover; cursor: pointer; width: 100%; height: 100%"
+          :src="el.imageUrl"
+          alt="Your Name" />
+      </div>
+      <div class="card-body">
         <h5 class="card-title" style="font-weight: bold">{{ el.title }}</h5>
         <p class="card-text">
           {{ el.content }}

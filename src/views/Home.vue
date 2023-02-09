@@ -33,7 +33,7 @@ export default {
     <div class="w-2/12">
       <Sidebar />
     </div>
-    <div class="container w-4/6">
+    <div class="container  w-4/6">
       <div>
         <Banner />
       </div>
