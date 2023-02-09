@@ -36,7 +36,7 @@ export default {
       type="text"
       name="email"
       id="email"
-      class="rounded-lg placeholder:text-sm"
+      class="rounded-lg placeholder:text-sm border-primaryColor"
       placeholder="Type email here"
     />
     <input
@@ -44,7 +44,7 @@ export default {
       type="password"
       name="password"
       id="password"
-      class="rounded-lg placeholder:text-sm"
+      class="rounded-lg placeholder:text-sm border-primaryColor"
       placeholder="Type password here"
     />
     <button

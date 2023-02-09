@@ -4,6 +4,7 @@ import axios from "axios";
 export const useAppStore = defineStore("app", {
   state: () => ({
     baseUrl: "https://hafood-production.up.railway.app",
+    // baseUrl: "http://localhost:3000",
     apiNinjaUrl: "https://api.api-ninjas.com/v1",
     apiNinjaKey: "+syPMONOQl4oaKRKwXbvWw==3cUcTPzERBbf4OkF",
     pixabayUrl: "https://pixabay.com",
@@ -12,6 +13,17 @@ export const useAppStore = defineStore("app", {
     recipes: [],
     recipe: {},
     nutritions: [],
+    Toast: Swal.mixin({
+      toast: true,
+      position: "top-right",
+      width: "auto",
+      customClass: {
+        popup: "colored-toast",
+      },
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+    }),
   }),
   getters: {},
   actions: {
@@ -25,8 +37,20 @@ export const useAppStore = defineStore("app", {
         localStorage.setItem("access_token", data.access_token);
         this.isLogin = true;
         this.router.push("/");
+        await this.Toast.fire({
+          color: "#73C9B4",
+          iconColor: "#73C9B4",
+          icon: "success",
+          title: "Login success",
+        });
       } catch (error) {
         console.log(error);
+        await this.Toast.fire({
+          color: "#F46C84",
+          iconColor: "#F46C84",
+          icon: "error",
+          title: `${error.response.data.message}`,
+        });
       }
     },
     async doLogout() {
@@ -34,8 +58,20 @@ export const useAppStore = defineStore("app", {
         localStorage.removeItem("access_token");
         this.isLogin = false;
         this.router.push("/login");
+        await this.Toast.fire({
+          color: "#73C9B4",
+          iconColor: "#73C9B4",
+          icon: "success",
+          title: "Logged out",
+        });
       } catch (error) {
         console.log(error);
+        await this.Toast.fire({
+          color: "#F46C84",
+          iconColor: "#F46C84",
+          icon: "error",
+          title: `${error.response.data.message}`,
+        });
       }
     },
     async fetchRecipe(keyRecipe) {

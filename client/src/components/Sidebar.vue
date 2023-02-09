@@ -33,7 +33,7 @@ export default {
             type="text"
             name="searchFood"
             id="searchFood"
-            placeholder="Recipe"
+            placeholder="e.g Pizza"
             class="border w-full border-primaryColor rounded-lg placeholder:text-sm"
           />
           <div
@@ -51,7 +51,7 @@ export default {
             type="text"
             name="searchFood"
             id="searchFood"
-            placeholder="Nutrition"
+            placeholder="e.g Sugar"
             class="border w-full border-primaryColor rounded-lg placeholder:text-sm"
           />
           <div

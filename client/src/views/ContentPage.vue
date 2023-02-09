@@ -17,7 +17,10 @@ export default {
 
 <template>
   <div class="flex flex-col gap-3">
-    <span class="flex font-semibold text-2xl">All Result</span>
+    <div v-if="recipes.length === 0" class="rounded-lg overflow-hidden">
+      <img src="../../src/assets/images/hero-home.png" alt="hero-img" />
+    </div>
+    <span v-if="recipes.length !== 0" class="flex font-semibold text-2xl">All Result</span>
     <div class="grid grid-cols-3 gap-5 rounded-lg">
       <!-- Card -->
       <Card v-for="recipe in recipes" :key="recipe" :recipe="recipe" />
