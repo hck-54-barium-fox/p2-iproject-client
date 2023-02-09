@@ -1,6 +1,6 @@
 <script>
     export default{
-        
+
     }
 </script>
 
@@ -8,7 +8,7 @@
     <!-- Footer -->
 <footer class="text-center text-lg-start bg-white text-muted">
   <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+  <section class="d-flex justify-content-center justify-content-lg-between p-2 border-bottom">
     <!-- Left -->
     <div class="me-5 d-none d-lg-block">
       <span>Get connected with us on social networks:</span>
@@ -41,7 +41,7 @@
   <!-- Section: Social media -->
 
   <!-- Section: Links  -->
-  <section class="">
+  <section class="pb-20">
     <div class="container text-center text-md-start mt-5">
       <!-- Grid row -->
       <div class="row mt-3">
@@ -75,7 +75,7 @@
   <!-- Section: Links  -->
 
   <!-- Copyright -->
-  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+  <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.025);">
     © 2021 Copyright:
     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">RentOPhone.com</a>
   </div>

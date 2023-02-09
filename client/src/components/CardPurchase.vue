@@ -14,9 +14,9 @@
 </script>
 
 <template>
-    <div class="col-md-3">
+    <div class="col-md-3 mb-5">
       <div class="card-sl">
-        <div class="card-image">
+        <div class="card-image d-flex justify-content-center" style="height: 200px;  ">
           <img
             :src="item.Smartphone.imageUrl" />
         </div>

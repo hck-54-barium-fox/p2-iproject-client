@@ -41,8 +41,6 @@
               </div>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
             </form>
-            <hr class="my-4">
-            <GoogleLogin :callback="handleGoogleLogin" />
           </div>
         </div>
       </div>

@@ -65,36 +65,8 @@ export const useCounterStore = defineStore('counter', {
       })
       .catch((err) => {
         Swal.fire({
-          icon: "success",
-          title: "Something wrong!",
-          text: err.response.data.message
-        });
-      });
-    },
-
-    handleGoogleLogin(response) {
-      axios({
-        method: "POST",
-        url: `${baseUrl}/googleSignIn`,
-        headers: {
-          google_token: response.credential,
-        },
-      })
-      .then((res) => {
-        Swal.fire({
-          icon: "success",
-          title: `Halo ${res.data.email}`,
-          text: 'Rent for your ego!'
-        });
-        localStorage.setItem("access_token", res.data.access_token);
-        localStorage.setItem("email", res.data.email);
-        this.isLogin = true;
-        this.router.push("/smartphones");
-      })
-      .catch((err) => {
-        Swal.fire({
           icon: "error",
-          title: `Something wrong`,
+          title: "Something wrong!",
           text: err.response.data.message
         });
       });
@@ -219,9 +191,11 @@ export const useCounterStore = defineStore('counter', {
           },
       })
       .then((res)=>{
+        console.log(res.data);
         this.transaction = res.data
       })
       .catch((err)=>{
+        console.log(err);
         Swal.fire({
           icon: "error",
           title: "Something Wrong",
