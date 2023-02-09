@@ -1,18 +1,19 @@
 <script>
-import { mapActions, mapState } from "pinia";
+import { mapActions } from "pinia";
 import { useAppStore } from "../stores/app";
 
 export default {
   name: "MyCartDetail",
   components: {},
-  computed: {
-    ...mapState(useAppStore, ["productDetail"]),
-  },
+  props: ["cartDetail"],
   methods: {
-    ...mapActions(useAppStore, ["fetchProductById"]),
-  },
-  created() {
-    this.fetchProductById(this.$route.params.id);
+    ...mapActions(useAppStore, ["payment", "deleteBookmark"]),
+    handlePayment(id) {
+      this.payment(id);
+    },
+    handleRemoveBookmark(id) {
+      this.deleteBookmark(id);
+    },
   },
 };
 </script>
@@ -23,27 +24,38 @@ export default {
       <div class="row g-0">
         <div class="col-md-2">
           <img
-            :src="productDetail.product_image_url"
+            :src="cartDetail.Product.product_image_url"
             class="img-fluid rounded-start"
             alt="..."
           />
         </div>
         <div class="col-md-10">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">{{ cartDetail.Product.product_name }}</h5>
             <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in
+              price : {{ cartDetail.Product.product_price }}
             </p>
             <div class="d-flex flex-row gap-2">
-              <button type="button" class="btn btn-outline-info">Pay</button>
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                type="button"
+                class="btn btn-outline-info"
+                @click="handlePayment(cartDetail?.Product.id)"
+                v-if="!cartDetail.isPaid"
+              >
+                Pay
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                v-if="!cartDetail.isPaid"
+                @click="handleRemoveBookmark(cartDetail.id)"
+              >
                 cancel bookmark
               </button>
+              <div class="btn btn-outline-success" v-if="cartDetail.isPaid">
+                Success Payment
+              </div>
             </div>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
           </div>
         </div>
       </div>

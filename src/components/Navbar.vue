@@ -1,9 +1,22 @@
 <script>
 import { RouterLink } from "vue-router";
+import { mapActions, mapState } from "pinia";
+import { useAppStore } from "../stores/app";
+
 export default {
   name: "NavbarView",
   components: {
     RouterLink,
+  },
+  computed: {
+    ...mapState(useAppStore, ["isLogin", "myProfile"]),
+  },
+  methods: {
+    ...mapActions(useAppStore, ["doLogout"]),
+
+    handelLogout() {
+      this.doLogout();
+    },
   },
 };
 </script>
@@ -31,23 +44,37 @@ export default {
               <span class="visually-hidden">(current)</span>
             </RouterLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="isLogin">
             <RouterLink class="nav-link" to="/myprofile">My Profile</RouterLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="isLogin">
             <RouterLink class="nav-link" to="/mycart">My Cart</RouterLink>
           </li>
         </ul>
         <div class="d-flex flex-column flex-lg-row gap-2">
-          <RouterLink class="btn btn-outline-dark text-white" to="/login"
+          <RouterLink
+            v-if="!isLogin"
+            class="btn btn-outline-dark text-white"
+            to="/login"
             >Login</RouterLink
           >
-          <RouterLink class="btn btn-outline-dark text-white" to="/register"
+          <RouterLink
+            v-if="!isLogin"
+            class="btn btn-outline-dark text-white"
+            to="/register"
             >Register</RouterLink
           >
-          <RouterLink class="btn btn-outline-dark text-white" to="/"
-            >Logout</RouterLink
+          <div v-if="isLogin" class="btn btn-outline-dark text-white">
+            hi {{ myProfile.username }}
+          </div>
+          <button
+            v-if="isLogin"
+            @click.prevent="handelLogout"
+            class="btn btn-outline-dark text-white"
+            to="/"
           >
+            Logout
+          </button>
         </div>
       </div>
     </div>

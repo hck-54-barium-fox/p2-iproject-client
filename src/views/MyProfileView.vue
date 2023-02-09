@@ -1,26 +1,19 @@
 <script>
-import CardProductDetail from "../components/CardProductDetail.vue";
+import MyProfileDetail from "../components/MyProfileDetail.vue";
 import NavbarComponent from "../components/Navbar.vue";
 import FooterComponent from "../components/Footer.vue";
-
-import { mapActions, mapState } from "pinia";
+import { mapState } from "pinia";
 import { useAppStore } from "../stores/app";
 
 export default {
-  name: "ProductDetailView",
+  name: "MyProfile",
   components: {
-    CardProductDetail,
+    MyProfileDetail,
     NavbarComponent,
     FooterComponent,
   },
-  methods: {
-    ...mapActions(useAppStore, ["fetchProductById"]),
-  },
   computed: {
-    ...mapState(useAppStore, ["productDetail"]),
-  },
-  created() {
-    this.fetchProductById(this.$route.params.id);
+    ...mapState(useAppStore, ["myProfile"]),
   },
 };
 </script>
@@ -31,7 +24,7 @@ export default {
     <main class="my-3">
       <div class="container-xxl">
         <div class="row m-auto">
-          <CardProductDetail :productDetail="productDetail" />
+          <MyProfileDetail :profile="myProfile" />
         </div>
       </div>
     </main>
