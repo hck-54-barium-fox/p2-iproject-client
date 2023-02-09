@@ -66,9 +66,10 @@ body {
 }
 
 .container-nav {
-  max-width: 1500px;
+  max-width: 1600px;
   padding: 0 15px;
   margin: auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 a {
@@ -82,7 +83,7 @@ header {
 }
 
 .navbar-navv {
-  padding: 10px;
+  padding: 15px;
   display: flex;
   position: relative;
   flex-direction: row;
