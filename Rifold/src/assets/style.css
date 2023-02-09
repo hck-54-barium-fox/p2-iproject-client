@@ -1,0 +1,9 @@
+.font-poppins {font-family: 'Poppins', sans-serif}
+.font-nunito {font-family: 'Nunito', sans-serif}
+
+
+    .top-100 {top: 100%}
+    .bottom-100 {bottom: 100%}
+    .max-h-select {
+        max-height: 300px;
+    }
