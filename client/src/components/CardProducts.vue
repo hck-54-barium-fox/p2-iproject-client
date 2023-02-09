@@ -46,10 +46,16 @@ export default {
         <span class="text-3xl font-bold text-gray-900 dark:text-black"></span>
         <a v-if="isAuth"
           @click.prevent="addCartHandler"
-          class="text-white bg-black hover:bg-rose-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-white bg-black hover:bg-rose-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-white dark:hover:bg-white dark:focus:ring-blue-800"
           >Add to cart</a
         >
       </div>
     </div>
   </div>
 </template>
+
+<style>
+    a{
+        cursor: pointer;
+    }
+</style>

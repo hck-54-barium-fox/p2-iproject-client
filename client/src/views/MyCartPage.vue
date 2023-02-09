@@ -53,7 +53,7 @@ export default {
     </button>
   </div>
   <div
-    class="w-full h-full bg-rose-400 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
+    class="w-full h-full bg-rose-500 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
     id="chec-div"
   >
     <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->

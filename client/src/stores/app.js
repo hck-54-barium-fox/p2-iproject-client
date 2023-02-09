@@ -38,7 +38,7 @@ export const useAppStore = defineStore('app', {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              // text: `${err.response.data.message}`,
+              text: `${err.response.data.message}`,
            })
 
           }
@@ -65,7 +65,7 @@ export const useAppStore = defineStore('app', {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              // text: `${err.response.data.message}`,
+              text: `${err.response.data.message}`,
            })
           }
         },
