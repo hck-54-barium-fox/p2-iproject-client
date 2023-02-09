@@ -1,5 +1,26 @@
 <script>
-export default {};
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/appStore";
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    ...mapActions(useAppStore, ["doRegister"]),
+    // =======================
+    handleRegister() {
+      this.doRegister({
+        username: this.username,
+        email: this.email,
+        password: this.password,
+      });
+    },
+  },
+  created() {},
+};
 </script>
 
 <template>
@@ -15,39 +36,30 @@ export default {};
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-2 p-lg-1 text-black">
-                  <form id="register-form" @submit.prevent="registerHandler">
+                  <!-- <img src="../assets/ppua.jpeg" alt="" style="width: 200px; height: 200px" /> -->
+                  <form id="register-form" @submit.prevent="handleRegister">
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">Register for your account</h5>
 
                     <div class="form-outline mb-1">
-                      <input v-model="registerUsername" id="register-username" type="text" class="form-control form-control-lg required" />
+                      <input v-model="username" id="register-username" type="text" class="form-control form-control-lg required" />
                       <label class="form-label" for="form2Example27">Username</label>
                     </div>
 
                     <div class="form-outline mb-1">
-                      <input v-model="registerEmail" id="register-email" type="email" class="form-control form-control-lg" />
+                      <input v-model="email" id="register-email" type="email" class="form-control form-control-lg" />
                       <label class="form-label">Email address</label>
                     </div>
 
                     <div class="form-outline mb-1">
-                      <input v-model="registerPassword" id="register-password" type="password" class="form-control form-control-lg" />
+                      <input v-model="password" id="register-password" type="password" class="form-control form-control-lg" />
                       <label class="form-label" for="form2Example27">Password</label>
-                    </div>
-
-                    <div class="form-outline mb-1">
-                      <input v-model="registerPhoneNumber" id="register-phone" type="text" class="form-control form-control-lg" />
-                      <label class="form-label" for="form2Example27">Phone Number</label>
-                    </div>
-
-                    <div class="form-outline mb-1">
-                      <textarea v-model="registerAddress" id="register-address" class="form-control" rows="3" placeholder="Enter your address (optional) ..." autocomplete="off"></textarea>
-                      <label class="form-label" for="form2Example27">Address</label>
                     </div>
 
                     <div class="pt-1 mb-2">
                       <button class="btn btn-dark btn-lg btn-block" type="submit" style="width: 100%">Register</button>
                     </div>
 
-                    <p class="mb-1 pb-lg-1" style="color: #393f81">Already have an account? <a id="register-link" href="" style="color: #393f81">Login here</a></p>
+                    <p @click.prevent="$router.push('/login')" class="mb-1 pb-lg-1" style="color: #393f81">Already have an account? <a id="register-link" href="" style="color: #393f81">Login here</a></p>
                   </form>
                 </div>
               </div>

@@ -27,9 +27,14 @@ export default {
 
   <section id="posts_home" class="mt-4">
     <div class="container_home">
-      <div class="row row-cols-1 row-cols-md-6 g-4" data-masonry='{"percentPosition": true,  "itemSelector": ".col" }'>
+      <div class="row row-cols-1 row-cols-6 g-4" data-masonry='{"percentPosition": true }'>
+        <!-- <div class="col-6">
+          <article class="article_home"> -->
+        <!-- <div class="col-6"> -->
         <HomeCard v-for="postData in postList" :key="postData.id" :postData="postData" />
-
+        <!-- </div> -->
+        <!-- </article>
+        </div> -->
         <!-- <div class="col">
           <article class="article_home">
             <div class="card_home">
@@ -90,6 +95,7 @@ export default {
             </div>
           </article>
         </div> -->
+        <!-- </div> -->
       </div>
     </div>
   </section>
@@ -204,7 +210,7 @@ button {
   margin-top: 3px;
 
   border-radius: var(--height);
-  background-color: #fa9aba;
+  background-color: #ffffff;
   height: var(--height);
 }
 .SearchBox:hover .SearchBox-input {
