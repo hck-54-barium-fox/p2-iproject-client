@@ -40,4 +40,23 @@ const router = createRouter({
   },
 })
 
+router.beforeEach( (to, from, next) => {
+  let isLogin = !!localStorage.getItem('access_token')
+
+  if(
+      !isLogin && to.path === '/playlists'
+      || !isLogin && to.path === '/tracks'
+      || !isLogin && to.path === '/'
+    ) {
+    next('/login')
+  } else if(
+      isLogin && to.path === '/login'
+      || isLogin && to.path === '/register'
+  ) {
+    next('/')
+  } else {
+    next()
+  }
+})
+
 export default router

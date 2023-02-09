@@ -2,8 +2,8 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:7777' // DEV
-// const BASE_URL = 'https://chillclouds-ipro-production.up.railway.app' // PROD
+// const BASE_URL = 'http://localhost:7777' // DEV
+const BASE_URL = 'https://chillclouds-ipro-production.up.railway.app' // PROD
 
 export const useMainStore = defineStore('main', {
   state: () => {
@@ -62,9 +62,21 @@ export const useMainStore = defineStore('main', {
           url: `${BASE_URL}/users/register`,
           data: formData
         })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Register Successful!',
+          showConfirmButton: false,
+          timer: 1000
+        })
         this.router.push('/login')
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data[0].error}`,
+        })
       }
     },
 
@@ -75,12 +87,24 @@ export const useMainStore = defineStore('main', {
           url: `${BASE_URL}/users/login`,
           data: formData
         })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Login Successful!',
+          showConfirmButton: false,
+          timer: 1500
+      })
         localStorage.setItem('access_token', data.access_token)
         this.loggedIn = true
         this.router.push('/')
 
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data[0].error}`,
+        })
       }
     },
 
@@ -93,23 +117,23 @@ export const useMainStore = defineStore('main', {
                   idToken: res.credential
               }
           })
-          console.log(data, 'ini');
           localStorage.setItem('access_token', data.access_token)
 
-          // Swal.fire({
-          //     position: 'center',
-          //     icon: 'success',
-          //     title: 'Login Successful!',
-          //     showConfirmButton: false,
-          //     timer: 1500
-          // })
+          Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Login Successful!',
+              showConfirmButton: false,
+              timer: 1500
+          })
           this.router.push('/')
       } catch (err) {
-        // Swal.fire({
-        //   icon: 'error',
-        //   title: 'Oops...',
-        //   text: `${err.response.data.error}`,
-        // })
+        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
@@ -122,6 +146,11 @@ export const useMainStore = defineStore('main', {
         window.open(data.url, '_self')
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
@@ -139,6 +168,11 @@ export const useMainStore = defineStore('main', {
         this.spotifyGetMe(spotifyToken)
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
@@ -159,6 +193,11 @@ export const useMainStore = defineStore('main', {
         this.spotifyFinalAuth(payload)
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
@@ -171,12 +210,24 @@ export const useMainStore = defineStore('main', {
             payload
           }
       })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Login Successful!',
+          showConfirmButton: false,
+          timer: 1500
+        })
         localStorage.setItem('access_token', data.access_token)
         this.loggedIn = true
         this.spotifyUser = true
         this.router.push('/')
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
@@ -188,6 +239,7 @@ export const useMainStore = defineStore('main', {
 
     async fetchWeather(lat, lon) {
       try {
+
         let {data} = await axios({
           method: 'post',
           url: `${BASE_URL}/main/weather`,
@@ -199,16 +251,22 @@ export const useMainStore = defineStore('main', {
             access_token: localStorage.getItem('access_token')
           }
         })
+
         this.currentWeather = data
         this.enhanceSearchQuery(data.weather[0].description)
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
     async enhanceSearchQuery(query) {
       try {
-        console.log(query, 'the query');
+        console.log('the query: ', query);
         let {data} = await axios({
           method: 'post',
           url: `${BASE_URL}/main/suggestAI`,
@@ -219,11 +277,16 @@ export const useMainStore = defineStore('main', {
             access_token: localStorage.getItem('access_token')
           }
         })
-        console.log('AI Response: ',data.response);
+        console.log('AI Response: ', data.response);
         this.AIsuggestion = data.response
         this.fetchUniquePlaylist(data.response)
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
@@ -244,12 +307,39 @@ export const useMainStore = defineStore('main', {
         this.router.push('/playlists')
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
     async fetchTracks(plName, url) {
       try {
-        console.log('masuk sini ga', url);
+
+        let timerInterval
+        Swal.fire({
+          title: 'Fetching data...',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft()
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+          }
+        })
+
         let {data} = await axios({
           method: 'post',
           url: `${BASE_URL}/main/tracks`,
@@ -265,6 +355,11 @@ export const useMainStore = defineStore('main', {
         this.router.push('/tracks')
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Something happened :(`,
+        })
       }
     },
 
