@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import axios from 'axios'
-const server = 'http://localhost:4000'
+// const server = 'http://localhost:4000'
+const server = 'https://ipro-production.up.railway.app'
 
 export const useAppStore = defineStore('app', {
     state : ()=>({
