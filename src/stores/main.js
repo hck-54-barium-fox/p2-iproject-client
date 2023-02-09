@@ -2,7 +2,8 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const BASE_URL = 'http://localhost:7777'
+const BASE_URL = 'http://localhost:7777' // DEV
+// const BASE_URL = 'https://chillclouds-ipro-production.up.railway.app' // PROD
 
 export const useMainStore = defineStore('main', {
   state: () => {
@@ -17,31 +18,31 @@ export const useMainStore = defineStore('main', {
       trackExamples: [],
       weatherInfo: {
         clear: {
-          logo: 'src/assets/images/clearsky-removebg-preview.png',
+          logo: 'clearsky-removebg-preview.png',
           displayName: 'Clear Sky'
         },
         cloud: {
-          logo: 'src/assets/images/clouds-2-128.png',
+          logo: 'clouds-2-128.png',
           displayName: 'Cloudy'
         },
         fog: {
-          logo: 'src/assets/images/fog-day-128.png',
+          logo: 'fog-day-128.png',
           displayName: 'Hazy'
         },
         rain: {
-          logo: 'src/assets/images/rain-128.png',
+          logo: 'rain-128.png',
           displayName: 'Rainy'
         },
         snow: {
-          logo: 'src/assets/images/snowflake-44-128.png',
+          logo: 'snowflake-44-128.png',
           displayName: 'Snowy'
         },
         storm: {
-          logo: 'src/assets/images/storm-128.png',
+          logo: 'storm-128.png',
           displayName: 'Storm'
         },
         sun: {
-          logo: 'src/assets/images/sun-128.png',
+          logo: 'sun-128.png',
           displayName: 'Sunny'
         },
       }
@@ -116,7 +117,7 @@ export const useMainStore = defineStore('main', {
       try {
         let {data} = await axios({
           method: 'get',
-          url: `${BASE_URL}/users/spotify-login`,
+          url: `${BASE_URL}/users/spotify-request-auth`,
       })
         window.open(data.url, '_self')
       } catch (err) {
@@ -128,7 +129,7 @@ export const useMainStore = defineStore('main', {
       try {
         let {data} = await axios({
           method: 'post',
-          url: `${BASE_URL}/users/spotify-login`,
+          url: `${BASE_URL}/users/spotify-user-auth`,
           data: {
             code
           }
@@ -181,7 +182,7 @@ export const useMainStore = defineStore('main', {
 
     doLogout() {
       localStorage.clear()
-      this.loggedIn = false
+      this.$reset()
       this.router.push('/login')
     },
 
@@ -259,13 +260,17 @@ export const useMainStore = defineStore('main', {
             access_token: localStorage.getItem('access_token')
           }
         })
-        console.log(data, 'track data');
         this.specificPlaylistTitle = plName,
         this.trackExamples = data
         this.router.push('/tracks')
       } catch (err) {
         console.log(err);
       }
+    },
+
+    async followPlaylist(trackId) {
+
     }
+
   }
 })

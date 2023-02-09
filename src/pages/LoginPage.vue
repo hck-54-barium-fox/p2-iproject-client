@@ -36,7 +36,7 @@ export default {
           </div>
           <div class="form-content flex flex-col pb-4">
             <label class="font-bold text-[1.5rem] text-white">Password</label>
-            <input v-model="formData.password" type="password" class="h-12 px-4 mt-2 rounded-3xl shadow-xl"/>
+            <input v-model="formData.password" type="password" autocomplete="on" class="h-12 px-4 mt-2 rounded-3xl shadow-xl"/>
           </div>
           <div class="form-content flex justify-center items-center pb-6">
             <p class="text-white">Don't have an account? <a @click.prevent="this.$router.push('/register')" href="#" class="font-bold text-blue-300 hover:text-[1.3rem] transition-all">sign up</a> here!</p>
@@ -54,7 +54,7 @@ export default {
       </div>
     </div>
     <div class="banners bg-theme_red h-full w-[60%] flex justify-center items-center border-l-4 border-white border-solid">
-      <img class="" src="../assets/images/CHILLCLOUDs.png"/>
+      <img class="" src="/images/CHILLCLOUDs.png"/>
     </div>
   </div>
 </template>

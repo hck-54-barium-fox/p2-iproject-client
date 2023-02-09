@@ -30,7 +30,7 @@ export default {
   <div class="second-main-page flex flex-col justify-around items-center px-4 pb-8" :class="fetchedPlaylists.length === 0 ? 'h-[91vh]' : '' ">
     <img 
       @click.prevent="$router.push('/')"
-      src="../assets/images/arrow-91-128.png"
+      src="/images/arrow-91-128.png"
       class="absolute top-[25px] left-[25px] w-[50px] h-[50px] cursor-pointer hover:scale-110 transition-all"
     />
     <div class="text">

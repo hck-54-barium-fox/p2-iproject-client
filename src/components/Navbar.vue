@@ -62,13 +62,13 @@ export default {
       <a @click.prevent="$router.push('/')" class="right text-[1.3rem] pt-4 pr-2 font-bold text-theme_red" href="#" >
         {{ getWeatherInfo }}, {{ this.currentWeather.temp }}°C
       </a>
-      <img :src="getLogoInfo" class="w-auto h-[30px] mt-4 border-r-2 border-theme_red border-solid pr-4"/>
+      <img :src="`/images/${getLogoInfo}`" class="w-auto h-[30px] mt-4 border-r-2 border-theme_red border-solid pr-4"/>
     </div>
     <div v-if="spotifyUser" class="weather-info flex justify-end items-center h-full">
       <p class="right text-[1.3rem] pt-4 pr-2 font-bold text-green-500" href="#" >
         Spotify User
       </p>
-      <img src="../assets/images/spotify-user.png" class="w-auto h-[30px] mt-4 border-r-2 border-theme_red border-solid pr-4"/>
+      <img src="/images/spotify-user.png" class="w-auto h-[30px] mt-4 border-r-2 border-theme_red border-solid pr-4"/>
     </div>
     <a @click.prevent="$router.push('/')" class="ml-4right text-[1.3rem] text-center w-[4rem] pt-4 font-bold text-theme_red hover:text-[1.5rem] transition-all" href="#" >Home</a>
     <a @click.prevent="logout" class="right text-[1.3rem] pt-4 font-bold text-center w-[4rem] text-theme_red hover:text-[1.5rem] transition-all" href="#" >Logout</a>

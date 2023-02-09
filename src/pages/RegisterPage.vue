@@ -48,7 +48,7 @@ export default {
       </div>
     </div>
     <div class="banners bg-theme_red h-full w-[60%] flex justify-center items-center">
-      <img src="../assets/images/CHILLCLOUDs.png"/>
+      <img src="/images/CHILLCLOUDs.png"/>
     </div>
   </div>
 </template>

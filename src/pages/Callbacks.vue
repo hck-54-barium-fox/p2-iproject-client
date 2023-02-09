@@ -7,9 +7,13 @@ import { useMainStore } from '../stores/main';
       ...mapActions(useMainStore, ['doSpotifyAuth'])
     },
     created() {
-      console.log('testtt masukkk siniii', this.$route.query);
-      this.doSpotifyAuth(this.$route.query.code)
-    }
+      if (this.$route.query.hasOwnProperty('error')) {
+          this.$router.push('/login')
+      } else {
+        this.doSpotifyAuth(this.$route.query.code)
+      }
+      
+    },
   }
 </script>
 

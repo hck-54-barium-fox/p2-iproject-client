@@ -25,7 +25,7 @@ export default {
   <div class="third-main-page flex flex-col justify-center items-center px-4 py-8 relative">
     <img 
       @click.prevent="$router.push('/playlists')"
-      src="../assets/images/arrow-91-128.png"
+      src="/images/arrow-91-128.png"
       class="absolute top-[-25px] left-[10px] w-[50px] h-[50px] cursor-pointer hover:scale-110 transition-all"
     />
     <p class="text-theme_red font-bold text-[3rem] px-40 italic text-center">Example Tracks of</p>
