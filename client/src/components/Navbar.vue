@@ -18,11 +18,11 @@ export default {
 
 <template>
     <div class="container mb-4">
-        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg bg-light fixed-top shadow">
             <div class="container-fluid">
                 <h1 @click.prevent="this.$router.push('/')" style="color: #1a5292; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin-left: 20px; margin-top: 5px;
                     font-size: 30px;">
-                    SEPATUKU KULIT LEMBU</h1>
+                    KUTSU 靴</h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false"
                     aria-label="Toggle navigation">

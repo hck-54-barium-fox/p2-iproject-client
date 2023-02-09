@@ -36,7 +36,30 @@ export const useAppStore = defineStore('app', {
                 })
 
             } catch (error) {
-                console.log(error.response.data);
+                if (error.response.data.message == "Email is required") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: error.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else if (error.response.data.message == "Password is required") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: error.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else if (error.response.data.message == "Invalid email/password") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: error.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    console.log(error.response.data);
+                }
             }
         },
 
@@ -58,7 +81,30 @@ export const useAppStore = defineStore('app', {
                 })
 
             } catch (error) {
-                console.log(error.response.data);
+                if (error.response.data.message == "Email is required") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: error.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else if (error.response.data.message == "Password is required") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: error.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else if (error.response.data.message == "Name is required") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: error.response.data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    console.log(error.response.data);
+                }
             }
         },
 
@@ -123,7 +169,16 @@ export const useAppStore = defineStore('app', {
                 })
 
             } catch (error) {
-                console.log(error.response.data);
+                if (error.response.data.message == "Invalid token") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'You need to login first!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    console.log(error.response.data);
+                }
             }
         },
 
@@ -154,7 +209,7 @@ export const useAppStore = defineStore('app', {
                     data: form
                 })
                 // console.log(data.data.results[0].costs[1].cost[0].value);
-                // this.ongkir = data.data.results[0].costs[1].cost[0].value
+                this.ongkir = data.data.results[0].costs[1].cost[0].value
 
             } catch (error) {
                 console.log(error.response.data);
@@ -168,6 +223,9 @@ export const useAppStore = defineStore('app', {
                     url: `${BASE_URL}generate-midtrans-token`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
+                    },
+                    data: {
+                        ongkir: this.ongkir
                     }
                 })
 
