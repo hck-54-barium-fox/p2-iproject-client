@@ -25,6 +25,7 @@ export default {
            <img src="https://www.pngkey.com/png/full/362-3629652_5-elixir-de-clash-of-clans.png"
            style="width: 35px"
            /> Elixir Cost: {{ card.elixir }}
+           
         </div>
         <img :src="card.iconUrl"
             class="card-img-top border-bottom border-2 pb-2 pt-2" :alt="card.name">
