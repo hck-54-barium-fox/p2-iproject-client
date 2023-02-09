@@ -12,7 +12,6 @@ export default {
         email: "",
         password: "",
         phoneNumber: "",
-        address: "",
       },
     };
   },
@@ -25,7 +24,6 @@ export default {
         email: this.dataRegister.email,
         password: this.dataRegister.password,
         phoneNumber: this.dataRegister.phoneNumber,
-        address: this.dataRegister.address,
       });
     },
   },
@@ -71,15 +69,6 @@ export default {
             v-model="dataRegister.phoneNumber"
             class="form-control"
             placeholder="phone number"
-          />
-        </div>
-        <div class="p-3">
-          <label class="form-label">Address</label>
-          <input
-            type="text"
-            v-model="dataRegister.address"
-            class="form-control"
-            placeholder="address"
           />
         </div>
         <button type="submit" class="btn btn-primary mb-3 mx-3">

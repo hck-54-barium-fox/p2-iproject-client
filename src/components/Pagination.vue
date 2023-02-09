@@ -1,25 +1,54 @@
 <script>
+import { mapActions } from "pinia";
+import { useAppStore } from "../stores/app";
+
 export default {
   name: "PaginateComponent",
+  props: ["data"],
+  computed: {
+    startPage() {
+      if (this.data?.page === 0) {
+        return 1;
+      }
+      return this.data?.page;
+    },
+
+    pages() {
+      const range = [];
+      let condition = Math.ceil(this.data?.count / 9);
+      for (let i = 1; i <= condition; i++) {
+        range.push({
+          currentPage: i,
+          isDisabled: i === this.startPage,
+        });
+      }
+      return range;
+    },
+  },
+  // emit
+  methods: {
+    ...mapActions(useAppStore, ["fetchProduct"]),
+
+    fetchByPage(page) {
+      this.fetchProduct(page);
+    },
+  },
 };
 </script>
 
 <template>
   <nav class="mx-auto">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" v-for="(page, n) in pages" :key="n">
+          <button
+            @click.prevent="fetchByPage({ page: page?.currentPage })"
+            class="page-link"
+          >
+            {{ page.currentPage }}
+          </button>
+        </li>
+      </ul>
+    </nav>
   </nav>
 </template>

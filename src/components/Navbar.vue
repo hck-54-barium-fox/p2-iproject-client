@@ -9,7 +9,7 @@ export default {
     RouterLink,
   },
   computed: {
-    ...mapState(useAppStore, ["isLogin"]),
+    ...mapState(useAppStore, ["isLogin", "myProfile"]),
   },
   methods: {
     ...mapActions(useAppStore, ["doLogout"]),
@@ -64,6 +64,9 @@ export default {
             to="/register"
             >Register</RouterLink
           >
+          <div v-if="isLogin" class="btn btn-outline-dark text-white">
+            hi {{ myProfile.username }}
+          </div>
           <button
             v-if="isLogin"
             @click.prevent="handelLogout"

@@ -1,14 +1,26 @@
 <script>
+import { mapActions, mapState } from "pinia";
+import { RouterLink } from "vue-router";
+import { useAppStore } from "../stores/app";
+
 export default {
   name: "CardProductDetail",
-  components: {},
+  components: { RouterLink },
   props: ["productDetail"],
   computed: {
+    ...mapState(useAppStore, ["isLogin"]),
     getRupiah() {
       return new Intl.NumberFormat("id-ID", {
         style: "currency",
         currency: "IDR",
       }).format(this.productDetail.product_price);
+    },
+  },
+  methods: {
+    ...mapActions(useAppStore, ["addBookmark"]),
+
+    addBookmarkByProductId(id) {
+      this.addBookmark(id);
     },
   },
 };
@@ -28,10 +40,17 @@ export default {
         <div class="card-body">
           <h5 class="card-title">{{ productDetail.product_name }}</h5>
           <p class="card-text">Price {{ getRupiah }}</p>
-          <p class="card-text">Stock {{ productDetail.product_info }}</p>
-          <button type="button" class="btn btn-outline-info">
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            v-if="isLogin"
+            @click="addBookmarkByProductId(productDetail.id)"
+          >
             add bookmark
           </button>
+          <RouterLink class="btn btn-outline-info" v-if="!isLogin" to="/login">
+            add bookmark
+          </RouterLink>
         </div>
       </div>
     </div>

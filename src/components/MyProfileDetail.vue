@@ -1,7 +1,31 @@
 <script>
+import { mapActions, mapWritableState } from "pinia";
+import { useAppStore } from "../stores/app";
+
 export default {
   name: "MyProfileDetail",
-  components: {},
+  props: ["profile"],
+  data() {
+    return {
+      profileImg: "",
+    };
+  },
+  computed: {
+    ...mapWritableState(useAppStore, ["myProfile"]),
+  },
+  methods: {
+    ...mapActions(useAppStore, ["updateMyProfile"]),
+    handleUpdateProfile() {
+      const payload = {
+        ...this.myProfile,
+        address: this.profileImg,
+      };
+      this.updateMyProfile(payload);
+    },
+    handleChange(evt) {
+      this.profileImg = evt.target.files[0];
+    },
+  },
 };
 </script>
 
@@ -10,24 +34,48 @@ export default {
     <div class="row g-0">
       <div class="col-md-4">
         <img
-          src="https://cdn.eraspace.com/pub/media/catalog/product/cache/184775a204380039ae47e1177f9cfc1b/i/p/iphone_14_pro_max_deep_purple_1_6.jpg"
-          class="img-fluid rounded-start"
+          :src="myProfile.address"
+          class="img-fluid rounded-start w-full"
           alt="..."
         />
       </div>
       <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-          </p>
-          <button type="button" class="btn btn-outline-info">
-            add bookmark
-          </button>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
-        </div>
+        <form class="card-body" @submit.prevent="handleUpdateProfile()">
+          <div class="mb-3">
+            <label class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              v-model="myProfile.email"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              v-model="myProfile.username"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              v-model="myProfile.phoneNumber"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Foto Profile</label>
+            <input
+              type="file"
+              class="form-control"
+              @change="handleChange($event)"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
       </div>
     </div>
   </div>
