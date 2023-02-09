@@ -6,6 +6,8 @@ import SubmitPoem from "../screens/SubmitPoem.vue";
 import QuoteGenerate from "../screens/QuoteGenerate.vue";
 import GoogleLogin from "../screens/GoogleLogin.vue"
 import MyLetter from "../screens/MyLetter.vue"
+import Api from "../screens/Api.vue"
+import About from "@/screens/About.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +46,16 @@ const router = createRouter({
       path: "/myletter",
       name: "myletter",
       component: MyLetter
+    },
+    {
+      path: "/api",
+      name: "apidocs",
+      component: Api
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About
     }
   ],
 });

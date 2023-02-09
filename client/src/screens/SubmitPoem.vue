@@ -48,7 +48,7 @@ export default {
                     class="input input-bordered border-neutral-700 w-full max-w-sm" required />
                 <label class="pt-5"> Upload Image that is going to be the header of your email</label>
                 <input class="rounded shadow-md max-w-sm w-full" type="file" accept="image/jpeg" @change=checkImage>
-                <img :src="this.rawImage" class="max-w-[30vh] max-h-[30vh]">
+                <img :src="this.rawImage" class="max-w-[30vh] max-h-[30vh]"> <b>*wait for notification of upload image successful first</b>
                 <button class="btn max-w-xs ml-10 bg-neutral-800 shadow-md mt-5" type="submit">Send Email</button>
             </form>
         </div>
