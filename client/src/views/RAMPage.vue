@@ -6,17 +6,16 @@ import { mapActions, mapState } from 'pinia';
 
 export default {
     computed: {
-        ...mapState(useAppStore,['dataProduct'])
+        ...mapState(useAppStore,['dataRAM'])
     },
     methods: {
-        ...mapActions(useAppStore,['getAllData'])
+        ...mapActions(useAppStore,['getAllRAM'])
     },
     components: {
         TableDataRow
     },
     created() {
-        this.getAllData()
-
+        this.getAllRAM()
     },
 }
 </script>
@@ -46,12 +45,12 @@ export default {
                         <th scope="col-2">No</th>
                         <th scope="col">Image</th>
                         <th scope="col">Product</th>
-                        <th scope="col-6">Price</th>
+                        <th scope="col-4">Price</th>
                         <!-- <th scope="col-2">Action</th> -->
                     </tr>
                 </thead>
               <tbody>
-                  <TableDataRow v-for="(product, index) in dataProduct" :key="product.id" :product="product" :index="index"></TableDataRow>
+                  <TableDataRow v-for="(product, index) in dataRAM" :key="product.id" :product="product" :index="index"></TableDataRow>
               </tbody>
             </table>
           </div>

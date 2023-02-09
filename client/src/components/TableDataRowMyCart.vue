@@ -1,8 +1,5 @@
 <script>
 
-import { useAppStore } from '../stores/app';
-import { mapActions } from 'pinia';
-
 export default {
     props: ['cart','index'],
     methods: {
@@ -16,7 +13,7 @@ export default {
             <td>{{ index + 1 }}</td>
             <td><img :src="cart.Product.img" alt=""></td>
             <td>{{ cart.Product.title }}</td>
-            <td>Rp.{{ cart.Product.price }}</td>
+            <td>{{ cart.Product.price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }) }}</td>
             <td>{{ cart.quantity }}</td>
     </tr>
 </template>

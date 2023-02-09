@@ -38,6 +38,7 @@ export default {
                         <th scope="col">Product</th>
                         <th scope="col">Price</th>
                         <th scope="col-2">Quantity</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
               <tbody>
@@ -46,7 +47,7 @@ export default {
             </table>
           </div>
           <div class="d-flex justify-content-center">
-            <button @click.prevent="goToMidtrans" class="btn btn-primary">Calculate & CheckOut</button>
+            <button @click.prevent="goToMidtrans" class="btn btn-dark">Calculate & CheckOut</button>
           </div>
         </div>
         <!-- Table-Head-End -->

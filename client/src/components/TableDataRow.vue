@@ -18,7 +18,7 @@ export default {
             <td>{{ index + 1 }}</td>
             <td><img :src="product.img" alt=""></td>
             <td>{{ product.title }}</td>
-            <td>Rp.{{ product.price }}</td>
+            <td>{{ product.price.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }) }}</td>
             <td><button @click="addToCart(product.id)" class="btn rounded-circle"><i class="bi bi-plus-circle"></i></button></td>
     </tr>
 </template>

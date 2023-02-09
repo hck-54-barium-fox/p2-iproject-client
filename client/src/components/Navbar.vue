@@ -5,7 +5,8 @@ import { useAppStore } from '../stores/app';
 
 export default {
     computed: {
-        ...mapState(useAppStore,['isLogin']),
+        // ...mapState(useAppStore,['isLogin']),
+        ...mapWritableState(useAppStore,['isLogin'])
     },
     methods: {
         ...mapActions(useAppStore,['doLogout']),
@@ -14,7 +15,11 @@ export default {
         }
     },
     created() {
-        this.isLogin
+        if(localStorage.access_token){
+            this.isLogin = true
+        }else{
+            this.isLogin = false
+        }
     },
 }
 </script>
@@ -33,8 +38,8 @@ export default {
             </div>
             <div class="justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <button @click="this.$router.push('/login')" type="button" class="btn btn-primary mx-2">Login</button>
-                    <button @click="goLogout" type="button" class="btn btn-danger mx-2">Logout</button>
+                    <button v-if="!isLogin" @click="this.$router.push('/login')" type="button" class="btn btn-primary mx-2">Login</button>
+                    <button v-if="isLogin" @click="goLogout" type="button" class="btn btn-danger mx-2">Logout</button>
                 </div>
             </div>
         </div>
