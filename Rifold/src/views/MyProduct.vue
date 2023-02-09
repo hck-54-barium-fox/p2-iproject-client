@@ -68,7 +68,7 @@ export default {
           <span class="w-10 h-10 bg-black rounded-full"></span>
 
           <h2 class="ml-4 font-medium text-gray-900">Rifold </h2>
-          <h2 class="ml-4 font-medium text-gray-900"> Subtotal : {{ this.totalHarga + this.totalOngkir}}</h2>
+          <h2 class="ml-4 font-medium text-gray-900"> Subtotal : {{this.rupiah(this.totalHarga + this.totalOngkir)}}</h2>
         </div>
 
         <div>

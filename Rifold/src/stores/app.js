@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 // import { useToast } from 'vue-toastification'
 // const toast = useToast()
-const BASE_URL = 'http://localhost:3000'
+// const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://rifold-production.up.railway.app'
 export const useAppStore = defineStore('App',{
     state() {
         return{
@@ -24,7 +25,7 @@ export const useAppStore = defineStore('App',{
             try {
                 const {data} = await axios({
                     method : 'post',
-                    url : 'http://localhost:3000/register',
+                    url : `${BASE_URL}/register`,
                     data:result
                 })
                 this.router.push({name:'login'})
@@ -44,7 +45,7 @@ export const useAppStore = defineStore('App',{
             try {
                 const {data} = await axios({
                     method : 'post',
-                    url : 'http://localhost:3000/login',
+                    url : `${BASE_URL}/login`,
                     data : result
                 })
                 localStorage.setItem('access_token',data.access_token)
@@ -71,7 +72,7 @@ export const useAppStore = defineStore('App',{
             try {
                 const {data} = await axios({
                     method : 'get',
-                    url : 'http://localhost:3000/product'
+                    url : `${BASE_URL}/product`
                 })
                 this.dataProduct = data
                 console.log(this.dataProduct);
@@ -105,6 +106,7 @@ export const useAppStore = defineStore('App',{
                 }
             })
             this.router.push('/myproduct')
+            this.readMyProduct()
           } catch (error) {
             console.log(error);
             Swal.fire({
@@ -128,6 +130,7 @@ export const useAppStore = defineStore('App',{
                 // this.MyProduct.forEach(el => {
                 //     console.log(el.price);
                 // })
+                this.totalHarga = 0
                 for(let i = 0; i < this.MYProduct.length; i++){
                     // console.log(this.MYProduct[i],'dari data', typeof this.MYProduct[i]);
                     // console.log(this.MYProduct[i].Product.price,'<<<<<<<<<,');
@@ -156,15 +159,17 @@ export const useAppStore = defineStore('App',{
 
                 })
                 this.router.push('/')
+                this.readMyProduct()
             } catch (err) {
                 
             }
         },
         async payment() {
             try {
+                console.log(this.totalHarga+this.totalOngkir);
                 const {data} = await axios({
                     method : 'POST',
-                    url : `${BASE_URL}/generate-midtrans-token`,
+                    url : `${BASE_URL}/generate-midtrans-token?total=${this.totalHarga+this.totalOngkir}`,
                     headers : {
                         access_token : localStorage.access_token
                     }
