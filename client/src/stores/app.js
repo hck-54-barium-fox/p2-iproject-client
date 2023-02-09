@@ -4,6 +4,7 @@ const server = 'http://localhost:4000'
 
 export const useAppStore = defineStore('app', {
     state : ()=>({
+            isLogin : false,
             products : [],
             tree : 0,
             carbon : 0
@@ -48,7 +49,8 @@ export const useAppStore = defineStore('app', {
                     data : payload
                 })
                 localStorage.setItem('access_token', data.access_token)
-                this.router.push('/')
+                this.isLogin = true
+                this.router.push('/products')
                 console.log(data.access_token, 'INI ACC TOKEN')
             } catch (error) {
                 // console.log(error, 'ERRR LOGIN')
@@ -105,7 +107,8 @@ export const useAppStore = defineStore('app', {
                 let {data} = await axios({
                     method : 'post',
                     url : `${server}/carbon/vehicle`,
-                    data : {distance :  distance}
+                    data : {distance :  distance},
+                    
                 })
 
                 console.log(data)
@@ -119,6 +122,66 @@ export const useAppStore = defineStore('app', {
                 console.log(error)
             }
         },
+
+        async createPayment(id){
+            try {
+                console.log(id)
+
+                let {data} = await axios({
+                    method : 'post',
+                    url : `${server}/products/payment/${id}`,
+                    headers : {
+                        access_token : localStorage.getItem('access_token')
+                    }
+                })
+
+                // console.log(data.redirect_url, 'INI URL PAYMENT')
+                window.snap.pay(data.token, {
+                    onSuccess: function(result){
+                      /* You may add your own implementation here */
+                    //   alert("payment success!"); console.log(result);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Good Job!",
+                        text: "Payment success",
+                      });
+                    },
+                    onPending: function(result){
+                      /* You may add your own implementation here */
+                    //   alert("wating your payment!"); console.log(result);
+                   
+                    },
+                    onError: function(result){
+                      /* You may add your own implementation here */
+                    //   alert("payment failed!"); console.log(result);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: " Failed create Payment",
+                        footer: "Try Again :)",
+                      });
+                    },
+                    onClose: function(){
+                      /* You may add your own implementation here */
+                    //   alert('you closed the popup without finishing the payment');
+                    Swal.fire(
+                        'Are you sure?',
+                        'Want to close this payment??',
+                        'question'
+                      )
+                    }
+                  })
+
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+        async doLogout() {
+            localStorage.clear();
+            this.router.push("/");
+            this.isLogin = false;
+          },
         
     }
 

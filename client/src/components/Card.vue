@@ -1,6 +1,14 @@
 <script>
+import { mapActions, mapState } from "pinia";
+import { useAppStore } from "../stores/app";
 export default {
-    props : ['product']
+    props : ['product'],
+    methods :{
+        ...mapActions(useAppStore, ['createPayment']),
+        handlePayment(id){
+            this.createPayment(id)
+        }
+    }
     
 }
 </script>
@@ -14,7 +22,7 @@ export default {
                             <div class="card-body">
                                 <h5 class="card-title">{{product.name}}</h5>
                                 <p class="card-text">{{product.description}}</p>
-                                <a href="#" class="btn btn-success">Let's Plant</a>
+                                <a @click.prevent="handlePayment(product.id)" class="btn btn-success">Let's Plant</a>
                             </div>
                         </div>
                     </div>
