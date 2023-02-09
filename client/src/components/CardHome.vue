@@ -18,7 +18,7 @@ computed:{
                 <h5 class="card-title">{{ game.name }}</h5>
                 <p class="card-text">{{game.price}}</p>
                 <p class="card-text">{{getContent}}</p>
-                <a href="#" class="btn btn-primary">Detail </a>
+                <button @click.prevent="this.$router.push(`/detailGames/${game.steam_appid}`)" class="btn btn-primary">Detail </button>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ export default {
                         <p class="card-text"> {{ news.publishedAt }}</p>
                         <p class="card-text"> Source <b> {{ news.source }} </b> </p>
                         <p class="card-text"> Author <b> {{ news.author }} </b> </p>
-                        <a href="#" class="btn btn-primary">Detail </a>
+                        <!-- <button @click.prevent="this.$router.push(`/detailNewsGames/${news.id}`)"  class="btn btn-primary"> Detail </button> -->
                     </div>
                 </div>
         </div>

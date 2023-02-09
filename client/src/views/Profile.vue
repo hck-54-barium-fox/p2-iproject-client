@@ -33,7 +33,7 @@ export default {
         <p>Email: {{ userLogin.email }}</p>
 
         <p v-if="userLogin.status === 'unpaid'" class="warning"> <b>note : payment you only new feature news game</b></p>
-        <p><button>Reset Password </button></p>
+        <!-- <p><button>Reset Password </button></p> -->
     </div>
 
 </template>

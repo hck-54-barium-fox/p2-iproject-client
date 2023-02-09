@@ -29,13 +29,13 @@ export default {
         <h1>Register</h1>
         <form @submit.prevent="handlerRegister">
             <label>Email</label>
-            <input v-model="email" type="email" required>
+            <input v-model="email" type="email" >
 
             <label>Username</label>
-            <input v-model="username" type="text" required>
+            <input v-model="username" type="text" >
 
             <label>Password </label>
-            <input v-model="password" type="password" required>
+            <input v-model="password" type="password" >
 
             <div class="register-button">
                 <button> Register </button>

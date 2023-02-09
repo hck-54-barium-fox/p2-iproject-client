@@ -14,6 +14,8 @@ export const useAppStore = defineStore('app', {
         games: [],
         newsGame: [],
         userLogin: '',
+        gamesById: '',
+        gamesNewsById: ''
 
         // statusGa:true,
 
@@ -39,7 +41,7 @@ export const useAppStore = defineStore('app', {
                     title: 'Sucess Login',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                })
             } catch (err) {
                 console.log(err);
                 Swal.fire({
@@ -136,7 +138,7 @@ export const useAppStore = defineStore('app', {
                 window.snap.pay(data.token, {
                     onSuccess: async function (result) {
                         /* You may add your own implementation here */
-                        // alert("payment success!"); console.log(result);
+                        alert("payment success!"); console.log(result);
                         //
                         const { data } = await axios({
                             method: "Patch",
@@ -172,6 +174,40 @@ export const useAppStore = defineStore('app', {
                 console.log(data, "ini mailer");
             } catch (err) {
                 console.log();
+            }
+        },
+        async fetchGamesById(steam_appid) {
+            try {
+                // /games/:id
+                console.log('data');
+                let { data } = await axios({
+                    method: "GET",
+                    url: `${url}/games/${steam_appid}`,
+                    headers: {
+                        access_token: localStorage.getItem('access_token')
+                    }
+                })
+                this.gamesById = data
+
+            } catch (err) {
+                console.log(err);
+            }
+        },
+
+        async fetchNewsTechnlogiesById(id) {
+            try {
+                // /newsTechnlogies/:id
+                console.log('sini bo');
+                let { data } = await axios({
+                    method: 'GET',
+                    url: `${url}/newsTechnlogies/${id}`,
+                    headers: {
+                         access_token: localStorage.getItem('access_token')
+                    }
+                })
+                this.gamesNewsById = data
+            } catch (err) {
+                console.log(err);
             }
         }
 
