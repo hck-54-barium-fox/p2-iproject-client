@@ -4,7 +4,9 @@ const server = 'http://localhost:4000'
 
 export const useAppStore = defineStore('app', {
     state : ()=>({
-            products : []
+            products : [],
+            tree : 0,
+            carbon : 0
     }),
     getters : {},
     actions : {
@@ -74,7 +76,50 @@ export const useAppStore = defineStore('app', {
             } catch (error) {
                 console.log(error)
             }
-        }
+        },
+
+        async calculateTobbaco(payload){
+            try {
+                console.log(payload)
+
+                let {data} = await axios({
+                    method : 'post',
+                    url : `${server}/carbon/tobbaco`,
+                    data : payload
+                })
+
+                console.log(data.time, 'INI HASIL')
+
+                this.tree = data.time
+                this.carbon = data.co2
+                // pindah ke halaman tree
+                this.router.push('/result')
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        async calculateEmission(distance){
+            try {
+                console.log(distance)
+
+                let {data} = await axios({
+                    method : 'post',
+                    url : `${server}/carbon/vehicle`,
+                    data : {distance :  distance}
+                })
+
+                console.log(data)
+                console.log(data.time, 'INI HASIL')
+
+                this.tree = data.time
+                this.carbon = data.co2
+                this.router.push('/result')
+                // pindah ke halaman tree
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        
     }
 
 })
