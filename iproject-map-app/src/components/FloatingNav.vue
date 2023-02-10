@@ -21,11 +21,11 @@ export default {
     <div class="floating-container">
         <div class="floating-button"><i class="material-symbols-outlined">menu</i></div>
         <div class="element-container">
-            <router-link to="/map" tag="button">
+            <!-- <router-link to="/map" tag="button">
                 <span class="float-element tooltip-left">
                     <i class="material-symbols-outlined">location_on</i>
                 </span>
-            </router-link>
+            </router-link> -->
             <router-link v-if="role === 'Visitor'" to="/bookmarks" tag="button">
                 <span class="float-element tooltip-left">
                     <i class="material-symbols-outlined">bookmark</i>
@@ -36,9 +36,9 @@ export default {
                     <i class="material-symbols-outlined">add</i>
                 </span>
             </router-link>
-            <span @click.prevent="handleLogout"  class="float-element">
+            <a @click.prevent="handleLogout"  class="float-element">
                 <i class="material-symbols-outlined">logout</i>
-            </span>
+            </a>
         </div>
     </div>
 </template>

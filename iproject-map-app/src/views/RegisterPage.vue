@@ -13,9 +13,12 @@ export default {
         }
     },
     methods: {
-        // ...mapActions(useAppStore)
+        ...mapActions(useAppStore, ['register', 'googleLogin']),
+        handleRegister(){
+            this.register(this.registerForm)
+        },
         callback(){
-            
+            this.googleLogin(response)
         }
     }
 }
@@ -33,18 +36,18 @@ export default {
                                 <h3 class="mb-4">Register</h3>
                             </div>
                         </div>
-                        <form class="signin-form">
+                        <form class="signin-form" @submit.prevent="handleRegister">
                             <div class="form-group mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email Adress" required>
+                                <input v-model="registerForm.email" type="email" name="email" id="email" class="form-control" placeholder="Your Email Adress" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" name="username" id="username" class="form-control" placeholder="Your User Name" required>
+                                <input v-model="registerForm.username" type="text" name="username" id="username" class="form-control" placeholder="Your User Name" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Your Password" required>
+                                <input v-model="registerForm.password" type="password" name="password" id="password" class="form-control" placeholder="Your Password" required>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-primary rounded submit px-3">Register</button>

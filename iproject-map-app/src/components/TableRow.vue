@@ -1,18 +1,33 @@
 <script>
+import { mapActions } from 'pinia';
+import { useAppStore } from '../stores/app';
+
 export default {
-    
+    props: ['bookmark'],
+    methods: {
+        ...mapActions(useAppStore, ['deleteBookmark']),
+        handleDeleteBookmark(id){
+            this.deleteBookmark(id)
+        }
+    }
 }
 </script>
 
 <template>
     <tr>
-        <th scope="row" style="color: #e3bd4c;">Big Ben</th>
-        <td>United Kingdom</td>
-        <td>51.500731, -0.12461</td>
-        <td>15/02/2022</td>
+        <th scope="row">{{ bookmark.Landmark.name }}</th>
+        <td>{{ bookmark.Landmark.country }}</td>
+        <td>{{ bookmark.Landmark.latitude }}, {{ bookmark.Landmark.longitude }}</td>
+        <td>{{ bookmark.createdAt }}</td>
         <td>
-            <button class="btn btn-outline-warning me-2"> See Details </button>
-            <button class="btn btn-outline-danger"><i class="material-symbols-outlined">delete</i></button>
+            <a :href="`/landmarks/${this.bookmark.LandmarkId}`" class="btn btn-outline-warning me-2"> See Details </a>
+            <button @click.prevent="handleDeleteBookmark(this.bookmark.id)" class="btn btn-outline-danger"><i class="material-symbols-outlined">delete</i></button>
         </td>
     </tr>
 </template>
+
+<style scoped>
+th{
+    color: #e3bd4c;
+}
+</style>

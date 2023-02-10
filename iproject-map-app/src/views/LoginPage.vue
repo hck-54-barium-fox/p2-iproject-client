@@ -12,7 +12,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(useAppStore, ['googleLogin']),
+        ...mapActions(useAppStore, ['login','googleLogin']),
+        handleLogin(){
+            this.login(this.loginForm)
+        },
         callback(response){
             // console.log(response);
             this.googleLogin(response)
@@ -33,7 +36,7 @@ export default {
                                 <h3 class="mb-4">Login</h3>
                             </div>
                         </div>
-                        <form class="signin-form">
+                        <form class="signin-form" @submit.prevent="handleLogin">
                             <div class="form-group mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input v-model="loginForm.email" type="email" name="email" id="email" class="form-control" placeholder="Your Email Adress" required>

@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <FloatingNav v-if="this.$route.path !== '/login' && this.$route.path !== '/register'" />
+  <FloatingNav v-if="this.$route.path === '/map'" />
   <router-view></router-view>
   <!-- <RouterView /> -->
 </template>

@@ -11,9 +11,6 @@ export default {
     methods: {
         ...mapActions(useAppStore, ['getLandmarks'])
     },
-    // async created(){
-    //     await this.getLandmarks()
-    // },
     computed: {
         ...mapState(useAppStore, ['landmarkList'])
     },
@@ -24,7 +21,7 @@ export default {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(mainMap)
-        // console.log(this.landmarkList);
+        
         let markers
 
         this.getLandmarks()
@@ -39,8 +36,8 @@ export default {
                         <div class="card-body">
                             <h5 class="card-title">${this.landmarkList[i].name}</h5>
                             <h6 class="card-subtitle">${this.landmarkList[i].country}</h6>
-                            <p class="card-text">${this.landmarkList[i].content.substring(0, 50) + '...'}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">${this.landmarkList[i].content.substring(0, 100) + '...'}</p>
+                            <a href="/landmarks/${this.landmarkList[i].id}" class="btn btn-primary">See Detail</a>
                         </div>
                     </div>
                     `).openPopup()
