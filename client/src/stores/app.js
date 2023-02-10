@@ -1,7 +1,7 @@
 import { defineStore } from "pinia"
 import axios from 'axios'
-// const baseUrl = "http://locahost:4000"
-const baseUrl = "https://iprojectapi-production.up.railway.app"
+const baseUrl = "http://localhost:4000"
+// const baseUrl = "https://iprojectapi-production.up.railway.app"
 export const useAppStore = defineStore('app', {
     state: () => ({
         isLogin: false,
@@ -171,10 +171,35 @@ export const useAppStore = defineStore('app', {
                 console.log(error)
                 Swal.fire({
                     icon: "error",
-                    title: "failed login Login",
-                    text: `${error.response.data}`,
+                    title: "failed login " + error.response.request.status,
+                    text: `${error.response.data.message}`,
                 });
             }
-        }
+        },
+        async deleteEvent(eventId) {
+            try {
+                const { data } = await axios({
+                    method: "DELETE",
+                    url: `${baseUrl}/event/${eventId}`,
+                    headers: {
+                        access_token: localStorage.access_token
+                    }
+                })
+                this.router.push('/')
+                this.fetchEvent()
+                Swal.fire({
+                    icon: "success",
+                    title: "Success Delete",
+                    text: `succes delete event`,
+                });
+            } catch (error) {
+                console.log(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "failed delete " + error.response.request.status,
+                    text: `${error.response.data.message}`,
+                });
+            }
+        },
     }
 })

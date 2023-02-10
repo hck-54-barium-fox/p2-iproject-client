@@ -24,7 +24,7 @@ export default {
       </div>
       <div class="hidden sm:block sm:ml-6">
         <div class="flex space-x-4 align-middle">
-          <router-link to="/createEvent">
+          
             <a
               href="#"
               class="
@@ -35,10 +35,11 @@ export default {
                 hover:opacity-100
                 px-3
                 py-2
+                
               "
-              >Create your party</a
+              ><router-link to="/createEvent">Create your party  </router-link></a
             >
-          </router-link>
+        
           <a
             @click.prevent="logout"
             class="

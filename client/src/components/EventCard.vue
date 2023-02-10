@@ -4,10 +4,13 @@ import { useAppStore } from "../stores/app";
 export default {
   props: ["event"],
   methods: {
-    ...mapActions(useAppStore, ["fetchEvent", "getEventById"]),
+    ...mapActions(useAppStore, ["fetchEvent", "getEventById",'deleteEvent']),
     getDetails(id) {
       this.getEventById(id);
     },
+    destroyeTheEvent(id){
+      this.deleteEvent(id)
+    }
   },
   created() {
     this.fetchEvent();
@@ -18,16 +21,15 @@ export default {
 <template>
   <div class="group">
     <div class="relative">
-      <div class="w-full overflow-hidden">
+      <div class="w-100 d-flex justify-content-center">
         <img
           :src="event.imageUrl"
           class="
-            w-full
-            h-full
             object-center object-cover
             opacity-70
             group-hover:opacity-100
           "
+          style="height:350px; height: 290px; object-fit: cover; cursor: pointer;"
         />
         <div
           class="
@@ -73,6 +75,23 @@ export default {
         "
       >
         Event Details
+      </button>
+    </div>
+    <div class="flex justify-center items-center h-16">
+      <button
+        @click.prevent="destroyeTheEvent(event.id)"
+        class="
+          px-3
+          py-2
+          text-gray-900
+          bg-gray-100
+          rounded-sm
+          focus:outline-none focus:ring focus:ring-gray-500
+          uppercase
+          tracking-widest
+        "
+      >
+        Shut down Event
       </button>
     </div>
   </div>

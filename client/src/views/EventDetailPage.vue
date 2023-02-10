@@ -18,8 +18,8 @@ export default {
     },
   },
   async created() {
-    const baseUrl = "https://partylist-c358a.web.app"
-  //  const baseUrl = 'https://iprojectapi-production.up.railway.app'
+    const baseUrl = "https://partylist-c358a.web.app";
+    //  const baseUrl = 'https://iprojectapi-production.up.railway.app'
     const options = {
       method: "POST",
       url: "https://qrcode3.p.rapidapi.com/qrcode/text",
@@ -28,7 +28,7 @@ export default {
         "X-RapidAPI-Key": "c3f6c10d1cmshe95233043f8ec7cp164e6bjsn71d6b4db2f23",
         "X-RapidAPI-Host": "qrcode3.p.rapidapi.com",
       },
-      responseType: "arraybuffer",
+      // responseType: "  arraybuffer",
       data: {
         data: `${baseUrl}${this.$route.path}`,
         image: {
@@ -59,91 +59,63 @@ export default {
         },
       },
     };
-    const response = await axios.request(options);
-    let blob = new Blob([response.data], {
-      type: response.headers["content-type"],
-    });
-    const qr = URL.createObjectURL(blob);
-    console.log(qr);
-    this.imgQr = qr;
+    // const response = await axios.request(options);
+    // let blob = new Blob([response.data], {
+    //   type: response.headers["content-type"],
+    // });
+    // const qr = URL.createObjectURL(blob);
+    // console.log(qr);
+    // this.imgQr = qr;
 
     // this.getQrCode();
-    this.eventDetails;
+    // this.eventDetails;
     this.getEventById(this.$route.params.eventId);
   },
 };
 </script>
 
 <template>
-  <div class="blog-single gray-bg">
-    <div class="container">
-      <div class="bg-white rounded-xl overflow-hidden">
-        <div class="row align-items-start">
-          <div class="col-6 offset-3  ">
-            <div class="article-title">
-              <h1>{{ this.eventDetails.title }}</h1>
-              <div class="media">
-                <div class="avatar">
-                  <img
-                    :src="this.eventDetails.imageUrl"
-                    class="rounded-xl"
-                    alt="no pict"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="">
-              <p v-html="eventDetails.content"></p>
-            </div>
-            <div><img :src="imgQr" alt="" width="200" /></div>
-            <div>
-              <p>{{ getDate }}</p>
-            </div>
-            <div class="contact-form article-comment">
-              <h4>Leave a Reply</h4>
-              <form id="contact-form" method="POST">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input
-                        name="Name"
-                        id="name"
-                        placeholder="Name *"
-                        class="form-control"
-                        type="text"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <textarea
-                        name="message"
-                        id="message"
-                        placeholder="Your message *"
-                        rows="4"
-                        class="form-control"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="send">
-                      <button class="px-btn theme">
-                        <span>Submit</span> <i class="arrow"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+  <div
+    class="
+      w-full
+      px-6
+      py-6
+      mx-auto
+      mt-20
+      mb-20
+      border border-gray-100
+      rounded-lg
+      sm:px-8
+      md:px-12
+      sm:py-8 sm:shadow
+      lg:w-5/6
+      xl:w-2/3
+    "
+    style="background-color:#1e1e24"
+  >
+    <h1 class="text-lg font-bold text-white sm:text-xl md:text-2xl my-5">
+      {{ eventDetails.title }}
+    </h1>
+    <div class="flex">
+      <div class="w-full px-4 mb-4 md:mb-0">
+        <img :src="eventDetails.imageUrl" class="rounded-xl" style="width:300px; height:300px; object-fit:cover" />
+      </div>
+      <div class="w-full px-4 mb-4 md:mb-0 flex items-center" style="">
+        <div class="text-white text-left">
+          <p v-html="eventDetails.content"></p>
         </div>
       </div>
     </div>
+      <div class="d-flex justify-content-center">
+        <p class="text-white mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+          {{ getDate }}
+        </p>
+      </div>
   </div>
 </template>
 
 <style scoped>
-/* h1 {
-    font-size: 100px
-} */
+h1 {
+  font-size: 60px;
+}
 </style>
