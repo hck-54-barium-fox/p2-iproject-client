@@ -1,9 +1,20 @@
 <script>
+import { mapActions, mapState } from 'pinia';
+import { useAppStore } from '../stores/app';
 import TableRow from '../components/TableRow.vue'
 
 export default {
     components: {
         TableRow
+    },
+    computed: {
+        ...mapState(useAppStore, ['bookmarkList'])
+    },
+    methods: {
+        ...mapActions(useAppStore, ['getBookmarks'])
+    },
+    created(){
+        this.getBookmarks()
     }
 }
 </script>
@@ -12,10 +23,14 @@ export default {
     <section class="intro" id="bookmark-section">
         <div class="container">
             <div class="row d-flex align-content-center justify-content-center">
-                <h2 class="text-center mb-5">My Bookmarks</h2>
-                <div class="row justify-content-center">
+                <router-link to="/map" tag="button">
+                    <a href="#" class="main-btn mb-3 w-25">Back</a>
+                </router-link>
+                <h2 class="text-center mb-2">My Bookmarks</h2>
+                <h5 v-if="bookmarkList.length > 0" class="text-center mb-5">User: {{ bookmarkList[0].User.username }}</h5>
+                <div v-if="bookmarkList.length > 0" class="row justify-content-center">
                     <div class="col-12">
-                        <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true" style="position: relative; height: 445px;">
+                        <div class="table-responsive bg-white" data-mdb-perfect-scrollbar="true">
                             <table class="table text-center">
                                 <thead class="text-uppercase table-warning">
                                     <tr>
@@ -27,23 +42,22 @@ export default {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <TableRow />
-                                    <tr>
-                                        <th scope="row" style="color: #e3bd4c;">Big Ben</th>
-                                        <td>United Kingdom</td>
-                                        <td>51.500731, -0.12461</td>
-                                        <td>15/02/2022</td>
-                                        <td>
-                                            <button class="btn btn-outline-warning me-2"> See Details </button>
-                                            <button class="btn btn-outline-danger"><i class="material-symbols-outlined">delete</i></button>
-                                        </td>
-                                    </tr>
+                                    <TableRow v-for="bookmark in bookmarkList" :key="bookmark.id" :bookmark="bookmark"/>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+                <hr v-if="bookmarkList.length <= 0">
+                <h5 v-if="bookmarkList.length <= 0" class="text-center">You have no bookmark yet</h5>
             </div>
         </div>
     </section>
 </template>
+
+<style scoped>
+.table-responsive{
+    position: relative;
+    height: 445px;
+}
+</style>
