@@ -20,7 +20,7 @@ export default {
 
 <template>
   <div>
-    <Navbar />
+    <Navbar v-if="this.isLogin === true"/>
     <router-view></router-view>
   </div>
 </template>

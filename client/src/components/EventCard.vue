@@ -65,10 +65,11 @@ export default {
         @click.prevent="getDetails(event.id)"
         class="
           px-3
+          btn
+          btn-secondary
           py-2
           text-gray-900
-          bg-gray-100
-          rounded-sm
+          rounded-xl
           focus:outline-none focus:ring focus:ring-gray-500
           uppercase
           tracking-widest
@@ -83,9 +84,10 @@ export default {
         class="
           px-3
           py-2
+          btn
+          btn-secondary
           text-gray-900
-          bg-gray-100
-          rounded-sm
+          rounded-xl
           focus:outline-none focus:ring focus:ring-gray-500
           uppercase
           tracking-widest
@@ -94,5 +96,8 @@ export default {
         Shut down Event
       </button>
     </div>
+    <div  v-if="event.status === 'coming soon'" class="bg-primary rounded mx-10"><p>status: {{event.status}}</p></div>
+    <div v-if="event.status === 'on going'" class="bg-warning rounded mx-10"><p>status: {{event.status}}</p></div>
+    <div v-if="event.status === 'event already passed'" class="bg-danger rounded mx-10"><p>status: {{event.status}}</p></div>
   </div>
 </template>

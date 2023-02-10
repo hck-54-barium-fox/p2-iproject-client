@@ -29,7 +29,7 @@ export default {
         console.log(editor);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       });
   },
 };
