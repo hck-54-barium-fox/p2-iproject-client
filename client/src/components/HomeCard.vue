@@ -15,8 +15,8 @@ export default {
 </script>
 
 <template>
-  <div class="col">
-    <article class="article_home g-4">
+  <div class="item">
+    <article class="article_home">
       <div class="card_home">
         <div class="" style="margin-bottom: 5px">
           <a href="" @click.prevent="$router.push(`/${postData.id}`)">
@@ -43,6 +43,20 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 /* Warna Dasar */
+
+.item {
+  display: inline-block;
+  background: #fff;
+  padding: 1em;
+  margin: 0 0 1.5em;
+  width: 100%;
+  /* -webkit-transition: 1s ease all; */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-shadow: 2px 2px 4px 0 #ccc;
+  border-radius: 20px;
+}
 
 :root {
   --light: #f8f9fa;
@@ -77,7 +91,7 @@ a {
 
 .article_home {
   background-color: #ececec;
-  margin-bottom: -20px;
+  /* margin-bottom: -20px; */
   width: 100%;
   border-radius: 15px;
 }
@@ -99,5 +113,6 @@ a {
   font-size: 15px;
   margin-top: 3px;
   margin-left: 10px;
+  margin-bottom: -10px;
 }
 </style>

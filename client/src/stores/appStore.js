@@ -28,7 +28,7 @@ export const useAppStore = defineStore("app", {
         console.log(form);
         const { data } = await axios({
           method: "POST",
-          url: `${domain}/register`,
+          url: `${localhost}/register`,
           data: form,
         });
 
@@ -66,7 +66,7 @@ export const useAppStore = defineStore("app", {
         console.log(form);
         const { data } = await axios({
           method: "POST",
-          url: `${domain}/login`,
+          url: `${localhost}/login`,
           data: form,
         });
         this.isLogin = true;
@@ -124,7 +124,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${domain}/posts`,
+          url: `${localhost}/posts`,
         });
         // console.log(data);
         this.postList = data;
@@ -145,7 +145,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${domain}/posts/${id}`,
+          url: `${localhost}/posts/${id}`,
         });
 
         this.postDataDetail = data;
@@ -166,7 +166,7 @@ export const useAppStore = defineStore("app", {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${domain}/memes`,
+          url: `${localhost}/memes`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
@@ -191,7 +191,7 @@ export const useAppStore = defineStore("app", {
         // console.log(id);
         const { data } = await axios({
           method: "GET",
-          url: `${domain}/memes/${id}`,
+          url: `${localhost}/memes/${id}`,
           headers: {
             access_token: localStorage.getItem("access_token"),
           },
@@ -219,7 +219,7 @@ export const useAppStore = defineStore("app", {
         console.log(form.template_id);
         const { data } = await axios({
           method: "POST",
-          url: `${domain}/memes`,
+          url: `${localhost}/memes`,
           data: form,
           headers: {
             access_token: localStorage.getItem("access_token"),
@@ -252,7 +252,7 @@ export const useAppStore = defineStore("app", {
         console.log(form, ":::::::::::::::::::");
         const { data } = await axios({
           method: "POST",
-          url: `${domain}/memes/postMeme`,
+          url: `${localhost}/memes/postMeme`,
           data: form,
           headers: {
             access_token: localStorage.getItem("access_token"),
@@ -285,7 +285,7 @@ export const useAppStore = defineStore("app", {
         console.log(image);
         const post = await axios({
           method: "POST",
-          url: `${domain}/memes/memeMulter`,
+          url: `${localhost}/memes/memeMulter`,
           data: image,
           headers: {
             access_token: localStorage.getItem("access_token"),
