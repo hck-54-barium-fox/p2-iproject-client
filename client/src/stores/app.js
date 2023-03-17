@@ -17,7 +17,7 @@ export const useAppStore = defineStore('app', {
             try {
                 const { data } = await axios({
                     method: 'get',
-                    url: `https://beautiful-powder-production.up.railway.app/cat`,
+                    url: `http://localhost:3000/cat`,
                     params: {
                         name: form
                     }
@@ -28,8 +28,7 @@ export const useAppStore = defineStore('app', {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: error.response,
-                    footer: '<a href="">Why do I have this issue?</a>'
+                    text: "U sure that the correct cat name is entered?",
                   })
             }
         },
@@ -38,7 +37,7 @@ export const useAppStore = defineStore('app', {
                 console.log(form);
                 const { data } = await axios({
                     method: 'post',
-                    url: "https://beautiful-powder-production.up.railway.app/login",
+                    url: "http://localhost:3000/login",
                     data: form
                 })
                 console.log(data);
@@ -56,19 +55,15 @@ export const useAppStore = defineStore('app', {
             }
         },
         async register(form){
-            try {
-            console.log(form,"<MM<M<M<M<M<M<M<M<M<");
-
+            try {  
                 const {data}= await axios({
                     method:'post',
-                    url:'https://beautiful-powder-production.up.railway.app/register',
+                    url:'http://localhost:3000/register',
                     data:form
                 })
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: error.response.data.name,
-                    footer: '<a href="">Why do I have this issue?</a>'
+                    icon: 'success',
+                    text: "Register Successfully",
                   })
                   this.router.push('/login')
             } catch (error) {
@@ -102,7 +97,7 @@ export const useAppStore = defineStore('app', {
                 console.log(form)
                 const { data } = await axios({
                     methods: 'get',
-                    url: 'https://beautiful-powder-production.up.railway.app/animal',
+                    url: 'http://localhost:3000/animal',
                     params: { name: form }
                 })
                 console.log(data);
@@ -110,14 +105,19 @@ export const useAppStore = defineStore('app', {
 
 
             } catch (error) {
-                console.log(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "U sure That's the correct animal?",
+                  })
+                
             }
         },
         async fetchProduct() {
             try {
                 const { data } = await axios({
                     method: "get",
-                    url: "https://beautiful-powder-production.up.railway.app/product",
+                    url: "http://localhost:3000/product",
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
@@ -131,7 +131,7 @@ export const useAppStore = defineStore('app', {
             try {
                 const { data } = await axios({
                     method: 'post',
-                    url: `https://beautiful-powder-production.up.railway.app/pub/product/buy/${id}`,
+                    url: `http://localhost:3000/pub/product/buy/${id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
@@ -146,7 +146,7 @@ export const useAppStore = defineStore('app', {
                 console.log("masok");
                 const { data } = await axios({
                     method: 'get',
-                    url: `https://beautiful-powder-production.up.railway.app/pub/checkout`,
+                    url: `http://localhost:3000/pub/checkout`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
@@ -160,7 +160,7 @@ export const useAppStore = defineStore('app', {
             try {
                 const { data } = await axios({
                     method: 'delete',
-                    url: `https://beautiful-powder-production.up.railway.app/pub/checkout/delete/${id}`,
+                    url: `http://localhost:3000/pub/checkout/delete/${id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
@@ -174,7 +174,7 @@ export const useAppStore = defineStore('app', {
             try {
                 const { data } = await axios({
                     method: 'patch',
-                    url: `https://beautiful-powder-production.up.railway.app/pub/paid/${id}`,
+                    url: `http://localhost:3000/pub/paid/${id}`,
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }
@@ -190,7 +190,7 @@ export const useAppStore = defineStore('app', {
                 console.log(id);
                 const { data } = await axios({
                     method: 'post',
-                    url: 'https://beautiful-powder-production.up.railway.app/pub/buy/midtrans',
+                    url: 'http://localhost:3000/pub/buy/midtrans',
                     headers: {
                         access_token: localStorage.getItem('access_token')
                     }

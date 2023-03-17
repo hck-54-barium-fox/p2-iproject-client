@@ -25,20 +25,11 @@ export default {
         <div class="container">
   
           <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-            <h2>Portfolio</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <h2>Product</h2>
+            <p></p>
           </div>
   
-          <div class="row" data-aos="fade-in">
-            <div class="col-lg-12 d-flex justify-content-center">
-              <ul id="portfolio-flters">
-                <li data-filter="*" class="filter-active">All</li>
-                <li data-filter=".filter-app">App</li>
-                <li data-filter=".filter-card">Card</li>
-                <li data-filter=".filter-web">Web</li>
-              </ul>
-            </div>
-          </div>
+ 
   
           <div class="row portfolio-container" data-aos="fade-up">
   

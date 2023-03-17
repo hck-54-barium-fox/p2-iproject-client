@@ -17,11 +17,15 @@ export default {
               <div class="content">
                 <h3>Animal World</h3>
                 <div>
-                    <a href="#" class="about-btn">Search any Animal around the World <i class="bx bx-chevron-right"></i></a>
-                    <a href="#"  class="about-btn" style="margin-top:20px;">Search any race of Cat <i class="bx bx-chevron-right"></i></a>
+                    <a href="#" @click.prevent="this.$router.push('/findAnimal')" class="about-btn">Search any Animal around the World <i class="bx bx-chevron-right"></i></a>
+                    <a href="#" @click.prevent="this.$router.push('/findCat')"  class="about-btn" style="margin-top:20px;">Search any race of Cat <i class="bx bx-chevron-right"></i></a>
                     
                 </div>
-                <a href="#" style="margin-top:20px;" class="about-btn">Go to Store<i class="bx bx-chevron-right"></i></a>
+                <div>
+                  <a href="#" @click.prevent="this.$router.push('/store')" style="margin-top:20px;" class="about-btn">Go to Store<i class="bx bx-chevron-right"></i></a>
+
+                </div>
+                <a href="#" @click.prevent="this.$router.push('/checkout')" style="margin-top:20px;" class="about-btn">Checkout Your Cart!<i class="bx bx-chevron-right"></i></a>
             </div>
             </div>
             <div class="col-xl-7 d-flex align-items-stretch">
